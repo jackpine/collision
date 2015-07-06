@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PSQL_CMD="psql -h localhost -p 25433 --username postgres collision_development"
+shp2pgsql SWITRS_2003_2012_SHP/Collisions03to12.shp | $PSQL_CMD
+
+# TODO we can make this faster using the pg_dump format | pg_restore
+# shp2pgsql -D SWITRS_2003_2012_SHP/Collisions03to12.shp | $PG_RESTORE_CMD
