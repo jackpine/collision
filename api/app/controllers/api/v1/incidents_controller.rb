@@ -1,6 +1,6 @@
 class Api::V1::IncidentsController < Api::BaseController
   def index
-    @incidents = Incident.random_sampling(5000)
+    @incidents = Incident.random_sampling(10000).where(bicycle_collision: true)
 
     if params[:bbox]
       bbox_params = sanitize_bbox_params(params[:bbox])
