@@ -49,6 +49,8 @@ $(function(){
   }, 1000);
 
   updateIncidentsFromBounds();
+
+  //refresh displayed incidents whenever map pans
   map.on('moveend', function() {
     updateIncidentsFromBounds();
   });
