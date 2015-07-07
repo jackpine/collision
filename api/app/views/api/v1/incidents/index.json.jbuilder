@@ -1,1 +1,1 @@
-json.incidents @incidents, partial: 'incident', as: :incident
+json.incidents @incidents.map {|incident|  { location: RGeo::GeoJSON.encode(incident.location) } }
