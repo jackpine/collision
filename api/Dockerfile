@@ -21,7 +21,7 @@ RUN bundle install
 
 RUN mkdir /home/app/collision
 ADD . /home/app/collision/api
-RUN chown -R app:app /home/app/collision/api
+RUN chown -R app:app /home/app/collision
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
