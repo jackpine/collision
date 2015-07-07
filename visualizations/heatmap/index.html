@@ -24,7 +24,7 @@ L.mapbox.accessToken = '<your access token here>';
 // var incidentsUrl = 'http://localhost:3000/api/v1/incidents.json';
 var incidentPoints = [];
 var map = L.mapbox.map('map', 'mapbox.dark')
-.setView([-37.821, 175.219], 16);
+            .setView([34.0500, -118.2500], 16);
 
 var heat = L.heatLayer(incidentPoints, {maxZoom: 18}).addTo(map);
 var draw = true;
