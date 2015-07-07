@@ -151,6 +151,8 @@ GEM
     rgeo-activerecord (4.0.0)
       activerecord (~> 4.2)
       rgeo (~> 0.3)
+    rgeo-geojson (0.3.1)
+      rgeo (~> 0.3)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -220,6 +222,7 @@ DEPENDENCIES
   pg
   rack-permissive-cors!
   rails (= 4.2.3)
+  rgeo-geojson
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

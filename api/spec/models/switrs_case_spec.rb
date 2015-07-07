@@ -89,7 +89,7 @@ RSpec.describe SwitrsCase, type: :model do
     "y_chp"=>0.0,
     #This isn't quite right, the actual record returns a PointImpl like this, but I'm not sure how to build one:
     # "geom"=> '#<RGeo::Cartesian::PointImpl:0x3fc358b29e94 "POINT (-122.238153136 37.76977539100005)">'
-    "geom"=> RGeo::Geographic.spherical_factory(srid: 4326).point(-122.238153136, 37.76977539100005)
+    "geom"=> PointBuilder.build(lon: -122.238153136, lat: 37.76977539100005)
   })}
 
   describe '#as_incident_attributes' do
