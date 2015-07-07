@@ -6,82 +6,36 @@
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
+
 <script src="bower_components/lodash/lodash.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
 </style>
 </head>
 <body>
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
 <div id='map'></div>
 
 <!-- Example data. -->
 
 <script>
-// TODO set up actual mapbox token
-L.mapbox.accessToken = '<your access token here>';
 
-// TODO, populate this from API
-// var incidentsUrl = 'http://localhost:3000/api/v1/incidents.json';
-var incidentsAttributes = [
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0510922667, -118.2509316333],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0510819833, -118.2503903167],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0510881833, -118.2505004833],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0511946833, -118.2503655333],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0509458667, -118.2504051333],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0508292333, -118.2504374833],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0525816, -118.2508798667],
-    }
-  },
-  {
-    location: {
-      type: 'Point',
-      coordinates: [34.0515855167, -118.2509767],
-    }
-  },
-];
+$(function(){
+  // TODO set up actual mapbox token
+  L.mapbox.accessToken = '<your access token here>';
+  var incidentsUrl = 'http://localhost:3000/api/v1/incidents.json';
+  $.getJSON(incidentsUrl, function(json) {
+    var incidents = json.incidents;
+    var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates });
+    var map = L.mapbox.map('map', 'mapbox.dark')
+      .setView([34.0510, -118.2500], 17);
 
-var incidentPoints = _.map(incidentsAttributes, function(incidentAttributes) { return incidentAttributes.location.coordinates });
-
-var map = L.mapbox.map('map', 'mapbox.dark')
-            .setView([34.0510, -118.2500], 17);
-
-var heat = L.heatLayer(incidentPoints, {maxZoom: 20}).addTo(map);
-var draw = true;
+    var heat = L.heatLayer(incidentPoints, {maxZoom: 20}).addTo(map);
+    var draw = true;
+  });
+});
 
 </script>
 </body>

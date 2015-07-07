@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/jackpine/rack-permissive-cors.git
+  revision: 73c880962ed57602aca4ccbcdbf1673d91e74c66
+  specs:
+    rack-permissive-cors (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -212,6 +218,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  rack-permissive-cors!
   rails (= 4.2.3)
   rspec-rails
   sass-rails (~> 5.0)
