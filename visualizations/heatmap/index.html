@@ -25,16 +25,32 @@
 $(function(){
   // TODO set up actual mapbox token
   L.mapbox.accessToken = '<your access token here>';
-  var incidentsUrl = 'http://localhost:3000/api/v1/incidents.json';
-  $.getJSON(incidentsUrl, function(json) {
-    var incidents = json.incidents;
-    var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse() });
-    var map = L.mapbox.map('map', 'mapbox.dark')
-      .setView([35.6783, -119.291572325], 6);
+  var map = L.mapbox.map('map', 'mapbox.dark')
+    .setView([35.6783, -119.291572325], 6);
       //.setView([34.0510, -118.2500], 17);
 
-    var heat = L.heatLayer(incidentPoints, {blur: 5, radius: 5, maxZoom: 12}).addTo(map);
-    var draw = true;
+  var heatLayer;
+  function updateIncidentsFromBounds() {
+    var bounds = map.getBounds();
+    var boundingBox = "" + bounds.getWest() + "," + bounds.getSouth() + "," +  bounds.getEast() + "," + bounds.getNorth();
+    var incidentsBaseUrl = 'http://localhost:3000/api/v1/incidents.json';
+    var incidentsUrl = incidentsBaseUrl + "?bbox=" + boundingBox;
+
+    $.getJSON(incidentsUrl, function(json) {
+      var incidents = json.incidents;
+      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse() });
+      //remove any existing heatlayer
+      if (heatLayer) {
+        map.removeLayer(heatLayer);
+      }
+      heatLayer = L.heatLayer(incidentPoints, {blur: 5, radius: 4, maxZoom: 12}).addTo(map);
+      var draw = true;
+    });
+  }
+
+  updateIncidentsFromBounds();
+  map.on('moveend', function() {
+    updateIncidentsFromBounds();
   });
 });
 
