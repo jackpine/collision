@@ -30,7 +30,7 @@ $(function(){
     //.setView([35.6783, -119.291572325], 6);
 
   var heatLayer;
-  function updateIncidentsFromBounds() {
+  var updateIncidentsFromBounds = _.debounce(function() {
     var bounds = map.getBounds();
     var boundingBox = "" + bounds.getWest() + "," + bounds.getSouth() + "," +  bounds.getEast() + "," + bounds.getNorth();
     var incidentsBaseUrl = 'http://localhost:3000/api/v1/incidents.json';
@@ -46,7 +46,7 @@ $(function(){
       heatLayer = L.heatLayer(incidentPoints, {blur: 5, radius: 4, maxZoom: 12}).addTo(map);
       var draw = true;
     });
-  }
+  }, 1000);
 
   updateIncidentsFromBounds();
   map.on('moveend', function() {
