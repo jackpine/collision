@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   host: localhost
   port: 25433
-  username: postgres
+  user: postgres
 
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: collision_production
-  username: collision
-  password: <%= ENV['COLLISION_DATABASE_PASSWORD'] %>
+  host: collision-db
+  port: 5432

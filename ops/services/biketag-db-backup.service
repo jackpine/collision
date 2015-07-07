@@ -1,0 +1,7 @@
+[Unit]
+Description=Collision DB Backup
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/home/core/collision/ops/bin/archive-db 
+

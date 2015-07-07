@@ -1,0 +1,12 @@
+[Unit]
+Description=Collision DB
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill collision-db
+ExecStart=/usr/bin/docker start collision-db
+
+[Install]
+WantedBy=multi-user.target

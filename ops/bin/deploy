@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+function usage {
+  cat <<EOS
+Usage: ./deploy <connection-string> <environment>
+ e.g.: ./deploy core@api.collision-staging.jackpine.me staging
+EOS
+}
+
+function provision {
+  ENVIRONMENT=$1
+
+  if [ -z $ENVIRONMENT ]
+  then
+    usage
+    exit 1
+  fi
+
+  echo "deploying database container... you'll see an error if db has already been deployed. Don't worry about it."
+  docker run --name collision-db -p 25432:5432 -d mdillon/postgis
+
+  echo "pulling latest api container"
+  docker pull michaelkirk/collision-api
+
+  echo "removing any pre-existing api container"
+  docker stop collision-api
+  docker rm collision-api
+
+  echo "starting new api container"
+  docker run --name collision-api --link collision-db:collision-db -p 80:80 -d michaelkirk/collision-api
+  # No secrets to deploy yet
+  #docker exec -i collision-api bash -c "cat - > ~app/collision/api/.env" < ~/collision/ops/secrets/collision-$ENVIRONMENT-api.env
+}
+
+if [ "$#" == 2 ]
+then
+  HOST=$1
+  ENVIRONMENT=$2
+
+  echo "remote deploying ${ENVIRONMENT} to ${HOST}"
+  ssh $1 "$(typeset -f); provision $ENVIRONMENT"
+else
+  usage
+  exit 1
+fi

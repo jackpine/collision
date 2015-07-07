@@ -1,0 +1,14 @@
+[Unit]
+Description=Collision API
+After=collision-db.service
+After=docker.service
+Requires=docker.service
+Requires=collision-db.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill collision-api
+ExecStart=/usr/bin/docker start collision-api
+
+[Install]
+WantedBy=multi-user.target
