@@ -20,14 +20,14 @@ function provision {
   docker run --name collision-db -p 25432:5432 -d mdillon/postgis
 
   echo "pulling latest api container"
-  docker pull michaelkirk/collision-api
+  docker pull jackpine/collision-api
 
   echo "removing any pre-existing api container"
   docker stop collision-api
   docker rm collision-api
 
   echo "starting new api container"
-  docker run --name collision-api --link collision-db:collision-db -p 80:80 -d michaelkirk/collision-api
+  docker run --name collision-api --link collision-db:collision-db -p 80:80 -d jackpine/collision-api
   # No secrets to deploy yet
   #docker exec -i collision-api bash -c "cat - > ~app/collision/api/.env" < ~/collision/ops/secrets/collision-$ENVIRONMENT-api.env
 }

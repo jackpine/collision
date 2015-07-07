@@ -1,3 +1,3 @@
 #!/bin/sh
 echo "building container"
-docker build -t michaelkirk/collision-api .
+docker build -t jackpine/collision-api .
