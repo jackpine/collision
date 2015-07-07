@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Leaflet Heat</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
+
+<script src="bower_components/lodash/lodash.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+
+<!-- Example data. -->
+
+<script>
+
+$(function(){
+  // TODO set up actual mapbox token
+  L.mapbox.accessToken = '<your access token here>';
+  var map = L.mapbox.map('map', 'mapbox.dark')
+    .setView([34.0510, -118.2500], 15);
+    //.setView([35.6783, -119.291572325], 6);
+
+  var heatLayer;
+  var updateIncidentsFromBounds = _.debounce(function() {
+    var bounds = map.getBounds();
+    var boundingBox = "" + bounds.getWest() + "," + bounds.getSouth() + "," +  bounds.getEast() + "," + bounds.getNorth();
+    var incidentsBaseUrl = 'http://localhost:3000/api/v1/incidents.json';
+    var incidentsUrl = incidentsBaseUrl + "?bbox=" + boundingBox;
+
+    $.getJSON(incidentsUrl, function(json) {
+      var incidents = json.incidents;
+      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse() });
+      //remove any existing heatlayer
+      if (heatLayer) {
+        map.removeLayer(heatLayer);
+      }
+      heatLayer = L.heatLayer(incidentPoints, {blur: 5, radius: 4, maxZoom: 12}).addTo(map);
+      var draw = true;
+    });
+  }, 1000);
+
+  updateIncidentsFromBounds();
+  map.on('moveend', function() {
+    updateIncidentsFromBounds();
+  });
+});
+
+</script>
+</body>
+</html>
