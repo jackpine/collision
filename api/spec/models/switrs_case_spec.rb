@@ -11,7 +11,19 @@ RSpec.describe SwitrsCase, type: :model do
       location = subject.delete(:location)
       expect(location.distance(expected_location)).to eq(0)
 
-      expect(subject).to eq({})
+      expect(subject).to eq({
+        switrs_case_id: '0047525',
+        occurred_at: Time.parse('2003-01-09 05:25 PST'),
+        bicycle_collision: false,
+        pedestrian_collision: false,
+        killed_count: 0,
+        injured_count: 2,
+      })
     end
+  end
+
+  describe '#date_time' do
+    it 'parses in pacific time'
+    it 'accounts for DST'
   end
 end
