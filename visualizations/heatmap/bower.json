@@ -1,0 +1,19 @@
+{
+  "name": "heatmap",
+  "version": "0.0.0",
+  "homepage": "https://github.com/michaelkirk/collision",
+  "authors": [
+    "Michael Kirk <michael.john.kirk@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
