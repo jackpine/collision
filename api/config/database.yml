@@ -18,7 +18,7 @@ default: &default
   adapter: postgis
   encoding: unicode
   host: localhost
-  port: 5432
+  port: 25433
   user: postgres
 
   # For details on connection pooling, see rails configuration guide
@@ -86,3 +86,4 @@ production:
   <<: *default
   database: collision_production
   host: collision-db
+  port: 5432
