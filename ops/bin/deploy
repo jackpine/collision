@@ -16,20 +16,32 @@ function provision {
     exit 1
   fi
 
-  echo "deploying database container... you'll see an error if db has already been deployed. Don't worry about it."
-  docker run --name collision-db -p 25433:5432 -d mdillon/postgis
+  docker ps -a | grep collision-db > /dev/null
+  DB_ALREADY_DEPLOYED=$?
+  if [ $DB_ALREADY_DEPLOYED ]
+  then
+    echo "Database previously deployed."
+  else
+    echo "Deploying new database container."
+    docker run --name collision-db -d mdillon/postgis
+  fi
 
-  echo "pulling latest api container"
-  docker pull jackpine/collision-api
+  echo "Pulling latest api container."
+  docker pull jackpine/collision-api > /dev/null
 
-  echo "removing any pre-existing api container"
-  docker stop collision-api
-  docker rm collision-api
+  echo "Removing any pre-existing api container."
+  docker stop collision-api > /dev/null
+  docker rm collision-api > /dev/null
 
-  echo "starting new api container"
+  echo "Starting new api container."
   docker run --name collision-api --link collision-db:collision-db -p 80:80 -d jackpine/collision-api
-  # No secrets to deploy yet
+
+  echo "Copying config."
   docker exec -i collision-api bash -c "cat - > ~app/collision/api/.env" < ~/collision/ops/secrets/collision-$ENVIRONMENT-api.env
+
+  echo "Restarting container."
+  docker stop collision-api
+  docker start collision-api
 }
 
 if [ "$#" == 2 ]
@@ -37,7 +49,7 @@ then
   HOST=$1
   ENVIRONMENT=$2
 
-  echo "remote deploying ${ENVIRONMENT} to ${HOST}"
+  echo "Remote deploying ${ENVIRONMENT} to ${HOST}."
   ssh $1 "$(typeset -f); provision $ENVIRONMENT"
 else
   usage
