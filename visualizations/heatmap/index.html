@@ -38,12 +38,14 @@ $(function(){
 
     $.getJSON(incidentsUrl, function(json) {
       var incidents = json.incidents;
-      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse() });
+      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([0.10]) });
       //remove any existing heatlayer
       if (heatLayer) {
         map.removeLayer(heatLayer);
       }
-      heatLayer = L.heatLayer(incidentPoints, {blur: 5, radius: 4, maxZoom: 12}).addTo(map);
+      //looks good zoomed out
+      heatLayer = L.heatLayer(incidentPoints, {blur: 20, radius: 25, maxZoom: 8}).addTo(map);
+
       var draw = true;
     });
   }, 1000);
