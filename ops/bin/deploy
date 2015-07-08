@@ -29,7 +29,7 @@ function provision {
   echo "starting new api container"
   docker run --name collision-api --link collision-db:collision-db -p 80:80 -d jackpine/collision-api
   # No secrets to deploy yet
-  #docker exec -i collision-api bash -c "cat - > ~app/collision/api/.env" < ~/collision/ops/secrets/collision-$ENVIRONMENT-api.env
+  docker exec -i collision-api bash -c "cat - > ~app/collision/api/.env" < ~/collision/ops/secrets/collision-$ENVIRONMENT-api.env
 }
 
 if [ "$#" == 2 ]
