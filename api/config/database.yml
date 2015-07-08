@@ -18,7 +18,7 @@ default: &default
   adapter: postgis
   encoding: unicode
   host: localhost
-  port: 25433
+  port: 5432
   user: postgres
 
   # For details on connection pooling, see rails configuration guide
