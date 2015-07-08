@@ -17,7 +17,7 @@ function provision {
   fi
 
   echo "deploying database container... you'll see an error if db has already been deployed. Don't worry about it."
-  docker run --name collision-db -p 25432:5432 -d mdillon/postgis
+  docker run --name collision-db -p 25433:5432 -d mdillon/postgis
 
   echo "pulling latest api container"
   docker pull jackpine/collision-api

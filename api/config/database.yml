@@ -86,4 +86,3 @@ production:
   <<: *default
   database: collision_production
   host: collision-db
-  port: 5432

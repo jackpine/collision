@@ -21,6 +21,9 @@ RUN bundle install
 
 RUN mkdir /home/app/collision
 ADD . /home/app/collision/api
+# Copy over template env file
+ADD .env-template /home/app/collision/api/.env
+
 RUN chown -R app:app /home/app/collision
 
 # Clean up APT when done.
