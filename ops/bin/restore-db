@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+function usage {
+  cat <<EOS
+
+Usage:
+  ./restore-db <backup-file>
+
+e.g.
+  ./restore-db 2015-05-12-collision_production_backup.sql
+
+EOS
+}
+
+DATABASE_BACKUP_FILE=$1
+if [ -z $DATABASE_BACKUP_FILE ]
+then
+  echo "DATABASE_BACKUP_FILE required."
+  usage
+  exit 1
+fi
+
+API_CONTAINER=collision-api
+
+DATABASE_TO_REPLACE=collision_development
+if [ -z $DATABASE_TO_REPLACE ]
+then
+  echo "DATABASE_TO_REPLACE required."
+  usage
+  exit 1
+fi
+
+echo "dropping ${DATABASE_TO_REPLACE}"
+docker stop $API_CONTAINER
+
+docker exec -ti collision-db dropdb --username postgres $DATABASE_TO_REPLACE
+docker exec -ti collision-db createdb --username postgres $DATABASE_TO_REPLACE
+docker exec -i collision-db psql -d $DATABASE_TO_REPLACE --username postgres < $DATABASE_BACKUP_FILE
+
+echo "restarting $API_CONTAINER"
+docker start $API_CONTAINER

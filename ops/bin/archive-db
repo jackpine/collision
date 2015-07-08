@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+
+# Not uploading backups for collision yet.
+# source $BIN_DIR/../secrets/collision-db-backups.env
+# if [ -z $S3_BUCKET ]
+# then
+#   echo "must specify S3_BUCKET"
+#   exit 1
+# fi
+# if [ -z $AWS_KEY_ID ]
+# then
+#   echo "must specify AWS_KEY_ID"
+#   exit 1
+# fi
+# if [ -z $AWS_SECRET_KEY ]
+# then
+#   echo "must specify AWS_SECRET_KEY"
+#   exit 1
+# fi
+
+function archive_db {
+  DATABASE_NAME=$1
+  if [ -z $DATABASE_NAME ]
+  then
+    echo "must specify DATABASE_NAME"
+    exit 1
+  fi
+
+  DATE=`date +%Y%m%d`
+  DUMP_FILE="${DATABASE_NAME}-${HOSTNAME}-${DATE}.sql.gz"
+  HOSTNAME=`hostname`
+  dump $DATABASE_NAME $DUMP_FILE
+  # Not uploading backups for collision yet.
+  #upload $DUMP_FILE
+  rm /tmp/$DUMP_FILE
+}
+
+function dump {
+  DATABASE_NAME=$1
+  if [ -z $DATABASE_NAME ]
+  then
+    echo "must specify DATABASE_NAME"
+    exit 1
+  fi
+
+  DUMP_FILE=$2
+  if [ -z $DUMP_FILE ]
+  then
+    echo "must specify DUMP_FILE"
+    exit 1
+  fi
+
+  docker exec collision-db bash -c "pg_dump --username postgres $DATABASE_NAME" | gzip -c > /tmp/$DUMP_FILE
+}
+
+function upload {
+  FILENAME=$1
+  if [ -z $FILENAME ]
+  then
+    echo "must specify FILENAME"
+    exit 1
+  fi
+
+  resource="/${S3_BUCKET}/${FILENAME}"
+  contentType="application/x-gzip"
+  dateValue=`date -R`
+  stringToSign="PUT\n\n${contentType}\n${dateValue}\n${resource}"
+
+  signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${AWS_SECRET_KEY} -binary | base64`
+
+  FILE="/tmp/${FILENAME}"
+  curl -L -X PUT -T "${FILE}" \
+    -H "Host: ${S3_BUCKET}.s3.amazonaws.com" \
+    -H "Date: ${dateValue}" \
+    -H "Content-Type: ${contentType}" \
+    -H "Authorization: AWS ${AWS_KEY_ID}:${signature}" \
+    https://${S3_BUCKET}.s3.amazonaws.com/${FILENAME}
+}
+
+archive_db collision_development

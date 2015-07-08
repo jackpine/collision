@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
+
+# dotenv should be inluded before any other gems that use environment
+# variables, otherwise those gems will get initialized with the wrong values.
+gem 'dotenv-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'activerecord-postgis-adapter'
