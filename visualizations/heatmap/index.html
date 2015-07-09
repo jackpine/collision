@@ -27,8 +27,16 @@ $(function(){
   L.mapbox.accessToken = 'pk.eyJ1IjoibWljaGFlbGtpcmsiLCJhIjoiNjA3YTM0ODRmOTU3ZmQ2ZTUxMjgyNWI0MDk2ODBiMzAifQ.GOrBk7s9JvPl6h5rDkcJiQ';
   var map = L.mapbox.map('map', 'mapbox.dark')
     .setView([34.0510, -118.2500], 15);
-    //.setView([35.6783, -119.291572325], 6);
 
+  // The parameters we can tweak: blur, radius, maxzoom, intensity
+  //
+  // Because the vis looks quite different at differnt zooms and on different devices
+  // we have to check a lot of different combinations. Here's the zooms/devices I checked
+  // zoom-levels           (device)-> iPhone6, MacBook 13"
+  // 15 (neighborhood)
+  // 12 (city)
+  // 10 (metro)
+  // 7  (state)
   var heatLayer;
   var updateIncidentsFromBounds = _.debounce(function() {
     var bounds = map.getBounds();
@@ -37,14 +45,19 @@ $(function(){
     var incidentsUrl = incidentsBaseUrl + "?bbox=" + boundingBox;
 
     $.getJSON(incidentsUrl, function(json) {
-      var incidents = json.incidents;
-      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([0.10]) });
       //remove any existing heatlayer
       if (heatLayer) {
         map.removeLayer(heatLayer);
       }
-      //looks good zoomed out
-      heatLayer = L.heatLayer(incidentPoints, {blur: 20, radius: 25, maxZoom: 8}).addTo(map);
+
+      var incidents = json.incidents;
+
+      var intensity = 0.10;
+      var blur = 25;
+      var radius = blur;
+      console.log('intensity:', intensity, 'blur:', blur, 'radius:', radius);
+      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([intensity]) });
+      heatLayer = L.heatLayer(incidentPoints, {blur: blur, radius: radius, maxZoom: 13}).addTo(map);
 
       var draw = true;
     });
