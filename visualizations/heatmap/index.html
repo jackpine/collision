@@ -53,9 +53,17 @@ $(function(){
       var incidents = json.incidents;
 
       var intensity = 0.10;
+
+      // Handle low incident presentaion specially, otherwise we can't see them.
+      if (incidents.length < 500) {
+        // The fewer the incidents, the more intensly we color any individual
+        // incident. This makes the visualizations intensity "relative" to how
+        // many incidents are currently on the map.
+        intensity += (0.4 * (1 - incidents.length/500))
+      }
       var blur = 25;
       var radius = blur;
-      console.log('intensity:', intensity, 'blur:', blur, 'radius:', radius);
+      console.log('incidents:', incidents.length, 'intensity:', intensity, 'blur:', blur, 'radius:', radius);
       var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([intensity]) });
       heatLayer = L.heatLayer(incidentPoints, {blur: blur, radius: radius, maxZoom: 13}).addTo(map);
 
