@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset=utf-8 />
-<title>Leaflet Heat</title>
+<title>Auto/Bicyle Collisions</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
@@ -10,6 +10,8 @@
 
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/collision_map.js"></script>
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -19,77 +21,10 @@
 <div id='map'></div>
 
 <script>
-
-function analytics() {
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-32997565-4', 'auto');
-  ga('send', 'pageview');
-}
-
 $(function(){
-
-  analytics();
-
-
-  L.mapbox.accessToken = 'pk.eyJ1IjoibWljaGFlbGtpcmsiLCJhIjoiNjA3YTM0ODRmOTU3ZmQ2ZTUxMjgyNWI0MDk2ODBiMzAifQ.GOrBk7s9JvPl6h5rDkcJiQ';
-  var map = L.mapbox.map('map', 'mapbox.dark')
-    .setView([34.0510, -118.2500], 15);
-
-  // The parameters we can tweak: blur, radius, maxzoom, intensity
-  //
-  // Because the vis looks quite different at differnt zooms and on different devices
-  // we have to check a lot of different combinations. Here's the zooms/devices I checked
-  // zoom-levels           (device)-> iPhone6, MacBook 13"
-  // 15 (neighborhood)
-  // 12 (city)
-  // 10 (metro)
-  // 7  (state)
-  var heatLayer;
-  var updateIncidentsFromBounds = _.debounce(function() {
-    var bounds = map.getBounds();
-    var boundingBox = "" + bounds.getWest() + "," + bounds.getSouth() + "," +  bounds.getEast() + "," + bounds.getNorth();
-    var incidentsBaseUrl = 'http://localhost:3000/api/v1/incidents.json';
-    var incidentsUrl = incidentsBaseUrl + "?bbox=" + boundingBox;
-
-    $.getJSON(incidentsUrl, function(json) {
-      //remove any existing heatlayer
-      if (heatLayer) {
-        map.removeLayer(heatLayer);
-      }
-
-      var incidents = json.incidents;
-
-      var intensity = 0.10;
-
-      // Handle low incident presentaion specially, otherwise we can't see them.
-      if (incidents.length < 500) {
-        // The fewer the incidents, the more intensly we color any individual
-        // incident. This makes the visualizations intensity "relative" to how
-        // many incidents are currently on the map.
-        intensity += (0.4 * (1 - incidents.length/500))
-      }
-      var blur = 25;
-      var radius = blur;
-      console.log('incidents:', incidents.length, 'intensity:', intensity, 'blur:', blur, 'radius:', radius);
-      var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([intensity]) });
-      heatLayer = L.heatLayer(incidentPoints, {blur: blur, radius: radius, maxZoom: 13}).addTo(map);
-
-      var draw = true;
-    });
-  }, 1000);
-
-  updateIncidentsFromBounds();
-
-  //refresh displayed incidents whenever map pans
-  map.on('moveend', function() {
-    updateIncidentsFromBounds();
-  });
+  collisionMap();
 });
-
 </script>
+
 </body>
 </html>
