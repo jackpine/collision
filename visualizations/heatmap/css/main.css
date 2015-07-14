@@ -21,12 +21,17 @@ p#map-caption a:hover {
   text-decoration: underline;
 }
 
+p.attribution {
+  margin: 10px 25px;
+}
+
 #footer {
   font-size: .8em;
   text-align: right;
-  position: absolute;
+  position: relative;
+  top: 20px;
+  right: 5px;
   width: 100%;
-  bottom: 0;
 }
 
 
