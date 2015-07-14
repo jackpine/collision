@@ -10,21 +10,42 @@
 
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/foundation/js/foundation.min.js"></script>
+<link href="bower_components/foundation/css/foundation.min.css" rel='stylesheet' />
+<link href="bower_components/foundation/css/normalize.min.css"  rel='stylesheet' />
+
+<link href="css/main.css"  rel='stylesheet' />
 <script src="js/analytics.js"></script>
 <script src="js/collision_map.js"></script>
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
 </head>
 <body>
-<div id='map'></div>
+  <nav class="top-bar foundation-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Bicycle Collisions</a></h1>
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+  </nav>
 
-<script>
-$(function(){
-  collisionMap();
-});
-</script>
+  <div id='map'></div>
+  <p id="map-caption">
+    This is a map of every collision in California involving cyclists. This data
+    was obtained from the <a href="http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp">SWITRS</a> 
+    database coordinated by the Patrol</a> by way of the excellent 
+    <a href="http://tims.berkeley.edu/">TIMS</a> project.
+  </p>
+
+  <div id='footer'>
+    project by <a href="http://twitter.com/rachelfinf">rachel</a> and <a href="http://twitter.com/ikawe">michael</a>.
+  </div>
+
+  <script>
+  $(function(){
+    collisionMap();
+  });
+  </script>
 
 </body>
 </html>

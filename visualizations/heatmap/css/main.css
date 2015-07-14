@@ -1,0 +1,32 @@
+#map {
+  height: 80%;
+}
+
+body {
+  background: #EE4E01;
+  color: white;
+}
+
+p#map-caption {
+  margin: 10px 25px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+p#map-caption a, p#map-caption a:visited {
+  color: black;
+}
+
+p#map-caption a:hover {
+  text-decoration: underline;
+}
+
+#footer {
+  font-size: .8em;
+  text-align: right;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+
