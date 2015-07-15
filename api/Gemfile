@@ -54,3 +54,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+# Tip: Place the New Relic gem as low in the list as possible,
+# allowing the frameworks above it to be instrumented when the gem initializes.
+gem 'newrelic_rpm'
+
