@@ -34,5 +34,6 @@ function Application() {
 
 Application.prototype.renderWithCurrentBounds = function() {
   this.heatMap.renderWithCurrentBounds();
+  this.collisionTimeline.renderWithCurrentBounds();
 }
 
