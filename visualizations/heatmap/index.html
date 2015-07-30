@@ -17,8 +17,9 @@
 
 <link href="css/main.css"  rel='stylesheet' />
 <script src="js/analytics.js"></script>
-<script src="js/collision_map.js"></script>
+<script src="js/heat_map.js"></script>
 <script src="js/collision_timeline.js"></script>
+<script src="js/application.js"></script>
 
 </head>
 <body>
@@ -47,10 +48,9 @@
   </div>
 
   <script>
-  $(function(){
-    collisionMap();
-    collisionTimeline();
-  });
+    $(function(){
+      var application = new Application();
+    });
   </script>
 
 </body>
