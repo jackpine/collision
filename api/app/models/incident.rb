@@ -29,6 +29,6 @@ class Incident < ActiveRecord::Base
   end
 
   def self.counts_by_year
-    self.select('extract(year from occurred_at) as year, count(id) as count').group('extract(year from occurred_at)')
+    self.select('extract(year from occurred_at) as year, count(id) as count').group('extract(year from occurred_at)').order('year')
   end
 end

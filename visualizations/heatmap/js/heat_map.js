@@ -17,6 +17,7 @@ HeatMap.prototype.renderWithCurrentBounds = function() {
   var incidentsUrl = this.incidentsBaseUrl + "?bbox=" + this.getBoundingBox();
   
   var collisionMap = this.map;
+
   // fetch incident data from the API
   $.getJSON(incidentsUrl, function(json) {
     //remove any existing heatlayer, otherwise we'll keep stacking layers every time we re-render
