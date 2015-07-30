@@ -35,7 +35,10 @@ CollisionTimeline.prototype.render = function(labels, points) {
       data: points
     }]
   };
-  var options = {};
+  var options = {
+    scaleBeginAtZero: true,
+    scaleFontColor: "#888",
+  };
 
   // Is it ok to just keep overriding this? Do we need to blow away the existing one first?  //
   var myLineChart = new Chart(context).Line(data, options);
