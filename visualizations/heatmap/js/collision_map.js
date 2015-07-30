@@ -18,6 +18,7 @@ function collisionMap() {
         var bounds = map.getBounds();
         var boundingBox = "" + bounds.getWest() + "," + bounds.getSouth() + "," +  bounds.getEast() + "," + bounds.getNorth();
         var incidentsBaseUrl = 'http://api.collision.jackpine.me/api/v1/incidents.json';
+        var incidentsBaseUrl = 'http://localhost:3000/api/v1/incidents.json';
         var incidentsUrl = incidentsBaseUrl + "?bbox=" + boundingBox;
 
         // fetch incident data from the API

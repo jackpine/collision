@@ -11,12 +11,15 @@
 <script src="bower_components/lodash/lodash.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/foundation/js/foundation.min.js"></script>
+<script src="bower_components/Chart.js/Chart.js"></script>
 <link href="bower_components/foundation/css/foundation.min.css" rel='stylesheet' />
 <link href="bower_components/foundation/css/normalize.min.css"  rel='stylesheet' />
 
 <link href="css/main.css"  rel='stylesheet' />
 <script src="js/analytics.js"></script>
 <script src="js/collision_map.js"></script>
+<script src="js/collision_timeline.js"></script>
+
 </head>
 <body>
   <nav class="top-bar foundation-bar" data-topbar role="navigation">
@@ -27,7 +30,11 @@
     </ul>
   </nav>
 
-  <div id='map'></div>
+  <div id='timeline'>
+    <canvas id='line-chart' width="400" height="200"></canvas>
+  </div>
+  <div id='map'>
+  </div>
   <p id="map-caption">
     This is a map of auto collisions in California that involved cyclists. This data
     was obtained from the <a href="http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp">SWITRS</a>
@@ -42,6 +49,7 @@
   <script>
   $(function(){
     collisionMap();
+    collisionTimeline();
   });
   </script>
 
