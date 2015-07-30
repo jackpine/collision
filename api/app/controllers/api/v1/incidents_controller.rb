@@ -12,6 +12,19 @@ class Api::V1::IncidentsController < Api::BaseController
     end
   end
 
+  def counts
+    @incident_counts = Incident.where(bicycle_collision: true).counts_by_year
+
+    if params[:bbox]
+      bbox_params = sanitize_bbox_params(params[:bbox])
+      @incident_counts = @incident_counts.bounded_by(bbox_params)
+    end
+
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
   def sanitize_bbox_params(param)
     bbox_params = param.split(',').map {|v| v.to_f }

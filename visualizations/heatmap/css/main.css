@@ -30,4 +30,12 @@ p#map-caption a:hover, #footer a:hover {
   width: 100%;
 }
 
-
+#timeline {
+  background-color: rgba( 55, 55, 55, 0.5);
+  width: 420px;
+  height: 200px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  padding-left: 10px;
+}

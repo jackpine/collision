@@ -27,4 +27,8 @@ class Incident < ActiveRecord::Base
 
     lhs_in_eastern && rhs_in_western
   end
+
+  def self.counts_by_year
+    self.select('extract(year from occurred_at) as year, count(id) as count').group('extract(year from occurred_at)').order('year')
+  end
 end
