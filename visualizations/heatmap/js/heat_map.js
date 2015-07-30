@@ -21,8 +21,8 @@ HeatMap.prototype.renderWithCurrentBounds = function() {
   // fetch incident data from the API
   $.getJSON(incidentsUrl, function(json) {
     //remove any existing heatlayer, otherwise we'll keep stacking layers every time we re-render
-    if (this.heatLayer) {
-      collisionMap.removeLayer(this.heatLayer);
+    if (collisionMap.heatLayer) {
+      collisionMap.removeLayer(collisionMap.heatLayer);
     }
 
     var incidents = json.incidents;
@@ -47,8 +47,8 @@ HeatMap.prototype.renderWithCurrentBounds = function() {
     var incidentPoints = _.map(incidents, function(incidentAttributes) { return incidentAttributes.location.coordinates.reverse().concat([intensity]) });
 
     // Build a layer from our points and put them on our map.
-    this.heatLayer = L.heatLayer(incidentPoints, {blur: blur, radius: radius, maxZoom: 13});
-    collisionMap.addLayer(this.heatLayer);
+    collisionMap.heatLayer = L.heatLayer(incidentPoints, {blur: blur, radius: radius, maxZoom: 13});
+    collisionMap.addLayer(collisionMap.heatLayer);
   });
 };
 
