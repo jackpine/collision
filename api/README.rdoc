@@ -1,28 +1,66 @@
-== README
+Collision API
+=============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API Specification
+-----------------
 
-Things you may want to cover:
+=== Incidents
 
-* Ruby version
+An incident represents one collision, with potentially many parties involved.
+Location is presented in standard GeoJSON format.
 
-* System dependencies
+**Request**
 
-* Configuration
+    GET /incidents.json
 
-* Database creation
+**Example Response**
 
-* Database initialization
+    {
+      "incidents":[
+        {
+          "location":{
+            "type":"Point",
+            "coordinates":[118.2, 34.1]
+          }
+        },
+        {
+          "location":{
+            "type":"Point",
+            "coordinates":[118.4, 34.3]
+          }
+        }
+      ]
+    }
 
-* How to run the test suite
+Setup
+-----
 
-* Services (job queues, cache servers, search engines, etc.)
+If you are looking to set up your own instance of the API to power your own
+visualizations, check ../ops/bin/deploy for a quick idea of how to get a
+docker based install up.
 
-* Deployment instructions
+If you are looking to develop new features for the API, or would rather not use
+docker, then manual setup should be familiar to anyone with experience
+deploying rails applications. The only exception is that this application
+requires you connect to a PostGIS instance.
 
-* ...
+This assumes you've previously provisioned a PostGIS instance. I'd recommend
+spinning up a docker container like this
 
+    $ cd api
+    $ config/containers/db/run.sh
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Non-docker database deploments are left as an exercise to the reader.
+
+Once you're database is provisoined, to configure the application server
+
+    $ cd api/
+    $ bin/bundle
+    $ bin/rake db:setup
+    $ bin/rails server
+
+You may want to verify that all tests are passing as a sanity check.
+
+    $ cd api/
+    $ bin/rspec
+
