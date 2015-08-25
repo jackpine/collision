@@ -18,7 +18,6 @@ summary: A navigable heatmap of collisions in California that involved cyclists.
 <script src="/js/application.js"></script>
 
 <div class='article-splash'>
-
   <div id='map'>
     <div id='timeline'>
       <canvas id='line-chart' width="400" height="200"></canvas>

@@ -64,6 +64,11 @@ a, a:hover, a:visited {
 
 .article-splash {
   width: 100%;
+  margin-bottom: 1rem;
+}
+
+.article-summary .article-splash {
+  margin-bottom: 0;
 }
 
 .article-summary-header {
