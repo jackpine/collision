@@ -57,7 +57,7 @@ The number two most dangerous intersection for cyclists was Jefferson
 intersection near USC.
 
 <div>
-  <img alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' src='/media/South on Vermont and Jefferson.png' />
+  <img alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' src='/media/South on Vermont and Jefferson.jpg' />
   <div class='article-caption'>
     <a href='https://www.google.com/maps/@34.0257745,-118.2915272,3a,75y,174.18h,82.57t/data=!3m6!1e1!3m4!1s-qjkMVZNPwRjnbh-d4f_Yw!2e0!7i13312!8i6656!6m1!1e1'>Google street view</a> 
     southbound on Vermont at Jefferson. Note the three cyclists using the crosswalk on the left.
@@ -116,14 +116,22 @@ scattered. From Santa Monica to Boyle Heights, from Canoga Park to the
 Port, it's clear that better comprehensive planning and engineering is
 required across the city.
 
-This is not to say that there aren’t more patterns
-that deserve priority in treatment. In fact, we hope to write more about this,
-not only from behind our computer screens with statistical/geospatial patterns,
-but also from our bikes, experiencing on the street the physical environmental
-factors that make these places so dangerous.
+This is not to say that there aren’t more patterns that deserve priority in
+treatment. In fact, we hope to write more about this, not only from behind our
+computer screens with statistical/geospatial patterns, but also from our bikes,
+experiencing on the street the physical environmental factors that make these
+places so dangerous.
 
-**TODO** insert image of all hotspots across LA, maybe heatmap with
-caption and link.
+<div>
+  <img alt='Heatmap of collisions from Santa Monica to Downtown LA'
+       src='/media/LA Collision Heatmap.jpg' />
+  <div class='article-caption'>
+      Read more about our collisions density across the state in our interactive
+      <a href="/blog/2015/07/14/collision-heatmap/">Collision Heatmap Article</a>.
+  </div>
+</div>
+
+
 
 These are just the top 10 intersections. Together these 140 reported
 cyclist injuries comprise a tiny fraction of the 27066 injured cyclists
