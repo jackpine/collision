@@ -6,18 +6,19 @@ section: blog
 <div class='listing'>
   {% for item in site.categories.blog limit:1000 %}
     <div class='row'>
-      {% if item.splash %}
-        {% if item.splash contains 'http' %}
-          {% capture background_url %}{{item.splash}}{% endcapture %}
+      {% if item.thumbnail %}
+        {% if item.thumbnail contains 'http' %}
+          {% capture thumbnail %}{{item.thumbnail}}{% endcapture %}
         {% else %}
-          {% capture background_url %}{{site.baseurl}}{{item.splash}}/{% endcapture %}
+          {% capture thumbnail %}{{site.baseurl}}{{item.thumbnail}}/{% endcapture %}
         {% endif %}
+        <img class='article-splash' src='{{thumbnail}}' />
       {% endif %}
-      <img class='article-splash' src='{{background_url}}' />
+
       <div class='article-summary twelve columns'>
         <h3><a class='article-link' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a></h3>
         <p>
-        This is a map of auto collisions in California that involved cyclists.
+          {{item.summary}}
         </p>
         <a class='article-more-link' href='{{site.baseurl}}{{item.url}}'>[more]</a>
       </div>
