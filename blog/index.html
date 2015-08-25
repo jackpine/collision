@@ -1,0 +1,30 @@
+---
+layout: default
+section: blog
+---
+
+<div class='listing'>
+  {% for item in site.categories.blog limit:1000 %}
+    <div class='article-summary row'>
+      {% if item.thumbnail %}
+        {% if item.thumbnail contains 'http' %}
+          {% capture thumbnail %}{{item.thumbnail}}{% endcapture %}
+        {% else %}
+          {% capture thumbnail %}{{site.baseurl}}{{item.thumbnail}}/{% endcapture %}
+        {% endif %}
+        <a href='{{site.baseurl}}{{item.url}}'>
+          <img class='article-splash' src='{{thumbnail}}' />
+        </a>
+      {% endif %}
+
+      <div class='twelve columns'>
+        <h3 class='article-summary-header'><a class='article-link' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a></h3>
+        <p>
+          {{item.summary}}
+        </p>
+        <a class='article-more-link' href='{{site.baseurl}}{{item.url}}'>[more]</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
