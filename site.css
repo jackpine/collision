@@ -1,6 +1,6 @@
-#map {
-  height: 80%;
-}
+/**
+ * Site layout and colors
+ */
 
 body, .row {
   background: #EE4E01;
@@ -14,44 +14,13 @@ body, h1, h2, h3, p {
   color: white;
 }
 
-p#map-caption {
-  margin: 10px 25px;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
 #footer a, #footer a:visited, p#map-caption a, p#map-caption a:visited {
   color: black;
-}
-
-p#map-caption a:hover, #footer a:hover {
-  text-decoration: underline;
 }
 
 #footer {
   font-size: .8em;
   text-align: right;
-}
-
-.article-summary {
-  padding-bottom: 10px;
-  border-bottom: 10px solid white;
-}
-
-.article-splash {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.article-summary a {
-  color: white;
-}
-
-.article-more-link {
-  float: right;
-  margin-top: -17px;
-  margin-bottom: 6px;
-  font-size: .8em;
 }
 
 #header {
@@ -73,6 +42,47 @@ p#map-caption a:hover, #footer a:hover {
   }
 }
 
+/**
+ * generic blog styles
+ */
+
+.article-summary {
+  padding-bottom: 10px;
+  border-bottom: 10px solid white;
+}
+.article-summary:last-child {
+  border-bottom: none;
+}
+
+.article-splash {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.article-summary a {
+  color: white;
+}
+
+.article-more-link {
+  float: right;
+  margin-top: -17px;
+  margin-bottom: 6px;
+  font-size: .8em;
+}
+
+/**
+ * heatmap styles
+ */
+
+.fullscreen {
+  width: 100%;
+  min-height: 100%;
+}
+
+#map {
+  height: 400px;
+}
+
 #timeline {
   background-color: rgba( 55, 55, 55, 0.5);
   width: 420px;
@@ -83,4 +93,13 @@ p#map-caption a:hover, #footer a:hover {
   padding-left: 10px;
 }
 
+p#map-caption {
+  margin: 10px 25px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+p#map-caption a:hover, #footer a:hover {
+  text-decoration: underline;
+}
 

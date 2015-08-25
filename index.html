@@ -12,7 +12,9 @@ section: blog
         {% else %}
           {% capture thumbnail %}{{site.baseurl}}{{item.thumbnail}}/{% endcapture %}
         {% endif %}
-        <img class='article-splash' src='{{thumbnail}}' />
+        <a href='{{site.baseurl}}{{item.url}}'>
+          <img class='article-splash' src='{{thumbnail}}' />
+        </a>
       {% endif %}
 
       <div class='article-summary twelve columns'>
