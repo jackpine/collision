@@ -13,8 +13,9 @@ Find the most dangerous intersections for cyclists in Los Angeles.
 Data Sources
 ------------
 
-Get circulation file (streets data)
-Get collision data from TIMS
+ * [circulation file (streets data)]()
+ * [collision data from TIMS]()
+ * [download our complete data set and QGIS layers here]()
 
 Process
 -------
@@ -36,15 +37,18 @@ buffer that represents the "size" of the intersection around each point.
 To simplify analysis, we assume that all collisions within 30 feet of
 the intersection should be considered.
 
+We arrived at this number (30ft) empirically by comparing the number of
+accidents at 10, 20, 30, 40, and 50 foot buffers around the intersection. Our
+data showed a sharp leveling off after 30 feet.
+
 Create a new buffer (Menu: Vector > GeoProcessing Tools > Buffer).
 Select your new intersections layer as the input vector layer, and set
 buffer distance to 30. Save your output shapefile as "intersection
 buffers".
 
-Now, we want to count all the collisions that occured within each one of
+Now, we want to count all the collisions that occurred within each one of
 these buffers. Using the QGI Points in Polygon feature,
 (Menu: Vector > Analysis > Points in Polygon) we counted the number of
 collisions within our intersection buffer layer. Inspect the attributes
 table for the new layer, sort by count, and *viola*. LA's most dangerous
-intersections.
-
+intersections for cyclists.
