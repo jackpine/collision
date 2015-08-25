@@ -2,8 +2,9 @@
  * Site layout and colors
  */
 
-body {
+html, body {
   background: #6FA8CD;
+  font-size: 1.2rem;
 }
 
 .row, #footer {
@@ -19,7 +20,7 @@ a, a:hover, a:visited {
 }
 
 #footer {
-  font-size: .8em;
+  font-size: .8rem;
   text-align: right;
 }
 
@@ -73,7 +74,7 @@ a, a:hover, a:visited {
   float: right;
   margin-top: -1rem;
   margin-bottom: 0.5rem;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 /**
@@ -97,15 +98,5 @@ a, a:hover, a:visited {
   position: absolute;
   right: 0;
   padding-left: .66rem;
-}
-
-p#map-caption {
-  margin: 10px 25px;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-p#map-caption a:hover, #footer a:hover {
-  text-decoration: underline;
 }
 
