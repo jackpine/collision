@@ -3,7 +3,7 @@
  */
 
 body, .row {
-  background: #EE4E01;
+  background: #ff6633;
 }
 
 .content {
@@ -63,7 +63,10 @@ a, a:hover, a:visited {
 
 .article-splash {
   width: 100%;
-  margin-bottom: 15px;
+}
+
+.article-summary-header {
+  margin-top: 1rem;
 }
 
 .article-summary a {
