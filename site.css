@@ -3,7 +3,10 @@
 }
 
 body {
-  background: #EE4E01;
+  background: white;
+}
+
+body, h1, h2, h3, p {
   color: white;
 }
 
@@ -47,13 +50,18 @@ p#map-caption a:hover, #footer a:hover {
   max-width: initial;
 }
 
-.article-summary {
-  padding-top: 13px;
-  padding-bottom: 10px;
+.row {
+  background: #EE4E01;
 }
 
-.article-summary-splash {
+.article-summary {
+  padding-bottom: 10px;
+  border-bottom: 10px solid white;
+}
+
+.article-splash {
   width: 100%;
+  margin-bottom: 15px;
 }
 
 .article-summary a {
@@ -63,6 +71,7 @@ p#map-caption a:hover, #footer a:hover {
 .article-more-link {
   float: right;
   margin-top: -17px;
+  margin-bottom: 6px;
   font-size: .8em;
 }
 
