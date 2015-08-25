@@ -2,16 +2,16 @@
  * Site layout and colors
  */
 
-body, .row {
+body {
+  background: #6FA8CD;
+}
+
+.row, #footer {
   background: #ff6633;
 }
 
-.content {
-  background: white;
-}
-
-body, h1, h2, h3, p {
-  color: white;
+body, h1, h2, h3, p, .article-summary a, .article-summary a:hover, .article-summary a:visited {
+  color: #efefef;
 }
 
 a, a:hover, a:visited {
@@ -40,7 +40,7 @@ a, a:hover, a:visited {
 
 @media only screen and (min-width: 1000px) {
   #footer {
-    border-top: solid white 10px;
+    margin-top: 1rem;
   }
 }
 
@@ -53,12 +53,12 @@ a, a:hover, a:visited {
  */
 
 .article-summary {
-  padding-bottom: 10px;
-  border-bottom: 10px solid white;
+  padding-bottom: .66rem;
+  margin-bottom: .66rem;
 }
 
 .article-summary:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
 .article-splash {
@@ -69,15 +69,11 @@ a, a:hover, a:visited {
   margin-top: 1rem;
 }
 
-.article-summary a {
-  color: white;
-}
-
 .article-more-link {
   float: right;
-  margin-top: -17px;
-  margin-bottom: 6px;
-  font-size: .8em;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8em;
 }
 
 /**
@@ -100,7 +96,7 @@ a, a:hover, a:visited {
   z-index: 1;
   position: absolute;
   right: 0;
-  padding-left: 10px;
+  padding-left: .66rem;
 }
 
 p#map-caption {
