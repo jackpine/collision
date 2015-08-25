@@ -4,7 +4,7 @@
 
 html, body {
   background: #6FA8CD;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .row, #footer {
@@ -80,6 +80,13 @@ a, a:hover, a:visited {
   margin-top: -1rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
+}
+
+.article-caption {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 0.8rem;
+  padding: 0.2rem .6rem;
+  margin-bottom: 1rem;
 }
 
 /**

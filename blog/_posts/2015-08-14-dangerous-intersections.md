@@ -1,7 +1,9 @@
 ---
-published: false
+published: true
 category: blog
 layout: blog
+thumbnail: "/media/USC zoom.jpg"
+splash: "/media/USC zoom.jpg"
 summary: Ranking Los Angeles's most dangerous intersections for cyclists.
 ---
 
@@ -15,27 +17,8 @@ At a high level, we found that though there were some concentrated areas
 of especially dangerous intersections, significant hot spots are scattered
 across the entire city.
 
-** IMG overview of Los Angeles **
-
-The List
---------
-
-### Tenth Most Dangerous Intersection(s)
-
-Sunset & La Brea, Raymer St & Sepulveda Blvd, and Lincoln Blvd & Lake
-Street are in an unenviable threeway tie for the tenth most dangerous
-intersections for cyclists in Los Angeles. There were ten cyclists
-injured at each of these intersections in our [dataset](#dataset).
-
-** TODO say something more here **
-
-### Number Nine Through Six
-
-A four-way tie for six through nine. James M Wood & Vermont, 30th &
-University, Chandler & Lankershim, Sherman Way & Remmet Ave all had 
-10 cyclists reported as injured.
-
-** TODO say something more here **
+The Worst Five
+--------------
 
 ### Number Five
 
@@ -43,17 +26,23 @@ Hoover & 30th, near USC, comes in at the fifth most dangerous
 intersection for cyclists in Los Angeles.  There were 12 injured
 cyclists at this intersection recorded in our data set.
 
-In fact, four of the top 10 intersections with the most bicycle
-collisions are near USC.  Part of this is no doubt related to the high
-number of cyclists in this neighborhood, but it still speaks to the need
-for increased investment in safe cycling infrastructure near USC.
+In fact, four of the worst five intersections for cyclist injuries
+are near USC.  Part of this is no doubt related to the high number of cyclists
+in this neighborhood, but it still speaks to the need for increased investment
+in safe cycling infrastructure near USC.
 
-** Detail map of USC here **
+<div>
+  <img alt='Intersections near USC with more than three cyclists injured ranging from 3 to 14' src='/media/Dangerous Intersections of USC.jpg' />
+  <div class='article-caption'>
+    USC has a lot of dangerous intersections.
+  </div>
+</div>
+
 
 ### Tied for Number Three
 
 Continuing the sad story of cycling near USC, 28th & Hoover and 29th &
-Hoover were independently tied for the number three most dangerous
+Hoover were independently tied for the third most dangerous
 intersection in LA. There were 13 recorded injuries in our
 [dataset](#dataset) at *each* intersection. Also interesting is that
 both of these are "T" intersections, with streets terminating into
@@ -64,19 +53,29 @@ on 29th & Hoover, people have been hit *on* 29th.
 ### Number Two
 
 The number two most dangerous intersection for cyclists was Jefferson
-& Vermont. 15 cyclists were injured here.
+& Vermont. 15 cyclists were injured here. This is the most dangerous
+intersection near USC.
 
-** TODO say something more here **
+<div>
+  <img alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' src='/media/South on Vermont and Jefferson.png' />
+  <div class='article-caption'>
+    <a href='https://www.google.com/maps/@34.0257745,-118.2915272,3a,75y,174.18h,82.57t/data=!3m6!1e1!3m4!1s-qjkMVZNPwRjnbh-d4f_Yw!2e0!7i13312!8i6656!6m1!1e1'>Google street view</a> 
+    southbound on Vermont at Jefferson. Note the three cyclists using the crosswalk on the left.
+  </div>
+</div>
 
-### The Most Dangerous Intersection in Los Angeles
+Considering the high automobile traffic, proximity to USC (lots of cyclists),
+and complete lack of bicycle infrastructure, it's not surprising that so many
+injuries happened here.
 
-With 16 recorded cyclist injuries, the number
-one most dangerous intersection for cyclists in Los Angeles is 4th &
-Vermont, in Koreatown.
+### The Worst Intersection in Los Angeles
 
-Vermont Avenue is definitely cause for concern. Maybe you noticed that
-three of the top ten spots on this list were along Vermont. Vermont is a
-high traffic street with no bicycle infrastructure.
+With 16 recorded cyclist injuries, the number one most dangerous intersection
+for cyclists in Los Angeles is 4th & Vermont, in Koreatown.
+
+Vermont Avenue is definitely cause for concern. Vermont claims two of the ten
+worst intersections in LA. Unsurprisingly, Vermont is a high traffic street
+with no bicycle infrastructure.
 
 This may point to the lack of strong North/South connector alternatives
 for cyclists in Los Angeles. There are relatively more bike lanes on
@@ -84,7 +83,7 @@ some of the major east west streets like Santa Monica Blvd (in West
 Hollywood and Westwood at least) and Sunset Blvd from Echo park to its
 junction in East Hollywood. 4th and 7th streets across Koreatown also
 boast bike lanes or at least sharrows. But where are our major
-North/South bike lanes?
+North/South bike lanes anyway?
 
 ## Dataset
 
@@ -107,8 +106,8 @@ our data by reading our [how-to article]().
 
 When analysing the data, it's clear that there are intersections with
 inordinately high number of cyclist injuries. This is likely due to both
-a higher volume of cyclists and a lack of adequate cycling
-infrastructure in these neighborhoods.
+a higher volume of cyclists and a lack of adequate cycling infrastructure in
+these neighborhoods.
 
 In particular USC and the Vermont corridor are ripe for safer mobility
 infrastructure like bike lanes and traffic calming. But beyond these
