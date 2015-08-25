@@ -19,18 +19,25 @@ title: 'This is my Site Title'
   -->
 </head>
 <body>
-  <nav class="top-bar foundation-bar" data-topbar role="navigation">
+
+  <div id='header'>
+  <nav class="row top-bar foundation-bar" data-topbar role="navigation">
     <ul class="title-area">
       <li class="name">
         <h1><a href='/'>Vision Zero</a></h1>
       </li>
     </ul>
   </nav>
+  </div>
 
   {{content}}
 
   <div id='footer'>
-    project by <a href="http://twitter.com/rachelfinf">rachel</a> and <a href="http://twitter.com/ikawe">michael</a>
+    <div class='row'>
+      <div class='twelve columns'>
+        project by <a href="http://twitter.com/rachelfinf">rachel</a> and <a href="http://twitter.com/ikawe">michael</a>
+      </div>
+    </div>
   </div>
   <script src='/site.js'></script>
   <script src='/bower_components/foundation/js/foundation.min.js'></script>

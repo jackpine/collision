@@ -27,30 +27,9 @@ p#map-caption a:hover, #footer a:hover {
 #footer {
   font-size: .8em;
   text-align: right;
-  position: relative;
-  top: 10px;
-  right: 5px;
-  width: 100%;
 }
 
-#timeline {
-  background-color: rgba( 55, 55, 55, 0.5);
-  width: 420px;
-  height: 200px;
-  z-index: 1;
-  position: absolute;
-  right: 0;
-  padding-left: 10px;
-}
-
-.full-width {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: initial;
-}
-
-.row {
+.row, #footer {
   background: #EE4E01;
 }
 
@@ -74,4 +53,28 @@ p#map-caption a:hover, #footer a:hover {
   margin-bottom: 6px;
   font-size: .8em;
 }
+
+#header {
+  width: 100%;
+  background-color: #333;
+}
+
+#footer {
+  width: 100%;
+}
+
+#header .row {
+  background: none;
+}
+
+#timeline {
+  background-color: rgba( 55, 55, 55, 0.5);
+  width: 420px;
+  height: 200px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  padding-left: 10px;
+}
+
 
