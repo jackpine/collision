@@ -5,7 +5,7 @@ function Application() {
   var map = L.mapbox.map('map', 'mapbox.dark').setView([34.0510, -118.2500], 15);
 
   // Where our visualizations get their collision data
-  var baseUrl = 'http://localhost:3000/api/v1/';
+  var baseUrl = 'http://api.collision.jackpine.me/api/v1/';
 
   //give components a way to get their bounds
   var getBoundingBox = function() {
