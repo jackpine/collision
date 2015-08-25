@@ -14,8 +14,8 @@ body, h1, h2, h3, p {
   color: white;
 }
 
-#footer a, #footer a:visited, p#map-caption a, p#map-caption a:visited {
-  color: black;
+a, a:hover, a:visited {
+  color: #333;
 }
 
 #footer {
@@ -30,6 +30,8 @@ body, h1, h2, h3, p {
 
 #footer {
   width: 100%;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 #header .row {
@@ -42,6 +44,10 @@ body, h1, h2, h3, p {
   }
 }
 
+.author {
+  text-decoration: underline;
+}
+
 /**
  * generic blog styles
  */
@@ -50,6 +56,7 @@ body, h1, h2, h3, p {
   padding-bottom: 10px;
   border-bottom: 10px solid white;
 }
+
 .article-summary:last-child {
   border-bottom: none;
 }

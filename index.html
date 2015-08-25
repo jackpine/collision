@@ -5,7 +5,7 @@ section: blog
 
 <div class='listing'>
   {% for item in site.categories.blog limit:1000 %}
-    <div class='row'>
+    <div class='article-summary row'>
       {% if item.thumbnail %}
         {% if item.thumbnail contains 'http' %}
           {% capture thumbnail %}{{item.thumbnail}}{% endcapture %}
@@ -17,8 +17,8 @@ section: blog
         </a>
       {% endif %}
 
-      <div class='article-summary twelve columns'>
-        <h3><a class='article-link' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a></h3>
+      <div class='twelve columns'>
+        <h3 class='article-summary-header'><a class='article-link' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a></h3>
         <p>
           {{item.summary}}
         </p>
