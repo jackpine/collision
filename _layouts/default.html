@@ -1,0 +1,47 @@
+---
+title: 'data riddles'
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel='alternate' type='application/rss+xml' title='RSS' href='/blog.rss' />
+  <link rel='shortcut icon' href='/img/favicon.ico' type='image/x-icon' />
+  <title>Vision Zero {% if page.url != '/index.html' %}| {{page.title}}{% endif %}</title>
+
+  <link href="/bower_components/foundation/css/normalize.min.css"  rel='stylesheet' />
+  <link href="/bower_components/foundation/css/foundation.min.css" rel='stylesheet' />
+  <link href='/site.css' rel='stylesheet' />
+  <script src='/bower_components/jquery/dist/jquery.min.js'></script>
+</head>
+<body>
+
+  <div id='header'>
+  <nav class="row top-bar foundation-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href='/'>Vision Zero</a></h1>
+      </li>
+    </ul>
+  </nav>
+  </div>
+
+  <div class='content'>
+  {{content}}
+  </div>
+
+  <div id='footer'>
+    <div class='row'>
+      <div class='twelve columns'>
+        <span class='author'>
+          project by <a href="http://twitter.com/rachelfinf">rachel</a> and <a href="http://twitter.com/ikawe">michael</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <script src='/bower_components/foundation/js/foundation.min.js'></script>
+  <script src='/js/analytics.js'></script>
+</body>
+</html>

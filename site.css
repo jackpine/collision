@@ -1,0 +1,102 @@
+/**
+ * Site layout and colors
+ */
+
+html, body {
+  background: #6FA8CD;
+  font-size: 1.2rem;
+}
+
+.row, #footer {
+  background: #ff6633;
+}
+
+body, h1, h2, h3, p, .article-summary a, .article-summary a:hover, .article-summary a:visited {
+  color: #efefef;
+}
+
+a, a:hover, a:visited {
+  color: #333;
+}
+
+#footer {
+  font-size: .8rem;
+  text-align: right;
+}
+
+#header {
+  width: 100%;
+  background-color: #333;
+}
+
+#footer {
+  width: 100%;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+#header .row {
+  background: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  #footer {
+    margin-top: 1rem;
+  }
+}
+
+.author {
+  text-decoration: underline;
+}
+
+/**
+ * generic blog styles
+ */
+
+.article-summary {
+  padding-bottom: .66rem;
+  margin-bottom: .66rem;
+}
+
+.article-summary:last-child {
+  margin-bottom: 0;
+}
+
+.article-splash {
+  width: 100%;
+}
+
+.article-summary-header {
+  margin-top: 1rem;
+}
+
+.article-more-link {
+  float: right;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/**
+ * heatmap styles
+ */
+
+.fullscreen {
+  width: 100%;
+  min-height: 100%;
+}
+
+#map {
+  height: 400px;
+}
+
+#timeline {
+  background-color: rgba( 55, 55, 55, 0.5);
+  width: 420px;
+  height: 200px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  padding-left: .66rem;
+}
+
