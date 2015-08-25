@@ -9,7 +9,7 @@ We set out to find the most dangerous intersections for cyclists in
 the city of Los Angeles. Specifically, we want to rank intersections by the
 number of cyclists reported injured in our
 [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based collision
-[dataset](#dataset).
+[dataset](#dataset), spanning 2002-2013.
 
 At a high level, we found that though there were some concentrated areas
 of especially dangerous intersections, significant hot spots are scattered
@@ -25,7 +25,7 @@ The List
 Sunset & La Brea, Raymer St & Sepulveda Blvd, and Lincoln Blvd & Lake
 Street are in an unenviable threeway tie for the tenth most dangerous
 intersections for cyclists in Los Angeles. There were ten cyclists
-injured at each of these intersections in our [dataset](#dataset), which spans 2002-2013.
+injured at each of these intersections in our [dataset](#dataset).
 
 ** TODO say something more here **
 
