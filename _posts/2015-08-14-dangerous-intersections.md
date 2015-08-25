@@ -5,13 +5,14 @@ layout: blog
 summary: Ranking Los Angeles's most dangerous intersections for cyclists.
 ---
 
-We set out to find the most dangerou intersections for cyclists in
-the city of Los Angeles. Specifically, we wanted to rank interesections
-by the number of cyclists reported injured in [our SWITRS based
-collision dataset](#dataset).
+We set out to find the most dangerous intersections for cyclists in
+the city of Los Angeles. Specifically, we want to rank intersections by the
+number of cyclists reported injured in our
+[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based collision
+[dataset](#dataset).
 
 At a high level, we found that though there were some concentrated areas
-of especially dangerous intersections, significant hotspots are scatterd
+of especially dangerous intersections, significant hot spots are scattered
 across the entire city.
 
 ** IMG overview of Los Angeles **
@@ -24,15 +25,15 @@ The List
 Sunset & La Brea, Raymer St & Sepulveda Blvd, and Lincoln Blvd & Lake
 Street are in an unenviable threeway tie for the tenth most dangerous
 intersections for cyclists in Los Angeles. There were ten cyclists
-injured at each of these intersections in our [dataset](#dataset).
+injured at each of these intersections in our [dataset](#dataset), which spans 2002-2013.
 
 ** TODO say something more here **
 
 ### Number Nine Through Six
 
 A four-way tie for six through nine. James M Wood & Vermont, 30th &
-University, Chandler & Lankershim, Sherman Way & Remmet Ave all had
-cyclists reorted injured.
+University, Chandler & Lankershim, Sherman Way & Remmet Ave all had 
+10 cyclists reported as injured.
 
 ** TODO say something more here **
 
@@ -45,59 +46,57 @@ cyclists at this intersection recorded in our data set.
 In fact, four of the top 10 intersections with the most bicycle
 collisions are near USC.  Part of this is no doubt related to the high
 number of cyclists in this neighborhood, but it still speaks to the need
-for increased investment in safe cycling infrastrucure near USC.
+for increased investment in safe cycling infrastructure near USC.
 
 ** Detail map of USC here **
 
 ### Tied for Number Three
 
-Continuing our sad story of cycling near USC, 28th & Hoover and 29th &
+Continuing the sad story of cycling near USC, 28th & Hoover and 29th &
 Hoover were independently tied for the number three most dangerous
 intersection in LA. There were 13 recorded injuries in our
 [dataset](#dataset) at *each* intersection. Also interesting is that
 both of these are "T" intersections, with streets terminating into
-Hoover. What's going on here that so many are being injured? Would you
-guess that it was people who were just turning onto Hoover, or peole
-just about to turn off of Hoover?  It's hard to say, but from the data
+Hoover. What's going on here that so many are being injured? From the data
 it appears that at 28th & Hoover people have been hit *on* Hoover, while
 on 29th & Hoover, people have been hit *on* 29th.
 
 ### Number Two
 
-The number two most dangerous interesection for cyclists was Jefferson
+The number two most dangerous intersection for cyclists was Jefferson
 & Vermont. 15 cyclists were injured here.
 
 ** TODO say something more here **
 
 ### The Most Dangerous Intersection in Los Angeles
 
-With 16 recorded cyclist injuries in our [dataset](#dataset), the number
+With 16 recorded cyclist injuries, the number
 one most dangerous intersection for cyclists in Los Angeles is 4th &
 Vermont, in Koreatown.
 
-Vermont Avenue is definitely cause for concern. Maybe you notived that
+Vermont Avenue is definitely cause for concern. Maybe you noticed that
 three of the top ten spots on this list were along Vermont. Vermont is a
 high traffic street with no bicycle infrastructure.
 
 This may point to the lack of strong North/South connector alternatives
 for cyclists in Los Angeles. There are relatively more bike lanes on
 some of the major east west streets like Santa Monica Blvd (in West
-Hollywood and Westwood at least) and Sunset Blvd from Echo park to it's
+Hollywood and Westwood at least) and Sunset Blvd from Echo park to its
 junction in East Hollywood. 4th and 7th streets across Koreatown also
 boast bike lanes or at least sharrows. But where are our major
 North/South bike lanes?
 
-## Dataset <a name="dataset"></a>
+## Dataset
 
-This analysis is based on the data pulled from the TIMS project out of
+This analysis is based on the data pulled from the [TIMS](http://tims.berkeley.edu/) project out of
 Berkeley which in turn gets their data from the California Highway
-Patrol SWITRS database. It encomposses collisions reported to law
-enforcement between 2002-2012.
+Patrol [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) database. It encompasses collisions reported to law
+enforcement between 2002-2012. Actual number of incidents may be worse where collisions go unreported.
 
 This data is somewhat old. With cycling on the rise, the number of
 people affected, and potentially at risk for injury or death while
 cycling in the city is certainly growing. Take a look at our [heatmap of
-bicyle collisions](http://collisions.jackpine.me) in Los Angeles to get
+bicycle collisions](http://collisions.jackpine.me) in Los Angeles to get
 a visual idea of how bicycle collisions are growing in different areas
 over time.
 
@@ -113,10 +112,16 @@ infrastructure in these neighborhoods.
 
 In particular USC and the Vermont corridor are ripe for safer mobility
 infrastructure like bike lanes and traffic calming. But beyond these
-clusters, most of the dangerous intersecions in Los Angeles are
+clusters, most of the dangerous intersections in Los Angeles are
 scattered. From Santa Monica to Boyle Heights, from Canoga Park to the
 Port, it's clear that better comprehensive planning and engineering is
 required across the city.
+
+This is not to say that there aren’t more patterns
+that deserve priority in treatment. In fact, we hope to write more about this,
+not only from behind our computer screens with statistical/geospatial patterns,
+but also from our bikes, experiencing on the street the physical environmental
+factors that make these places so dangerous.
 
 **TODO** insert image of all hotspots across LA, maybe heatmap with
 caption and link.
@@ -141,15 +146,18 @@ and builds its transportation systems to facilitate **all** modes of
 travel, not just automobiles. In particular, Garcetti's [vision
 zero](http://la.streetsblog.org/2014/09/30/ladots-bold-new-strategic-vision-eliminate-l-a-traffic-deaths-by-2025/)
 component declares that each traffic death must be viewed as a failure,
-necesitating changes in infrastructure and/or policy, with a goal of
+necessitating changes in infrastructure and/or policy, with a goal of
 reducing traffic fatalities to zero by 2035.
 
-You can read the full text of the [mobility element here](http://planning.lacity.org/Cwd/GnlPln/MobiltyElement/Text/MobilityPlan_2035.pdf).
+You can read the full text of the [mobility element
+here](http://planning.lacity.org/Cwd/GnlPln/MobiltyElement/Text/MobilityPlan_2035.pdf).
 
-We hope you found this analysis interesting, and maybe even useful. If you are interested
-in looking into our methods, check out our [how-to article](). It's not
-hard to get started, and we're excited to share and learn with other
-folks interested in using data to help draw conclusions of the world
-around us.
+We hope you found this analysis interesting, and maybe even useful. If you are
+interested in looking into our methods, check out our [how-to article](). It's
+not hard to get started, and we're excited to share and learn with other folks
+interested in using data to help draw conclusions of the world around us.
 
-Comments and Suggestions? [contact us](mailto://hello@collision.la).
+Comments and Suggestions? [contact us](mailto://info@jackpine.me).
+
+
+
