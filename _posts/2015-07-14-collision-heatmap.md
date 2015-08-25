@@ -24,14 +24,12 @@ summary: A navigable heatmap of collisions in California that involved cyclists.
       <canvas id='line-chart' width="400" height="200"></canvas>
     </div>
   </div>
-
-  <p>
-    This is a map of auto collisions in California that involved cyclists. This data
-    was obtained from the <a href="http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp">SWITRS</a>
-    database coordinated by the California Highway Patrol</a> by way of the excellent
-    <a href="http://tims.berkeley.edu/">TIMS</a> project.
-  </p>
 </div>
+
+This is a map of auto collisions in California that involved cyclists. This data
+was obtained from the [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp)
+database coordinated by the California Highway Patrol by way of the excellent
+[TIMS](http://tims.berkeley.edu) project.
 
 <script>
   $(function(){
