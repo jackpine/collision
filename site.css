@@ -2,7 +2,11 @@
   height: 80%;
 }
 
-body {
+body, .row {
+  background: #EE4E01;
+}
+
+.content {
   background: white;
 }
 
@@ -27,10 +31,6 @@ p#map-caption a:hover, #footer a:hover {
 #footer {
   font-size: .8em;
   text-align: right;
-}
-
-.row, #footer {
-  background: #EE4E01;
 }
 
 .article-summary {
@@ -65,6 +65,12 @@ p#map-caption a:hover, #footer a:hover {
 
 #header .row {
   background: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  #footer {
+    border-top: solid white 10px;
+  }
 }
 
 #timeline {
