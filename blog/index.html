@@ -10,7 +10,7 @@ section: blog
         {% if item.thumbnail contains 'http' %}
           {% capture thumbnail %}{{item.thumbnail}}{% endcapture %}
         {% else %}
-          {% capture thumbnail %}{{site.baseurl}}{{item.thumbnail}}/{% endcapture %}
+          {% capture thumbnail %}{{site.baseurl}}{{item.thumbnail}}{% endcapture %}
         {% endif %}
         <a href='{{site.baseurl}}{{item.url}}'>
           <img class='article-splash' src='{{thumbnail}}' />
