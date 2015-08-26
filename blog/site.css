@@ -89,6 +89,10 @@ a, a:hover, a:visited {
   margin-bottom: 1rem;
 }
 
+.fullscreen-article-image {
+  width: 100%;
+}
+
 /**
  * heatmap styles
  */

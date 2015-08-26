@@ -32,7 +32,9 @@ in this neighborhood, but it still speaks to the need for increased investment
 in safe cycling infrastructure near USC.
 
 <div>
-  <img alt='Intersections near USC with more than three cyclists injured ranging from 3 to 14' src='/media/Dangerous Intersections of USC.jpg' />
+  <img class='fullscreen-article-image'
+       alt='Intersections near USC with more than three cyclists injured ranging from 3 to 14'
+       src='/media/Dangerous Intersections of USC.jpg' />
   <div class='article-caption'>
     USC has a lot of dangerous intersections.
   </div>
@@ -57,7 +59,9 @@ The number two most dangerous intersection for cyclists was Jefferson
 intersection near USC.
 
 <div>
-  <img alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' src='/media/South on Vermont and Jefferson.jpg' />
+  <img class='fullscreen-article-image'
+       alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' 
+       src='/media/South on Vermont and Jefferson.jpg' />
   <div class='article-caption'>
     <a href='https://www.google.com/maps/@34.0257745,-118.2915272,3a,75y,174.18h,82.57t/data=!3m6!1e1!3m4!1s-qjkMVZNPwRjnbh-d4f_Yw!2e0!7i13312!8i6656!6m1!1e1'>Google street view</a> 
     southbound on Vermont at Jefferson. Note the three cyclists using the crosswalk on the left.
@@ -69,6 +73,18 @@ and complete lack of bicycle infrastructure, it's not surprising that so many
 injuries happened here.
 
 ### The Worst Intersection in Los Angeles
+
+<div>
+  <img class='fullscreen-article-image'
+       alt='4th and Vermont'
+       src='/media/4th and Vermont.jpg' />
+  <div class='article-caption'>
+    The view I'm most familiar with. On 4th Stret, staring longingly east at Shatto Lanes, waiting for that slowwwwww light on Vermont to change.
+    <a href='https://www.google.com/maps/@34.0673394,-118.2919439,3a,75y,80.91h,80.81t/data=!3m6!1e1!3m4!1sPB6WmSSIs1PlksEVxvEMQA!2e0!7i13312!8i6656!6m1!1e1'>
+      Google street view.
+    </a>
+  </div>
+</div>
 
 With 16 recorded cyclist injuries, the number one most dangerous intersection
 for cyclists in Los Angeles is 4th & Vermont, in Koreatown.
@@ -165,6 +181,4 @@ not hard to get started, and we're excited to share and learn with other folks
 interested in using data to help draw conclusions of the world around us.
 
 Comments and Suggestions? [contact us](mailto://info@jackpine.me).
-
-
 
