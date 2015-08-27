@@ -4,19 +4,19 @@ category: blog
 layout: blog
 thumbnail: "/media/USC zoom.jpg"
 splash: "/media/USC zoom.jpg"
-summary: USC has 4 of Los Angeles's 5 Most Dangerous Intersections for Cyclists.
+summary: USC has 4 of the 5 most dangerous intersections for cyclists in Los Angeles.
 title: Why Does USC Have So Many Dangerous Intersections?
 ---
 
 Our original goal was to write an article about the dangerous intersections
-across the entire city of Los Angeles. Specifically, we rankeded
+across the entire city of Los Angeles. Specifically, we ranked
 intersections by the number of cyclists reported injured in our
 [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based collision
 [dataset](#dataset), spanning 2002-2013. But there was so much data, and so
-many patterns that any conclusions drawn here would be very high level and not
+many patterns that any conclusions drawn would be very high level and not
 very useful. Instead we've decided to publish a series of more specific
-articles on the topic. We'll be diving into particular neighborhoods or
-focusing on a single pattern emerging from our analysis.
+articles on the topic. Each article will dive into a particular neighborhood or
+focus on a single pattern emerging from our analysis.
 
 One of the most striking patterns we found was near USC. Four of the five most
 dangerous intersections in all of Los Angeles are at USC. In the rest of this
@@ -26,7 +26,7 @@ why this might be.
 So, why are there so many injured cyclists near USC? The biggest contributor to
 their high incident count is no doubt the high number of cyclists in this area.
 We aren't necessarily saying that they have more collisions per capita. Still,
-each of these represents and injured person, and multiple deaths. It is
+each of these represents a person who was injured, or sometimes killed. It is
 certainly worthy of our consideration when discussing new legislation and
 infrastructure.
 
@@ -62,7 +62,7 @@ The worst single intersection near USC can be found at Jefferson
 
 Considering the high automobile traffic, proximity to USC (lots of cyclists),
 and complete lack of bicycle infrastructure, it's not surprising that so many
-injuries happened here.
+injuries happen here.
 
 ### Hoover, the Real Worst
 
@@ -110,7 +110,7 @@ a disjointed dogleg intersection. Here's the other side.
   </div>
 </div>
 
-29th terminates into Hoover as a T-intersection. 30th is a regular four-way
+29th terminates into Hoover at a T-intersection. 30th is a regular four-way
 intersection. However, there is a bend in the roadway just east of Hoover on
 30th.
 
@@ -133,9 +133,9 @@ intersection. However, there is a bend in the roadway just east of Hoover on
 
 In looking at some of these images, we can see that while there is definitely
 some low hanging infrastructural fruit, unsafe cyclist behavior is also common.
-To be clear, when looking through the Google Street View, we did seek out
+To be clear, when looking through Google Street View, we did seek out
 images with cyclists, but we didn't specifically seek out cyclists acting
-unsafely, apparently it's just common. For example, take another look at that
+unsafely, apparently it's just that common. For example, take another look at that
 <a href='https://www.google.com/maps/@34.0277429,-118.2839797,3a,15y,5.69h,84.24t/data=!3m6!1e1!3m4!1sc5H44ZS5_gclUekHUgVJZg!2e0!7i13312!8i6656'
    target='_blank'>
   last street view of 29th and Hoover
@@ -149,7 +149,7 @@ should always ride like cars drive. But this article isn't about "ethically
 correct cycling behavior." For that you can read any number of angry cyclist
 forum threads. Regardless of what is "correct," we want cycling to be safer,
 and just telling people to "be more careful" is not a very
-effective strategy. Ridazz gonna ride. Luckily though, we know that behavior
+effective strategy. Ridazz gonna ride. Luckily, we know that behavior
 and the built environment are inextricably linked. For example, though there is
 a light at 29th & Hoover, maybe it's too long. Or what would happen if all
 these intersections 28, 29, and 30 were replaced with roundabouts to promote
@@ -162,7 +162,8 @@ traveling fast here. We *have* design options available to make cycling safer.
 This analysis is based on the data pulled from the [TIMS](http://tims.berkeley.edu/) project out of
 Berkeley which in turn gets their data from the California Highway
 Patrol [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) database. It encompasses collisions reported to law
-enforcement between 2002-2012. Actual number of incidents may be worse where collisions go unreported.
+enforcement between 2002-2012. The actual number of incidents may be worse
+where collisions go unreported.
 
 This data is somewhat old. With cycling on the rise, the number of
 people affected, and potentially at risk for injury or death while
@@ -223,7 +224,7 @@ interested in using data to help draw conclusions of the world around us.
 We will continue to research and talk about cycling safety in Los Angeles, not only
 from behind our computer screens with statistical/geospatial analysis, but also
 from our bikes. We experience the physical environmental factors on the street
-that make some of these places so dangerous, while others are a safe,
+that make some of these routes so dangerous, while other routes offer a safe,
 economical, and fun way to get around.
 
 Comments and Suggestions? [contact us](mailto://info@jackpine.me).

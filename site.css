@@ -63,6 +63,10 @@ code {
   margin-bottom: .66rem;
 }
 
+.article-heading {
+  margin-bottom: 1rem;
+}
+
 .article-summary:last-child {
   margin-bottom: 0;
 }
