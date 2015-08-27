@@ -52,7 +52,7 @@ The worst single intersection near USC can be found at Jefferson
        alt='Google Street View of Vermont and Jefferson showing high traffic and three cyclists crossing at the crosswalk' 
        src='/media/South on Vermont and Jefferson.jpg' />
   <div class='article-caption'>
-    Looking south on Vermont at Jefferson. Note the three cyclists using the crosswalk on the left. Do you think they'd feel safe riding on the street?
+    Looking south on Vermont at Jefferson. Note the three cyclists using the crosswalk on the left. Do you think they'd feel safe riding on this street?
     <a href='https://www.google.com/maps/@34.0257745,-118.2915272,3a,75y,174.18h,82.57t/data=!3m6!1e1!3m4!1s-qjkMVZNPwRjnbh-d4f_Yw!2e0!7i13312!8i6656!6m1!1e1'
        target='_blank'>
       Google street view
@@ -64,7 +64,7 @@ Considering the high automobile traffic, proximity to USC (lots of cyclists),
 and complete lack of bicycle infrastructure, it's not surprising that so many
 injuries happened here.
 
-### Hoover, the Other Worst
+### Hoover, the Real Worst
 
 Hoover at 28th, 29th, and 30th all have a very high number of injured cyclists.
 Respectively there were 12, 13, and 12 injuries reported at *each* of these
