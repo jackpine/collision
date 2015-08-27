@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 category: blog
 layout: blog
 summary: How we ranked Los Angeles's most dangerous intersections for cyclists.
