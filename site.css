@@ -2,7 +2,7 @@
  * Site layout and colors
  */
 
-html, body {
+html, body, .row.comments {
   background: #6FA8CD;
   font-size: 1.0rem;
 }
