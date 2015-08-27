@@ -2,7 +2,8 @@
 published: true
 category: blog
 layout: blog
-summary: How we ranked Los Angeles's most dangerous intersections for cyclists.
+title: How to Find LA's Most Dangerous Intersections
+summary: A step-by-step guide for how we ranked Los Angeles's most dangerous intersections for cyclists using publicly available data.
 ---
 
 We set out to find the most dangerous intersections for cyclists in Los
