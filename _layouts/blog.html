@@ -8,7 +8,7 @@ section: blog
     {% if page.splash contains 'http' %}
       {% capture url %}{{page.splash}}{% endcapture %}
     {% else %}
-      {% capture url %}{{site.baseurl}}{{page.splash}}/{% endcapture %}
+      {% capture url %}{{site.baseurl}}{{page.splash}}{% endcapture %}
     {% endif %}
 
     <img class='article-splash' src='{{url}}' alt='' />
