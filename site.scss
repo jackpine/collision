@@ -1,3 +1,6 @@
+---
+---
+
 /**
  * Site layout and colors
  */
@@ -19,24 +22,20 @@ a, a:hover, a:visited {
   color: #333;
 }
 
-#footer {
-  font-size: .8rem;
-  text-align: right;
-}
-
 #header {
   width: 100%;
   background-color: #333;
+  & .row {
+    background: none;
+  }
 }
 
 #footer {
+  font-size: .8rem;
+  text-align: right;
   width: 100%;
   padding-top: .75rem;
   padding-bottom: .75rem;
-}
-
-#header .row {
-  background: none;
 }
 
 @media only screen and (min-width: 1000px) {
