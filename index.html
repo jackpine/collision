@@ -22,7 +22,37 @@ section: blog
         <p>
           {{item.summary}}
         </p>
-        <a class='article-more-link' href='{{site.baseurl}}{{item.url}}'>[more]</a>
+
+        <div class='article-summary-footer'>
+          <div class='article-social-links'>
+            <div class="twitter-container">
+              <a href="https://twitter.com/share"
+                class="twitter-share-button"
+                data-text="{{item.title}}"
+                data-url="http://collision.jackpine.me{{site.baseurl}}{{item.url}}"
+                data-via="collidela"
+                data-count="none">
+              </a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+
+            <div class="facebook-container">
+              <div class="fb-share-button" data-href="https://collision.jackpine.me{{site.baseurl}}{{item.url}}" data-layout="button"></div>
+              <div id="fb-root"></div>
+              <script>
+                (function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+                  fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));
+              </script>
+            </div>
+          </div>
+          <a class='article-more-link' href='{{site.baseurl}}{{item.url}}'>[more]</a>
+        </div>
       </div>
     </div>
   {% endfor %}

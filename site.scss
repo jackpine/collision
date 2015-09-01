@@ -83,15 +83,26 @@ code {
   margin-bottom: 0;
 }
 
-.article-summary-header {
+.article-social-links {
   margin-top: 1rem;
+  .twitter-container {
+    float: left;
+    margin-top: 0.2rem;
+  }
+
+  .facebook-container {
+    float: left;
+    margin-left: 1rem;
+  }
 }
 
-.article-more-link {
-  float: right;
-  margin-top: -1rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
+.article-summary-footer {
+  .article-more-link {
+    float: right;
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
 
 .article-caption {
