@@ -68,6 +68,7 @@ code {
 
 .article-heading {
   margin-bottom: 1rem;
+  clear: left;
 }
 
 .article-summary:last-child {
@@ -94,6 +95,12 @@ code {
     float: left;
     margin-left: 1rem;
   }
+}
+
+.article-date {
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .article-summary-footer {
