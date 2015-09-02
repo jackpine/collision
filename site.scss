@@ -5,30 +5,35 @@
  * Site layout and colors
  */
 
+$white: #efefef;
+$black: #333;
+$orange: #ff6633;
+$blue: #6fa8cd;
+
 @import 'bower_components/foundation/scss/normalize';
 @import 'bower_components/foundation/scss/foundation';
 @import 'bower_components/font-awesome/scss/font-awesome';
 
 html, body, .row.comments {
-  background: #6FA8CD;
+  background: $blue;
   font-size: 1.0rem;
 }
 
 .row, #footer {
-  background: #ff6633;
+  background: $orange;
 }
 
 body, h1, h2, h3, p, .article-summary a, .article-summary a:hover, .article-summary a:visited {
-  color: #efefef;
+  color: $white;
 }
 
 a, a:hover, a:visited {
-  color: #333;
+  color: $black;
 }
 
 #header {
   width: 100%;
-  background-color: #333;
+  background-color: $black;
   & .row {
     background: none;
   }
@@ -87,7 +92,7 @@ code {
 
   margin-top: 1rem;
   a {
-    color: #efefef;
+    color: $white;
     margin-right: .5rem;
     font-size: 1.2rem;
   }
