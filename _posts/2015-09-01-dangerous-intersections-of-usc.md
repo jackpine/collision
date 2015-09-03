@@ -144,13 +144,14 @@ intersection. However, there is a bend in the roadway just east of Hoover on
   </div>
 </div>
 
-### A Note on Cyclist Behavior
+### Observations
 
-In looking at some of these images, we can see that while there is definitely
-some low hanging infrastructural fruit, unsafe cyclist behavior is also common.
-To be clear, when looking through Google Street View, we did seek out
-images with cyclists, but we didn't specifically seek out cyclists acting
-unsafely, apparently it's just that common. For example, take another look at that
+In looking at these intersections, I'm struck by two things.
+
+The first is the unsafe cyclist behavior.  To be clear, when looking
+through Google Street View, we did seek out images with cyclists, but we
+didn't specifically seek out cyclists acting unsafely, apparently it's
+just that common. For example, take another look at that
 <a href='https://www.google.com/maps/@34.0277429,-118.2839797,3a,15y,5.69h,84.24t/data=!3m6!1e1!3m4!1sc5H44ZS5_gclUekHUgVJZg!2e0!7i13312!8i6656'
    target='_blank'>
   last street view of 29th and Hoover
@@ -158,26 +159,40 @@ unsafely, apparently it's just that common. For example, take another look at th
 where the cyclist runs the red light to turn left across traffic.  Pan right
 and what do you see?
 
-We're definitely *not* here to blame the victims in cases where safer riding
+We're definitely *not* here to blame the victims in cases where riding
 behavior could have prevented an injury. For one, we don't believe that bikes
 should always ride like cars drive. But this article isn't about "ethically
 correct cycling behavior." For that you can read any number of angry cyclist
 forum threads. Regardless of what is "correct," we want cycling to be safer,
 and just telling people to "be more careful" is not a very
-effective strategy. Ridazz gonna ride.  Luckily, we know that behavior and the
-built environment are inextricably linked. For example, though there is a light
-at 29th & Hoover, maybe it's too long. What would happen if the intersections
-at 28th, 29th, and 30th were replaced with roundabouts to promote safer traffic
-mixing and lower speeds in intersections? Hoover terminates into Jefferson just
-one block south of 30th anyway - automobiles don't need to be traveling fast
-here. There are existing design options available to make cycling safer.
+effective strategy. Ridazz gonna ride.
 
-## What Next? 
+Luckily, we know that behavior and the built environment are
+inextricably linked, which brings us to our second observation. For as
+many cyclists as there are riding around USC, there is a severe lack of
+cycling infrastructure. Currently there is only an unprotected bike lane
+on Hoover and some sharrows painted on 28th and 29th. We can do better.
+As one of the most cycling dense neighborhoods in Los Angeles, USC
+presents the perfect opportunity for investing in better infrastructure
+to protect cyclists and promote safer riding behavior.
 
-When we began our analysis looking across all of LA, it was clear that there
-were intersections with inordinately high number of cyclist injuries. This is
-sometimes due to a higher volume of cyclists and sometimes a lack of adequate
-cycling infrastructure in these neighborhoods.
+Hoover's bike lane should be separated or at least buffered. 28th and
+29th should be striped to make visible where cyclists will be funneling
+into Hoover.  Maybe the light at 29th & Hoover should be shorter.  What
+would happen if the intersections at 28th, 29th, and 30th were replaced
+with roundabouts to promote safer traffic mixing and lower speeds in
+intersections? Hoover terminates into Jefferson just one block south of
+30th anyway - automobiles don't need to be traveling fast here. There
+are plenty of existing design options available to make cycling safer
+near USC.
+
+## What Next?
+
+When we began our analysis looking across all of LA, it became clear
+that there were intersections with inordinately high number of cyclist
+injuries. This is sometimes due to a higher volume of cyclists and
+sometimes a lack of adequate cycling infrastructure in these
+neighborhoods.
 
 In particular USC and the Vermont corridor are ripe for safer mobility
 infrastructure like bike lanes and traffic calming. But beyond these clusters,
@@ -224,5 +239,5 @@ also from our bikes. We personally experience the physical environmental
 factors on the street that make some of these routes so dangerous, while other
 routes offer a safe, economical, and fun way to get around.
 
-Comments and Suggestions? [contact us](mailto://info@jackpine.me).
+Comments, Questions, and Suggestions? [contact us](mailto://info@jackpine.me).
 
