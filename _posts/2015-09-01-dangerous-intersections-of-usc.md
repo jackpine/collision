@@ -151,11 +151,10 @@ In looking at these intersections, I'm struck by two things.
 The first is the unsafe cyclist behavior.  To be clear, when looking
 through Google Street View, we did seek out images with cyclists, but we
 didn't specifically seek out cyclists acting unsafely, apparently it's
-just that common. For example, take another look at that
+just that common. For example, take another look at that last 
 <a href='https://www.google.com/maps/@34.0277429,-118.2839797,3a,15y,5.69h,84.24t/data=!3m6!1e1!3m4!1sc5H44ZS5_gclUekHUgVJZg!2e0!7i13312!8i6656'
    target='_blank'>
-  last street view of 29th and Hoover
-</a>,
+  street view of 29th and Hoover</a>,
 where the cyclist runs the red light to turn left across traffic.  Pan right
 and what do you see?
 
@@ -165,7 +164,7 @@ should always ride like cars drive. But this article isn't about "ethically
 correct cycling behavior." For that you can read any number of angry cyclist
 forum threads. Regardless of what is "correct," we want cycling to be safer,
 and just telling people to "be more careful" is not a very
-effective strategy. Ridazz gonna ride.
+effective strategy. *Ridazz gonna ride.*
 
 Luckily, we know that behavior and the built environment are
 inextricably linked, which brings us to our second observation. For as
@@ -178,13 +177,12 @@ to protect cyclists and promote safer riding behavior.
 
 Hoover's bike lane should be separated or at least buffered. 28th and
 29th should be striped to make visible where cyclists will be funneling
-into Hoover.  Maybe the light at 29th & Hoover should be shorter.  What
-would happen if the intersections at 28th, 29th, and 30th were replaced
-with roundabouts to promote safer traffic mixing and lower speeds in
-intersections? Hoover terminates into Jefferson just one block south of
-30th anyway - automobiles don't need to be traveling fast here. There
-are plenty of existing design options available to make cycling safer
-near USC.
+into Hoover.  Maybe the light at 29th & Hoover should be shorter.
+Converting the intersections at 28th, 29th, and 30th to roundabouts
+could promote safer traffic mixing and lower speeds in intersections.
+Hoover terminates into Jefferson just one block south of 30th anyway -
+automobiles don't need to be traveling fast here. There are plenty of
+existing design options available to make cycling safer near USC.
 
 ## What Next?
 
