@@ -8,28 +8,46 @@ summary: USC has 4 of the 5 most dangerous intersections for cyclists in Los Ang
 title: Why Does USC Have So Many Dangerous Intersections?
 ---
 
-Our original goal was to write an article about the dangerous intersections
-across the entire city of Los Angeles. Specifically, we ranked intersections by
-the number of cyclists reported injured in our
-[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based collision
-[dataset](#dataset), spanning 2002-2013. But there was so much data, and so
-many patterns, that any conclusions drawn would be very high level and not very
-useful. Instead we've decided to publish a series of more specific articles on
-the topic. Each article will dive into a particular neighborhood or focus on a
-single pattern emerging from our analysis.
+Our original goal was to write an article about the dangerous
+intersections across the entire city of Los Angeles. We ranked
+intersections by the number of cyclist injuries reported in our
+[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based
+collision [dataset](#dataset), spanning 2002-2013. But there was so much
+data, and so many patterns, that any conclusions drawn would be very
+high level and not very useful. Instead we've decided to publish a
+series of more specific articles on the topic. Each article will dive
+into a particular neighborhood or focus on a single pattern emerging
+from our analysis. When we refer to the worst or most dangerous
+intersections, we are referring to intersections that have the highest
+numbers of reported incidents resulting in cyclist injuries or deaths.
 
-One of the most striking patterns we found was near USC. Four of the five most
-dangerous intersections in all of Los Angeles are at USC. In the rest of this
-article we go into more detail about where specifically this is happening and
-why this might be.
+By this metric, four of the five most dangerous intersections in all of
+Los Angeles are at USC. While the University’s large cycling population
+likely contributes greatly to the high frequency of collisions, the
+sheer number of injured cyclists makes this an area well worth studying
+when discussing new legislation and infrastructure, regardless of the
+per capita injury rate. In the rest of this article we go into more
+detail about where specifically these injuries are happening and why
+they might be occurring.
 
-So, why are there so many injured cyclists near USC? The biggest contributor to
-the high incident count is no doubt the high number of cyclists in this area.
-We aren't saying that they necessarily have more collisions per capita. Still,
-each of these represents a person who was injured, or sometimes killed. The
-many cyclists and high rates of injury are certainly worthy of our
-consideration when discussing new legislation and infrastructure.
+## Dataset <a name='dataset'></a>
 
+This analysis is based on the data pulled from the
+[TIMS](http://tims.berkeley.edu/) project out of Berkeley which in turn gets
+data from the California Highway Patrol
+[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) database.  It
+encompasses collisions reported to law enforcement between 2002-2012. The
+actual number of incidents may be worse where collisions go unreported.
+
+This data is somewhat old. With cycling on the rise, the number of
+people affected and potentially at risk for injury or death while
+cycling in the city is certainly growing. Take a look at our [heatmap of
+bicycle collisions in California](/blog/2015/07/14/collision-heatmap) to get
+a visual idea of how bicycle collisions are growing in different areas
+over time.
+
+You can read more about how we generated these figures and download all our
+data by reading our [how-to article](/blog/2015/08/13/dangerous-intersections-how-to).
 
 The Intersections
 -----------------
@@ -74,7 +92,7 @@ intersections. That's 37 cyclists struck by cars in just a few blocks.
 What's going on here that so many are being injured? Of course part of it is
 due to the high volume of cyclists on Hoover. Hoover is a major collector
 street, funneling everybody from the North side of campus. Is there anything in
-the built environment contributing to this? Let's take a look.
+the environment we've built contributing to this? Let's take a look.
 
 <div>
   <img class='fullscreen-article-image'
@@ -91,15 +109,15 @@ the built environment contributing to this? Let's take a look.
   </div>
 </div>
 
-Hoover actually has had a bike lane since at least 2007. 28th crosses Hoover as
-a disjointed dogleg intersection. Here's the other side.
+Hoover has had a bike lane since at least 2007. 28th crosses Hoover as
+a disjointed dogleg intersection. Here's the view from the other side.
 
 <div>
   <img class='fullscreen-article-image'
        alt='Google Street View of Cyclist riding the wrong way on Hoover at 28th. Moderate traffic in the background.'
        src='/media/East on 28th at Hoover - Bike Salmon.jpg' />
   <div class='article-caption'>
-    On 28th, looking east onto Hoover we see lots of traffic and a <a href="http://www.streetsblog.net/2010/04/19/the-persistence-of-bike-salmon/">bike salmon</a> going the wrong way in a bike lane. With five lanes of traffic, Hoover doesn't look like a very easy street to cross safely.
+    On 28th, looking east onto Hoover, we see lots of traffic and a <a href="http://www.streetsblog.net/2010/04/19/the-persistence-of-bike-salmon/">bike salmon</a> going the wrong way in a bike lane. With five lanes of traffic, Hoover doesn't look like a very easy street to cross safely.
     <a href='https://www.google.com/maps/@34.0293472,-118.2841343,3a,75y,91.01h,78.56t/data=!3m6!1e1!3m4!1slIGp3zoZ_tkuvSSadk8GPw!2e0!7i13312!8i6656!6m1!1e1'
        target='_blank'>
      Google street view
@@ -153,25 +171,6 @@ at 28th, 29th, and 30th were replaced with roundabouts to promote safer traffic
 mixing and lower speeds in intersections? Hoover terminates into Jefferson just
 one block south of 30th anyway - automobiles don't need to be traveling fast
 here. There are existing design options available to make cycling safer.
-
-## Dataset <a name='dataset'></a>
-
-This analysis is based on the data pulled from the
-[TIMS](http://tims.berkeley.edu/) project out of Berkeley which in turn gets
-data from the California Highway Patrol
-[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) database.  It
-encompasses collisions reported to law enforcement between 2002-2012. The
-actual number of incidents may be worse where collisions go unreported.
-
-This data is somewhat old. With cycling on the rise, the number of
-people affected and potentially at risk for injury or death while
-cycling in the city is certainly growing. Take a look at our [heatmap of
-bicycle collisions in California](/blog/2015/07/14/collision-heatmap) to get
-a visual idea of how bicycle collisions are growing in different areas
-over time.
-
-You can read more about how we generated these figures and download all our
-data by reading our [how-to article](/blog/2015/08/13/dangerous-intersections-how-to).
 
 ## What Next? 
 
