@@ -26,10 +26,10 @@ var UscIntersectionCollisionsMap = function(mapId) {
       var markerHtml = "<div class='intersection-collision-marker-label'>" + injuries + "</div>";
       var icon = new L.DivIcon({ className: 'intersection-collision-marker',
                                  html: markerHtml,
-                                 iconSize: [25, 25]
-                                   });
-      var marker = new L.Marker(coordinates, {icon: icon});
-      //marker.setRadius(intersection.properties.BICINJ_sum * 2);
+                                 iconSize: [25, 25]});
+
+      //clickable:false seems to be broken, so we are overriding the cursor style in css elsewhere.
+      var marker = new L.Marker(coordinates, { icon: icon, clickable: false });
 
       marker.addTo(map);
     });

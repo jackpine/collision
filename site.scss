@@ -147,10 +147,13 @@ code {
   padding-left: .66rem;
 }
 
-
 /**
  * Intersection Collisions styles
  */
+
+.leaflet-marker-icon.intersection-collision-marker {
+  cursor: inherit;
+}
 
 .intersection-collision-marker {
   width: 30px;
