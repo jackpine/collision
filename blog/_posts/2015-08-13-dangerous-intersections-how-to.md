@@ -13,15 +13,18 @@ of USC](/blog/2015/09/01/dangerous-intersections-of-usc/).
 Data Sources <a name="data-sources"></a>
 ------------
 
- * [Streets of Los Angeles](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/Circ.zip)
-   This is based on the [LA City
-   Planning](http://planning.lacity.org/mapgallery/mapgallery_gisdata/mapgallerydata.htm)
-   department's Circulation file, but we've applied a user defined CRS so we can
-   compute cross reference our TIMS data which had a different CRS.
- * [collisions in California](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/SWITRS_2003_2012_SHP.zip) 
-   Based on TIMS out of Berkely, we also applied a user defined CRS to be
+ * [<i class="fa fa-file"></i> Circ.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/Circ.zip)
+   * Streets of Los Angeles
+   * Based on the [LA City
+     Planning](http://planning.lacity.org/mapgallery/mapgallery_gisdata/mapgallerydata.htm)
+     department's Circulation file, but we've applied a user defined CRS so we can
+     compute cross reference our TIMS data which had a different CRS.
+ * [<i class="fa fa-file"></i> SWITRS_2003_2012_SHP.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/SWITRS_2003_2012_SHP.zip) 
+   * Collisions in California
+   * Based on TIMS out of Berkely, we also applied a user defined CRS to be
    compatible with our streets file.
- * [our analysis and shapefiles](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/layers.zip)
+ * [<i class="fa fa-file"></i> layers.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-08-13-dangerous-intersections-how-to/layers.zip)
+   * Our analysis and shapefiles
 
 Process
 -------
