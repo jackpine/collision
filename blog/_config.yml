@@ -1,5 +1,6 @@
 permalink: pretty
 markdown: rdiscount
+exclude: [bin, bower_components, README.md, LICENCE.md, Gemfile, Gemfile.lock, CNAME]
 sass:
   sass_dir: './'
 prose:

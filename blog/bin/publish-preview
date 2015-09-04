@@ -1,0 +1,6 @@
+#!/bin/sh
+set -x
+
+#git subtree push --prefix blog michaelkirk gh-pages 
+# Force pushing a subtree is tricky...
+git push preview `git subtree split --prefix blog`:gh-pages --force
