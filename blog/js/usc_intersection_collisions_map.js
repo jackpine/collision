@@ -10,8 +10,8 @@ var UscIntersectionCollisionsMap = function(mapId) {
 
     var map = L.mapbox.map(mapId, 'mapbox.streets', {
       maxBounds: bounds,
-      maxZoom: 19,
-      minZoom: 10
+      maxZoom: 17,
+      minZoom: 12
     }).setView([34.023, -118.286130], 15);
 
 
