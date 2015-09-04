@@ -1,5 +1,7 @@
 permalink: pretty
 markdown: rdiscount
+sass:
+  sass_dir: './'
 prose:
   rooturl: '_posts'
   siteurl: 'http://visionzero.la'
