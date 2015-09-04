@@ -1,7 +1,6 @@
 var UscIntersectionCollisionsMap = function(mapId) {
 
   function setup(intersections) {
-    //TODO remove img, replace with dynamic map
     this.config = new Config();
     L.mapbox.accessToken = this.config.accessToken;
 
@@ -22,18 +21,22 @@ var UscIntersectionCollisionsMap = function(mapId) {
 
     var intersectionIcon = L.divIcon();
     _.each(intersections, function(intersection) {
-      console.log(intersection);
-
       //lonlat to latlon
       var coordinates = _.clone(intersection.geometry.coordinates).reverse();
 
-      //var icon = new LabeledDivIcon();
-
       var injuries = intersection.properties.BICINJ_sum;
       var markerHtml = "<div class='intersection-collision-marker-label'>" + injuries + "</div>";
-      var icon = new L.DivIcon({ className: 'intersection-collision-marker',
+
+      var className = 'intersection-collision-marker';
+      if ( injuries > 9 ) {
+        var iconWidth = 30;
+        var className = className + " intersection-collision-marker-large";
+      } else {
+        var iconWidth = 23
+      }
+      var icon = new L.DivIcon({ className: className,
                                  html: markerHtml,
-                                 iconSize: [25, 25]});
+                                 iconSize: [iconWidth, iconWidth]});
 
       //clickable:false seems to be broken, so we are overriding the cursor style in css elsewhere.
       var marker = new L.Marker(coordinates, { icon: icon, clickable: false });

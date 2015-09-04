@@ -155,17 +155,21 @@ code {
   cursor: inherit;
 }
 
+.intersection-collision-marker-large {
+  .intersection-collision-marker-label {
+    margin-top: 5px;
+  }
+}
+
 .intersection-collision-marker {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
+  border-radius: 30px;
   background-color: $orange;
   border: solid $black 1px;
 }
 
 .intersection-collision-marker-label {
   color: $white;
-  font-size: 15px;
-  margin-top: 3px;
   text-align: center;
+  font-size: 15px;
+  margin-top: 1px;
 }
