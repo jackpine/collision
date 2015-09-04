@@ -11,9 +11,8 @@ title: Why Does USC Have So Many Dangerous Intersections?
 Our original goal was to write an article about the dangerous
 intersections across the entire city of Los Angeles. We ranked
 intersections by the number of cyclist injuries reported in our
-[SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) based
-collision [dataset](#dataset), spanning 2002-2013. But there was so much
-data, and so many patterns, that any conclusions drawn would be very
+collision [dataset](#dataset), spanning 2002-2012. But there were so
+many patterns and so much data that any conclusions drawn would be very
 high level and not very useful. Instead we've decided to publish a
 series of more specific articles on the topic. Each article will dive
 into a particular neighborhood or focus on a single pattern emerging
@@ -32,7 +31,7 @@ they might be occurring.
 
 ## Dataset <a name='dataset'></a>
 
-This analysis is based on the data pulled from the
+This analysis is based on data pulled from the
 [TIMS](http://tims.berkeley.edu/) project out of Berkeley which in turn gets
 data from the California Highway Patrol
 [SWITRS](http://iswitrs.chp.ca.gov/Reports/jsp/userLogin.jsp) database.  It
@@ -87,16 +86,17 @@ injuries happen here.
 
 Hoover at 28th, 29th, and 30th all have a very high number of injured cyclists.
 Respectively there were 12, 13, and 12 injuries reported at each of these
-intersections. That's 37 cyclists struck by cars in just a few blocks.
+intersections. That's 37 cyclists injured by cars in just a few blocks.
 
-What's going on here that so many are being injured? Of course part of it is
-due to the high volume of cyclists on Hoover. Hoover is a major collector
-street, funneling everybody from the North side of campus. Is there anything in
-the environment we've built contributing to this? Let's take a look.
+What's going on here that so many cyclists are being injured? Of course
+part of it is due to the high volume of cyclists on Hoover. Hoover is a
+major collector street, funneling everybody from the north side of
+campus. Is there anything in the environment we've built contributing to
+this? Let's take a look.
 
 <div>
   <img class='fullscreen-article-image'
-       alt='Google Street View of 28th and Hoover, a doglegged intersection and two cyclists riding across a crosswalk'
+       alt='Google Street View of 28th and Hoover, a dog-legged intersection and two cyclists riding across a crosswalk'
        src='/media/West on 28th at Hoover.jpg' />
   <div class='article-caption'>
     On 28th, looking west onto Hoover. Note the two cyclists riding in the
@@ -110,7 +110,7 @@ the environment we've built contributing to this? Let's take a look.
 </div>
 
 Hoover has had a bike lane since at least 2007. 28th crosses Hoover as
-a disjointed dogleg intersection. Here's the view from the other side.
+a disjointed dog-leg intersection. Here's the view from the other side.
 
 <div>
   <img class='fullscreen-article-image'
@@ -150,7 +150,7 @@ In looking at these intersections, I'm struck by two things.
 
 The first is the unsafe cyclist behavior.  To be clear, when looking
 through Google Street View, we did seek out images with cyclists, but we
-didn't specifically seek out cyclists acting unsafely, apparently it's
+didn't *specifically* seek out cyclists acting unsafely, apparently it's
 just that common. For example, take another look at that last 
 <a href='https://www.google.com/maps/@34.0277429,-118.2839797,3a,15y,5.69h,84.24t/data=!3m6!1e1!3m4!1sc5H44ZS5_gclUekHUgVJZg!2e0!7i13312!8i6656'
    target='_blank'>
@@ -181,10 +181,10 @@ into Hoover.  Maybe the light at 29th & Hoover should be shorter.
 Converting the intersections at 28th, 29th, and 30th to roundabouts
 could promote safer traffic mixing and lower speeds in intersections.
 Hoover terminates into Jefferson just one block south of 30th anyway -
-automobiles don't need to be traveling fast here. There are plenty of
-existing design options available to make cycling safer near USC.
+automobiles don't need to be traveling fast here. There is a smorgasbord
+of design options to make cycling safer near USC.
 
-## What Next?
+## Stepping Back
 
 When we began our analysis looking across all of LA, it became clear
 that there were intersections with inordinately high number of cyclist
@@ -202,7 +202,7 @@ comprehensive planning and engineering is required across the city.
   <img alt='Heatmap of collisions from Santa Monica to Downtown LA'
        src='/media/LA Collision Heatmap.jpg' />
   <div class='article-caption'>
-      Read more about collision density across the state in our interactive
+      Collision density across LA. Read more in our
       <a href="/blog/2015/07/14/collision-heatmap/">Collision Heatmap Article</a>.
   </div>
 </div>
@@ -225,11 +225,13 @@ traffic fatalities to zero by 2035.
 You can read the full text of the [mobility element
 here](http://planning.lacity.org/Cwd/GnlPln/MobiltyElement/Text/MobilityPlan_2035.pdf).
 
+### What Next?
+
 We hope you found this analysis interesting, and maybe even useful. If you are
 interested in looking into our methods, check out our [how-to
 article](/blog/2015/08/13/dangerous-intersections-how-to).  It's not hard to
-get started, and we're excited to share and learn with other folks who are
-interested in using data to help draw conclusions about the world around us.
+get started, and we're excited to share and learn with other folks who
+want to use data to help draw conclusions about the world around us.
 
 We will continue to research and talk about cycling safety in Los Angeles, not
 only from behind our computer screens with statistical/geospatial analysis, but
@@ -237,5 +239,5 @@ also from our bikes. We personally experience the physical environmental
 factors on the street that make some of these routes so dangerous, while other
 routes offer a safe, economical, and fun way to get around.
 
-Comments, Questions, and Suggestions? [contact us](mailto://info@jackpine.me).
+Comments, Questions, and Suggestions for future research? [contact us](mailto://info@jackpine.me).
 
