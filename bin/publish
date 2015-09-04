@@ -1,0 +1,3 @@
+#!/bin/sh
+set -x
+git subtree push --prefix blog origin gh-pages
