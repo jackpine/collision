@@ -5,8 +5,15 @@ var UscIntersectionCollisionsMap = function(mapId) {
     this.config = new Config();
     L.mapbox.accessToken = this.config.accessToken;
 
-    var map = L.mapbox.map(mapId, 'mapbox.streets')
-      .setView([34.028, -118.2856], 14);
+    var southWest = L.latLng(34.000, -118.335),
+        northEast = L.latLng(34.055677, -118.257460),
+        bounds = L.latLngBounds(southWest, northEast);
+
+    var map = L.mapbox.map(mapId, 'mapbox.streets', {
+      maxBounds: bounds,
+      maxZoom: 19,
+      minZoom: 10
+    }).setView([34.023, -118.286130], 15);
 
 
     var NumberMarker = L.Circle.extend({
