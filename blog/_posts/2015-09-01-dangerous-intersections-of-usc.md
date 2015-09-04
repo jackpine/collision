@@ -50,15 +50,28 @@ data by reading our [how-to article](/blog/2015/08/13/dangerous-intersections-ho
 
 The Intersections
 -----------------
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
+
+<script src="/bower_components/lodash/lodash.min.js"></script>
+<script src="/bower_components/Chart.js/Chart.js"></script>
+<script src="/js/heat_map.js"></script>
+<script src="/js/collision_timeline.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/usc_intersection_collisions_map.js"></script>
 
 <div>
-  <img class='fullscreen-article-image'
-       alt='Intersections near USC with more than three cyclists injured ranging from 3 to 14'
-       src='/media/Dangerous Intersections of USC.jpg' />
+  <div class='fullscreen-article-image' id='map'>
+  </div>
   <div class='article-caption'>
     An overview of the most problematic intersections near USC.
   </div>
 </div>
+
+<script>
+  UscIntersectionCollisionsMap('map');
+</script>
 
 ### The Worst
 

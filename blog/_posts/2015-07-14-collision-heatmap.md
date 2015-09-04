@@ -13,7 +13,8 @@ summary: A navigable heatmap of collisions in California that involved cyclists.
 <script src="/bower_components/Chart.js/Chart.js"></script>
 <script src="/js/heat_map.js"></script>
 <script src="/js/collision_timeline.js"></script>
-<script src="/js/application.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/heat_map_application.js"></script>
 
 <div class='article-splash'>
   <div id='map'>
@@ -30,6 +31,6 @@ database coordinated by the California Highway Patrol by way of the excellent
 
 <script>
   $(function(){
-    var application = new Application();
+    var application = new HeatMapApplication();
   });
 </script>
