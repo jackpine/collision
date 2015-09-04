@@ -147,3 +147,22 @@ code {
   padding-left: .66rem;
 }
 
+
+/**
+ * Intersection Collisions styles
+ */
+
+.intersection-collision-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: $orange;
+  border: solid $black 1px;
+}
+
+.intersection-collision-marker-label {
+  color: $white;
+  font-size: 15px;
+  margin-top: 3px;
+  text-align: center;
+}
