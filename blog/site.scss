@@ -1,0 +1,175 @@
+---
+---
+
+/**
+ * Site layout and colors
+ */
+
+$white: #efefef;
+$black: #333;
+$orange: #ff6633;
+$blue: #6fa8cd;
+
+@import 'bower_components/foundation/scss/normalize';
+@import 'bower_components/foundation/scss/foundation';
+@import 'bower_components/font-awesome/scss/font-awesome';
+
+html, body, .row.comments {
+  background: $blue;
+  font-size: 1.0rem;
+}
+
+.row, #footer {
+  background: $orange;
+}
+
+body, h1, h2, h3, p, .article-summary a, .article-summary a:hover, .article-summary a:visited {
+  color: $white;
+}
+
+a, a:hover, a:visited {
+  color: $black;
+}
+
+#header {
+  width: 100%;
+  background-color: $black;
+  & .row {
+    background: none;
+  }
+}
+
+#footer {
+  font-size: .8rem;
+  text-align: right;
+  width: 100%;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  #footer {
+    margin-top: 1rem;
+  }
+}
+
+code {
+  background-color: rgba(240, 240, 240, 0.4);
+  border-color: rgba(200, 200, 200, 0.4);
+}
+
+.author {
+  text-decoration: underline;
+}
+
+/**
+ * generic blog styles
+ */
+
+.article-summary {
+  padding-bottom: .66rem;
+  margin-bottom: .66rem;
+}
+
+.article-heading {
+  margin-bottom: 1rem;
+  clear: left;
+}
+
+.article-summary:last-child {
+  margin-bottom: 0;
+}
+
+.article-splash {
+  width: 100%;
+}
+
+.article-summary .article-splash {
+  margin-bottom: 0;
+}
+
+.article-social-links {
+
+  margin-top: 1rem;
+  a {
+    color: $white;
+    margin-right: .5rem;
+    font-size: 1.2rem;
+  }
+}
+
+.article-date {
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article-summary-footer {
+  .article-more-link {
+    float: right;
+    margin-top: -1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.article-caption {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 0.8rem;
+  padding: 0.2rem .6rem;
+  margin-bottom: 1rem;
+}
+
+.fullscreen-article-image {
+  width: 100%;
+}
+
+/**
+ * heatmap styles
+ */
+
+.fullscreen {
+  width: 100%;
+  min-height: 100%;
+}
+
+#map {
+  height: 400px;
+}
+
+#timeline {
+  background-color: rgba( 55, 55, 55, 0.5);
+  width: 420px;
+  height: 200px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  padding-left: .66rem;
+}
+
+/**
+ * Intersection Collisions styles
+ */
+
+.leaflet-marker-icon.intersection-collision-marker {
+  cursor: inherit;
+}
+
+.intersection-collision-marker-large {
+  .intersection-collision-marker-label {
+    margin-top: 5px;
+  }
+}
+
+.intersection-collision-marker {
+  border-radius: 30px;
+  background-color: $orange;
+  border: solid $black 1px;
+}
+
+.intersection-collision-marker-label {
+  color: $white;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 1px;
+}

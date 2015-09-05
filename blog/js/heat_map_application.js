@@ -1,8 +1,9 @@
-function Application() {
-  L.mapbox.accessToken = 'pk.eyJ1IjoibWljaGFlbGtpcmsiLCJhIjoiNjA3YTM0ODRmOTU3ZmQ2ZTUxMjgyNWI0MDk2ODBiMzAifQ.GOrBk7s9JvPl6h5rDkcJiQ';
+function HeatMapApplication() {
+  this.config = new Config();
+  L.mapbox.accessToken = this.config.accessToken;
 
   //build the map and center it over DTLA
-  var map = L.mapbox.map('map', 'mapbox.dark').setView([34.0510, -118.2500], 15);
+  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 15);
 
   // Where our visualizations get their collision data
   var baseUrl = 'http://api.collision.jackpine.me/api/v1/';
@@ -30,10 +31,12 @@ function Application() {
   map.on('moveend', function() {
     application.reRenderWithCurrentBounds();
   });
-}
+};
 
-Application.prototype.renderWithCurrentBounds = function() {
+HeatMapApplication.prototype.renderWithCurrentBounds = function() {
   this.heatMap.renderWithCurrentBounds();
   this.collisionTimeline.renderWithCurrentBounds();
-}
+};
+
+
 
