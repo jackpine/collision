@@ -236,7 +236,7 @@ necessitating changes in infrastructure and/or policy, with a goal of reducing
 traffic fatalities to zero by 2035.
 
 You can read the full text of the [mobility element
-here](http://planning.lacity.org/Cwd/GnlPln/MobiltyElement/Text/MobilityPlan_2035.pdf).
+here](https://losangeles2b.files.wordpress.com/2012/12/mobilityplan2035_may2015.pdf).
 
 ### What Next?
 
