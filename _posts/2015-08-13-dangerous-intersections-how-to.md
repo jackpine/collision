@@ -113,7 +113,8 @@ shapefile "bicycle collisions per intersection" and save.
 Inspect the attributes table of that new layer, sort by count, and *viola*.
 LA's most dangerous intersections for cyclists.
 
-If you had any questions, or comments lease let us know so we can improve this
-article. Also, we'd love to help you get involved in doing analysis with this
-data yourself.
+If you had any questions, or comments please
+<a href="mailto:info@jackpine.me">let us know</a>
+so we can improve this article. Also, we'd love to help you get involved
+in doing analysis with this data yourself.
 
