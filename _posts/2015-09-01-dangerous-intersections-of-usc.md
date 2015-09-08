@@ -252,5 +252,5 @@ also from our bikes. We personally experience the physical environmental
 factors on the street that make some of these routes so dangerous, while other
 routes offer a safe, economical, and fun way to get around.
 
-Comments, Questions, and Suggestions for future research? [contact us](mailto://info@jackpine.me).
+Comments, Questions, and Suggestions for future research? [contact us](mailto:info@jackpine.me).
 
