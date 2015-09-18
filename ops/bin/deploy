@@ -18,9 +18,10 @@ function provision {
 
   docker ps -a | grep collision-db > /dev/null
   DB_ALREADY_DEPLOYED=$?
-  if [ $DB_ALREADY_DEPLOYED ]
+  if [ $DB_ALREADY_DEPLOYED -eq 0 ]
   then
     echo "Database previously deployed."
+    docker start collision-db
   else
     echo "Deploying new database container."
     docker run --name collision-db -d mdillon/postgis
