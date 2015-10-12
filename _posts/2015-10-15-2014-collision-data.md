@@ -19,11 +19,11 @@ into Esri's FileGDB format. Thanks to
 [@VisionZeroLA](https://twitter.com/VisionZeroLA) for pointing us to
 it!
 
-## Processing We Did
+## Processing
 
-The transformation is a one step script [available on
+We transfored the data using a one step script we [wrote and published on
 github](https://github.com/jackpine/collision/blob/master/data/SWITRS_ROADSAFE/bin/process).
-If you really want to see what we did, look there.
+That script will show you *exactly* what we did to the data.
 
 Using that script we transformed the RoadSafe data into shapefiles. As
 well as being larger and slower than Esri FileGDB, shapefiles are a
