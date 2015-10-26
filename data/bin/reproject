@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# EPSG:2229 California zone 5
+PROJECTION=EPSG:2229
+
+
+SCRIPT_NAME=`basename "$0"`
+function usage {
+  echo "Usage:"
+  echo "    ${SCRIPT_NAME} source-file.shp"
+}
+
+SOURCE=$1
+if [ -z $SOURCE ]
+then
+  echo "Missing source file to reproject."
+  usage
+  exit 1
+fi
+
+echo "Changing projection of ${SOURCE} to ${PROJECTION}"
+TEMP_FILE="${SOURCE/.shp/_projected.shp}"
+ogr2ogr -skipfailures -t_srs $PROJECTION $TEMP_FILE $SOURCE # &&\
+# mv $TEMP_FILE $SOURCE
