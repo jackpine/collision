@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+SCRIPT_NAME=`basename "$0"`
+
+function usage {
+  echo "Convert OSM/PBF to a shapefile containing only lines (ways)"
+  echo "usage:"
+  echo "    ${SCRIPT_NAME} <input-file> <output-file>"
+  echo "    ${SCRIPT_NAME} los-angeles.osm.pbf lacity_streets"
+}
+
+INPUT_FILE=$1
+if [ -z $INPUT_FILE ]
+then
+  usage
+  exit 1
+fi
+
+OUTPUT_NAME=$2
+if [ -z $OUTPUT_NAME ]
+then
+  usage
+  exit 1
+fi
+
+
+
+read -d '' SQL << EOS
+SELECT \
+     osm_id, \
+     name, \
+     highway, \
+     waterway
+   FROM lines
+EOS
+
+mkdir -p "$OUTPUT_NAME"
+ogr2ogr "${OUTPUT_NAME}/${OUTPUT_NAME}.shp" $INPUT_FILE  -sql "${SQL}" -overwrite -skipfailures
