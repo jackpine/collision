@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import fiona
+import getopt
+from shapely.geometry import mapping, Point
+
+def usage():
+    print("Usage:")
+    print("   {} -i=infile -o=outfile".format(sys.argv[0]))
+
+def main(argv):
+    input_line_filename = None
+    output_point_filename = None
+    try:
+        opts, args = getopt.getopt(argv, "hi:o:", ["help", "infile=", "outfile="])
+    except getopt.GetoptError:
+        print("invalid argument")
+        usage()
+        sys.exit(2)
+
+    for opt, arg in opts:
+        if opt in ("-h", "--help"):
+            usage()
+            sys.exit()
+        elif opt in ("-i", "--infile"):
+            input_line_filename = arg
+        elif opt in ("-o", "--outfile"):
+            output_point_filename = arg
+        else:
+            print("illegal option {}".format(opt))
+            usage()
+            sys.exit(2)
+
+    if input_line_filename == None or output_point_filename == None:
+        print("missing argument")
+        usage()
+        sys.exit(2)
+
+    with fiona.drivers():
+        with fiona.open(input_line_filename, 'r') as source:
+            output_meta = source.meta.copy()
+            output_meta['schema']['geometry'] = 'Point'
+            with fiona.open(output_point_filename, 'w', **source.meta) as sink:
+                for feature in source:
+                    first_point = Point(feature['geometry']['coordinates'][0])
+                    feature['geometry'] = mapping(first_point)
+                    sink.write(feature)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
