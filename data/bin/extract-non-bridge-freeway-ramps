@@ -16,9 +16,10 @@ then
   exit 1
 fi
 
+echo "Extracting non-bridge freeway ramps"
 osmosis --read-pbf $INPUT_FILE \
   --tf accept-ways highway=motorway_link \
-  --tf reject-relation \ #TODO - how to filter by other tag?
+  --tf reject-ways bridge=* \
   --tf reject-relations \
   --used-node \
   --write-pbf non-bridge_freeway_ramps.osm.pbf
