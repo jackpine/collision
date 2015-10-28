@@ -3,6 +3,9 @@ default : all
 build :
 	mkdir -p build
 
+build/layers :
+	mkdir -p build/layers
+
 clean :
 	rm -fr build/*
 
@@ -54,11 +57,33 @@ build/layers/non_bridge_surface_streets.shp : build/non_bridge_surface_streets.o
 					-overwrite \
 					-skipfailures
 
+build/layers/lacity_boundary.shp : build/layers data/lacity_boundary
+	ogr2ogr -t_srs EPSG:4326 -skipfailures \
+					build/layers/lacity_boundary.shp \
+					data/lacity_boundary/lacity_boundary.shp
+
+build/layers/lacity_non_bridge_surface_streets.shp : build/layers/lacity_boundary.shp build/layers/non_bridge_surface_streets.shp
+	ogr2ogr -sql "SELECT ST_Intersection(S.geometry, L.geometry) AS geometry, S.* \
+									FROM non_bridge_surface_streets S, lacity_boundary L \
+									WHERE ST_Intersects(S.geometry, L.geometry)" \
+					-dialect SQLITE build/layers build/layers \
+					-overwrite \
+					-nln lacity_non_bridge_surface_streets
+
+build/layers/lacity_non_bridge_freeway_ramps.shp : build/layers/lacity_boundary.shp build/layers/non_bridge_freeway_ramps.shp
+	ogr2ogr -sql "SELECT ST_Intersection(S.geometry, L.geometry) AS geometry, S.* \
+									FROM non_bridge_freeway_ramps S, lacity_boundary L \
+									WHERE ST_Intersects(S.geometry, L.geometry)" \
+					-dialect SQLITE build/layers build/layers \
+					-overwrite \
+					-nln lacity_non_bridge_freeway_ramps
+
 build/layers/freeway_ramp_intersections.shp : build/layers/non_bridge_surface_streets.shp \
 	ogr2ogr -sql "SELECT ST_Intersection(S.geometry, R.geometry) AS geometry, S.*, R.* \
 									FROM non_bridge_surface_streets S, non_bridge_freeway_ramps R \
 									WHERE ST_Intersects(S.geometry, R.geometry)" \
-					-dialect SQLITE build/layers build/layers \
+					-dialect SQLITE build/layers data/layers \
+					-overwrite \
 					-nln freeway_ramp_intersections
 
 .PHONY: all clean

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# EPSG:4326 WGS84
+# PROJECTION=EPSG:4326
+
 # EPSG:2229 California zone 5
 PROJECTION=EPSG:2229
 
@@ -20,5 +23,5 @@ fi
 
 echo "Changing projection of ${SOURCE} to ${PROJECTION}"
 TEMP_FILE="${SOURCE/.shp/_projected.shp}"
-ogr2ogr -skipfailures -t_srs $PROJECTION $TEMP_FILE $SOURCE # &&\
+ogr2ogr -skipfailures -t_srs $PROJECTION $TEMP_FILE $SOURCE
 for file in *_projected.*; do mv $file ${file/_projected/}; done
