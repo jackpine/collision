@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+SCRIPT_NAME=`basename "$0"`
+
+function usage {
+  cat <<EOS
+Usage: $SCRIPT_NAME my-planet-input.osm.pbf
+EOS
+}
+
+INPUT_FILE=$1
+if [ -z $INPUT_FILE ]
+then
+  echo 'missing input'
+  usage
+  exit 1
+fi
+
+#osmosis --read-pbf $INPUT_FILE \
+#  --tf accept-ways highway=* \
+#  --tf reject-ways highway=motorway,motorway_link \
+#  --tf reject-ways type=point,polygon \
+#  --tf reject-relations \
+#  --tf reject-nodes \
+#  --used-node \
+#  --write-pbf surface_streets.osm.pbf
+
+echo "Extracting non-bridge surface streets..."
+osmosis --read-pbf $INPUT_FILE \
+  --tf accept-ways highway=* \
+  --tf reject-ways highway=motorway,motorway_link \
+  --tf reject-ways bridge=* \
+  --tf reject-relations \
+  --used-node \
+  --write-xml non-bridge_surface_streets.osm
