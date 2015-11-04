@@ -1,6 +1,8 @@
+default: build/layers/lacity_freeway_exits.shp
+
 clean :
 	rm -fr build/
-	mkdir build/layers
+	mkdir -p build/layers
 
 # Download this on your own.
 OSM_PLANET_FILE = data/los-angeles_california.osm.pbf
@@ -79,20 +81,21 @@ build/layers/lacity_freeway_ramp_intersections.shp : build/layers/lacity_non_bri
 					-nln lacity_freeway_ramp_intersections
 
 build/layers/lacity_freeway_ramp_start_points.shp : build/layers/lacity_non_bridge_freeway_ramps.shp
-	bin/get_first_point_in_lines -i build/layers/lacity_non_bridge_freeway_ramps.shp -o build/layers/lacity_freeway_ramp_start_points.shp
+	bin/endpoint-of-lines --first -i build/layers/lacity_non_bridge_freeway_ramps.shp -o build/layers/lacity_freeway_ramp_start_points.shp
+
+build/layers/lacity_freeway_ramp_end_points.shp : build/layers/lacity_non_bridge_freeway_ramps.shp
+	bin/endpoint-of-lines --last -i build/layers/lacity_non_bridge_freeway_ramps.shp -o build/layers/lacity_freeway_ramp_end_points.shp
 
 # The direction of traffic in oneway streets in OSM flows from the first to the last node
 # By getting all intersections which are *not* the first node in a freeway ramp, we are sure
 # we only get intersections receiving exiting traffic.
-build/layers/lacity_freeway_exits.shp : build/layers/lacity_freeway_ramp_intersections.shp build/layers/lacity_freeway_ramp_start_points.shp
-	ogr2ogr -sql "SELECT I.* \
-									FROM lacity_freeway_ramp_intersections I, lacity_freeway_ramp_start_points S \
-									WHERE NOT ST_Intersects(I.geometry, S.geometry)" \
+build/layers/lacity_freeway_exits.shp : build/layers/lacity_freeway_ramp_intersections.shp build/layers/lacity_freeway_ramp_end_points.shp
+	ogr2ogr -sql "SELECT ST_Intersection(I.geometry, P.geometry) as geometry, I.* \
+									FROM lacity_freeway_ramp_intersections I, lacity_freeway_ramp_end_points P \
+									WHERE ST_Intersection(I.geometry, P.geometry)" \
 					-dialect SQLITE build/layers build/layers \
 					-overwrite \
 					-skipfailures \
 					-nln lacity_freeway_exits
-
-default: build/layers/lacity_freeway_exits.shp
 
 .PHONY: default clean

@@ -14,7 +14,7 @@ def main(argv):
     input_line_filename = None
     output_point_filename = None
     try:
-        opts, args = getopt.getopt(argv, "hi:o:", ["help", "infile=", "outfile="])
+        opts, args = getopt.getopt(argv, "flhi:o:", ["first", "last", "help", "infile=", "outfile="])
     except getopt.GetoptError:
         print("invalid argument")
         usage()
@@ -28,6 +28,10 @@ def main(argv):
             input_line_filename = arg
         elif opt in ("-o", "--outfile"):
             output_point_filename = arg
+        elif opt in ("-f", "--first"):
+            index = 0
+        elif opt in ("-l", "--last"):
+            index = -1
         else:
             print("illegal option {}".format(opt))
             usage()
@@ -44,7 +48,7 @@ def main(argv):
             output_meta['schema']['geometry'] = 'Point'
             with fiona.open(output_point_filename, 'w', **source.meta) as sink:
                 for feature in source:
-                    first_point = Point(feature['geometry']['coordinates'][0])
+                    first_point = Point(feature['geometry']['coordinates'][-1])
                     feature['geometry'] = mapping(first_point)
                     sink.write(feature)
 
