@@ -1,0 +1,142 @@
+#!/usr/bin/env ruby
+
+require 'csv'
+require 'date'
+require 'pry'
+
+def format_datetime(datetime)
+  datetime.strftime("%Y-%m-%d %H:%M:%S")
+end
+
+def fix_csv(csv_path)
+  puts 'cleaning up new counts csv'
+  lines = File.readlines(csv_path)
+
+  #trimming of last 4 chars of line which for some reason is an empty field
+  header_line = lines[0]
+  header_line = header_line[0..-4]
+  correct_field_count = header_line.split(',').count
+
+  lines.reverse!
+
+  CSV.open("#{csv_path}.fixed.csv", 'wb') do |csv|
+    fields = []
+    until lines.empty?
+      print '.'
+      next_line = lines.pop
+      if fields.empty?
+        next_line = next_line[0..-4]
+      end
+
+      fields.concat next_line.split(',')
+      if fields.count > correct_field_count
+        pre_fields = fields[0..20]
+        unescaped_field = fields[21..-8]
+        joined_unescaped_field = unescaped_field.join()
+        post_fields = fields[-7..-1]
+
+        fields = pre_fields.push(joined_unescaped_field).concat(post_fields)
+      end
+      if fields.count == correct_field_count
+        csv << fields
+        fields = []
+      end
+    end
+  end
+  puts 'done!'
+end
+
+def locations(locations_path)
+  locations = {}
+  CSV.foreach(locations_path, headers: true) do |location_row|
+    location = location_row.to_hash
+    #seeing weird empty columns in csv output
+    location.delete(nil)
+    # remove confusing field
+    created_at = location.delete('createdatetime')
+    locations[location_row['location_id']] = location
+  end
+  locations
+end
+
+def old_counts_locations(interval_path, locations)
+  puts "Reading old counts from #{interval_path}"
+  counts_locations = []
+  CSV.foreach(interval_path, headers: true) do |count_row|
+    location = locations[count_row['location_id']]
+    count = count_row.to_hash
+    #seeing weird empty columns in csv output
+    count.delete(nil)
+
+    started_at_string = "#{count['Date']} #{count['Interval_Begin']}"
+    ended_at_string = "#{count['Date']} #{count['Interval_End']}"
+
+    #count['started_at'] = DateTime.parse(started_at_string)
+    date_format = '%m/%d/%Y %H:%M:%S'
+    count['started_at'] = format_datetime(DateTime.strptime(started_at_string, date_format))
+    count['ended_at'] = format_datetime(DateTime.strptime(ended_at_string, date_format))
+    print '.'
+
+    counts_locations.push location.dup.merge(count)
+  end
+  puts ' done reading old counts!'
+  counts_locations
+end
+
+def new_counts_locations(interval_path, locations)
+  puts "Reading new counts from #{interval_path}"
+  counts_locations = []
+  CSV.foreach(interval_path, headers: true) do |count_row|
+    #print '.'
+    location = locations[count_row['location_id']]
+    count = count_row.to_hash
+    #seeing weird empty columns in csv output
+    count.delete(nil)
+
+    started_at_string = "#{count['Date']} #{count['Interval_Begin']}"
+    date_format = '%m-%d-%Y %I:%M%p'
+    started_at = DateTime.strptime(started_at_string, date_format)
+    count['started_at'] = format_datetime(started_at)
+
+    # No ended at string in new count format =(
+    # But they all appear to be 15 minute intervals
+    fifteen_minutes = Rational(15, 1 * 24 * 60)
+    count['ended_at'] = format_datetime(started_at + fifteen_minutes)
+
+    count['total'] = count['NS'].to_i + count['SN'].to_i + count['EW'].to_i + count['WE'].to_i
+    print '.'
+
+    counts_locations.push location.dup.merge(count)
+  end
+  puts ' done reading new counts!'
+  counts_locations
+end
+
+def write_counts_locations(output_name, counts_locations)
+  puts "Writing #{output_name}..."
+  CSV.open(output_name, 'wb', write_headers: true, headers: counts_locations.first.keys) do |counts_csv|
+    counts_locations.each do |count_location|
+      counts_csv << count_location
+    end
+  end
+end
+
+def main
+  data_dir = 'data'
+
+  locations_path = File.join(data_dir, 'locations.csv')
+  # interval format changed in 2012
+  old_interval_path = File.join(data_dir, 'old_intervals.csv')
+  new_interval_path = File.join(data_dir, 'new_intervals.csv')
+  fix_csv(new_interval_path)
+
+  locations = locations(locations_path)
+
+  write_counts_locations('old_counts_locations.csv',
+                          old_counts_locations(old_interval_path, locations))
+
+  write_counts_locations('new_counts_locations.csv',
+                         new_counts_locations("#{new_interval_path}.fixed.csv", locations))
+end
+
+main
