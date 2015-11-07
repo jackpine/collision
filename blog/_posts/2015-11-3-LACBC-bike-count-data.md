@@ -10,9 +10,7 @@ content_class: bike-count-article
 The [Los Angeles County Bicycle Coalition](http://la-bike.org) just
 finished their 2015 bicycle count. As usual they have published their
 data via UCLA's [Bicycle Data
-Clearinghouse](http://www.bikecounts.luskin.ucla.edu).
-
-You can find the new 2015 counts there. Yay!
+Clearinghouse](http://www.bikecounts.luskin.ucla.edu). You can find the new 2015 counts there.
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
@@ -66,13 +64,6 @@ which separate the location data from the count data. A little bit of
    * [<i class="fa fa-file"></i> locations.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/locations.csv)
      * Translates location id to actual latitude/longitude and other location data, to be joined with the
      interval data.
-
-Plus these intermediate files we produced by joining the location data
-with the count data, as well as munging some incorrectly formatted
-fields in the CSV. See [processing](#processing) for details.
-
- * [<i class="fa fa-file"></i> counts_1994-2012.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/counts_1994-2012.csv) joins counts data with location.
- * [<i class="fa fa-file"></i> counts_2013-2015.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/counts_2013-2015.csv) joins counts data with location.
 
 <a name="processing"></a>
 ## Processing
