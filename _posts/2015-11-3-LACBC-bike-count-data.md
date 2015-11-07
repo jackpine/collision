@@ -8,9 +8,11 @@ content_class: bike-count-article
 ---
 
 The [Los Angeles County Bicycle Coalition](http://la-bike.org) just
-finished their 2015 bicycle count. As usual they have published their
-data via UCLA's [Bicycle Data
-Clearinghouse](http://www.bikecounts.luskin.ucla.edu). You can find the new 2015 counts there.
+[finished their 2015 bicycle
+count](http://la-bike.org/events/los-angeles-bike-ped-count-2015). As
+usual they have published their data via UCLA's [Bicycle Data
+Clearinghouse](http://www.bikecounts.luskin.ucla.edu). You can find the
+new 2015 counts there.
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
