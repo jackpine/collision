@@ -3,7 +3,7 @@ function BikeCountMap($el) {
   L.mapbox.accessToken = this.config.accessToken;
 
   //build the map and center it over DTLA
-  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 15);
+  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 13);
 
   $.getJSON('/js/data/bike_counts_2013-2015.geojson', function(data) {
     var calendar = _.groupBy(data.features, function(feature) { return feature.properties.started_at;})
@@ -55,7 +55,11 @@ function BikeCountMap($el) {
       },
       false
     )
-    setTime(Object.keys(calendar)[0]);
+
+    //This looks like a time with lots of sampling
+    var defaultTime = "2015-09-16 07:45:00"
+    $(timeSelect).val(defaultTime);
+    setTime(defaultTime);
 
     function setTime(time) {
       if(currentLayer) {
