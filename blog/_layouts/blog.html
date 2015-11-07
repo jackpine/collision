@@ -3,7 +3,7 @@ layout: default
 section: blog
 ---
 
-<div class='row'>
+<div class='row {{page.content_class}}'>
   {% if page.splash %}
     {% if page.splash contains 'http' %}
       {% capture url %}{{page.splash}}{% endcapture %}
