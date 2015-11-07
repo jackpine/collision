@@ -28,7 +28,7 @@ You can find the new 2015 counts there. Yay!
 </div>
 <script>
   $(function(){
-    var application = new BikeCountMap();
+    var application = new BikeCountMap($("#map"));
   });
 </script>
 
