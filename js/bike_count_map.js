@@ -85,12 +85,11 @@ var DatasetNavigator = function(samples) {
 DatasetNavigator.prototype.selectElement = function () {
   var $select = $('<select>');
 
+  var options = '';
   _.each(this.datasets, function(dataset, datasetName) {
-    var option = document.createElement('option');
-    option.value = datasetName;
-    option.text = datasetName;
-    $select.append(option)
+    options += '<option value="' + datasetName + '">' + datasetName + '</option>';
   });
+  $select.append(options);
   return $select;
 }
 
@@ -109,13 +108,11 @@ Dataset.prototype.orderByDate = function(orderStrings) {
 Dataset.prototype.selectElement = function() {
   var $select = $("<select>");
 
-  var datasetName = this.name;
+  var options = '';
   _.each(this.orderedDates, function(startedAt) {
-    var option = document.createElement('option');
-    option.value = startedAt;
-    option.text = startedAt;
-    $select.append(option);
-  })
+    options += '<option value="' + startedAt + '">' + startedAt + '</option>';
+  });
+  $select.append(options);
   return $select;
 }
 
