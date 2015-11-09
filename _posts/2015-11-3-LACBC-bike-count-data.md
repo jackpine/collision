@@ -18,8 +18,13 @@ new 2015 counts there.
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
 <script src="/js/config.js"></script>
 <script src="/js/bike_count_map.js"></script>
+<script src="/bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+<link href='/bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css' rel='stylesheet' />
 <div class='article-splash'>
   <div id='map'>
+    <div>
+      <input class="slider" />
+    </div>
   </div>
   <div class='article-caption'>
     Total bike counts over time, in 15 minute intervals. This includes
