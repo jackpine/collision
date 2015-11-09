@@ -3,29 +3,33 @@ function BikeCountMap($el) {
   L.mapbox.accessToken = this.config.accessToken;
 
   //build the map and center it over DTLA
-  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 13);
+  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 11);
 
   $.getJSON('/js/data/bike_counts_2013-2015.geojson', function(data) {
     var samples = _.map(data.features, function(feature) { return new Sample(feature); });
     var datasetNavigator = new DatasetNavigator(samples);
-    var datasetSelect = datasetNavigator.selectElement();
+    var $datasetSelect = datasetNavigator.selectElement();
 
-    datasetSelect.addEventListener(
-      'change',
-      function() {
+    $datasetSelect.on('change', function() {
         setDataset(this.value);
-      },
-      false
-    )
+    });
 
-    $el.after(datasetSelect);
+    $el.after($datasetSelect);
 
-    setDataset("2013 LACBC Bike Count");
     var currentLayer;
     var $currentTimeSelect;
+    var $timeSlider;
+    var dataset;
+
+    //Default to an interseting time in the latest bikecount
+    setDataset("2015 LACBC Bike Count");
+    setTime("2015-09-16 07:00:00");
 
     function setTime(time) {
+      console.log("setting time", time);
       $currentTimeSelect.val(time);
+      var index = _.indexOf(dataset.orderedDates, time);
+      $timeSlider.slider('setValue', index);
       if(currentLayer) {
         map.removeLayer(currentLayer);
       }
@@ -34,26 +38,29 @@ function BikeCountMap($el) {
       layer.addTo(map);
     }
 
-    $el.on('timeDidChange', function(e, time) {
-      console.log("time did change:", time);
-      setTime(time)
-    });
-
     function setDataset(datasetName) {
+      // works with programmatic setting (not just user interaction)
+      $datasetSelect.val(datasetName);
+      console.log("setting dataset", datasetName);
       dataset = datasetNavigator.datasets[datasetName];
       if($currentTimeSelect) {
         $currentTimeSelect.remove();
       }
       $currentTimeSelect = dataset.selectElement();
-      setTime($currentTimeSelect.val())
       $currentTimeSelect.on('change', function() {
         setTime(this.value);
       });
-      $(datasetSelect).after($currentTimeSelect);
+      $datasetSelect.after($currentTimeSelect);
 
       $timeSlider = $('.slider');
+      $timeSlider.on('change', function() {
+        var time = dataset.orderedDates[this.value]
+        setTime(time);
+      });
       var timeSlider = dataset.sliderElement($timeSlider);
       $el.after($timeSlider);
+
+      setTime($currentTimeSelect.val())
     }
   });
 };
@@ -76,15 +83,15 @@ var DatasetNavigator = function(samples) {
 }
 
 DatasetNavigator.prototype.selectElement = function () {
-  var select = document.createElement('select');
+  var $select = $('<select>');
 
   _.each(this.datasets, function(dataset, datasetName) {
     var option = document.createElement('option');
     option.value = datasetName;
     option.text = datasetName;
-    select.add(option)
+    $select.append(option)
   });
-  return select;
+  return $select;
 }
 
 var Dataset = function(name, samples) {
@@ -114,10 +121,7 @@ Dataset.prototype.selectElement = function() {
 }
 
 Dataset.prototype.sliderElement = function($slider) {
-  $slider.slider();
-  $slider.on('change', function(event) {
-    this.setTime(event.value);
-  });
+  $slider.slider({max: this.orderedDates.length - 1});
   return $slider;
 }
 
@@ -132,7 +136,7 @@ Dataset.prototype.buildLayerCalendar = function(samples) {
       if (totalCount == 0) {
         color = 'white';
       }
-      return L.circleMarker(sample.latlon, { color: color, radius: totalCount + 2 } ).bindPopup("<p>" + totalCount + "</p>");
+      return L.circleMarker(sample.latlon, { color: color, radius: totalCount + 2 } ).bindPopup("<p>bikes counted: " + totalCount + "</p>");
     });
     var layer = L.layerGroup(markers);
     layerCalendar[startedAt] = layer

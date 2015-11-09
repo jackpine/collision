@@ -22,10 +22,8 @@ new 2015 counts there.
 <link href='/bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css' rel='stylesheet' />
 <div class='article-splash'>
   <div id='map'>
-    <div>
-      <input class="slider" />
-    </div>
   </div>
+  <input class="slider" />
   <div class='article-caption'>
     Total bike counts over time, in 15 minute intervals. This includes
     all data sets from the last few years from the [Bicycle Data
