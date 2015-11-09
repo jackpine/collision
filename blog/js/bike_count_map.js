@@ -8,37 +8,45 @@ function BikeCountMap($el) {
   $.getJSON('/js/data/bike_counts_2013-2015.geojson', function(data) {
     var samples = _.map(data.features, function(feature) { return new Sample(feature); });
     var datasetNavigator = new DatasetNavigator(samples);
-
-    dataset = datasetNavigator.datasets["2013 Glendale Bike Count"];
-    var calendar = dataset.sampleCalendar;
-    var timeSelect = dataset.selectElement();
-
-    timeSelect.addEventListener(
+    var datasetSelect = datasetNavigator.selectElement();
+    datasetSelect.addEventListener(
       'change',
       function() {
-        setTime(this.value);
+        setDataset(this.value);
       },
       false
     )
-    $el.after(timeSelect);
+
+    $el.after(datasetSelect);
+
+    setDataset("2013 LACBC Bike Count");
     var currentLayer;
-    var layers = dataset.layerCalendar;
 
-    //This looks like a time with lots of sampling
-    //var defaultTime = "2015-09-16 07:45:00"
-    //$(timeSelect).val(defaultTime);
-    //setTime(defaultTime);
+    function setDataset(datasetName) {
+      dataset = datasetNavigator.datasets[datasetName];
+      var calendar = dataset.sampleCalendar;
+      var timeSelect = dataset.selectElement();
 
-    function setTime(time) {
-      if(currentLayer) {
-        map.removeLayer(currentLayer);
+      function setTime(time) {
+        if(currentLayer) {
+          map.removeLayer(currentLayer);
+        }
+        var layer = dataset.layerCalendar[time];
+        currentLayer = layer;
+        layer.addTo(map);
       }
-      var layer = layers[time];
-      currentLayer = layer;
-      layer.addTo(map);
+
+      timeSelect.addEventListener(
+        'change',
+        function() {
+          setTime(this.value);
+        },
+        false
+      )
+      $(datasetSelect).after(timeSelect);
+      setTime(Object.keys(calendar)[0]);
     }
   });
-
 };
 
 
@@ -60,6 +68,14 @@ var DatasetNavigator = function(samples) {
 
 DatasetNavigator.prototype.selectElement = function () {
   var select = document.createElement('select');
+
+  _.each(this.datasets, function(dataset, datasetName) {
+    var option = document.createElement('option');
+    option.value = datasetName;
+    option.text = datasetName;
+    select.add(option)
+  });
+  return select;
 }
 
 var Dataset = function(name, samples) {
@@ -76,13 +92,15 @@ Dataset.prototype.orderByDate = function(orderStrings) {
 Dataset.prototype.selectElement = function() {
   var select = document.createElement('select');
 
-  datasetName = this.name;
-  _.each(this.layerCalendar, function(layer, startedAt) {
+  var datasetName = this.name;
+  var orderedDates = this.orderByDate(Object.keys(this.layerCalendar));
+  _.each(orderedDates, function(startedAt) {
+    var layer = this.layerCalendar[startedAt]
     var option = document.createElement('option');
     option.value = startedAt;
     option.text = startedAt + "  -  (" + datasetName + ")";
-    select.add(option)
-  });
+    select.add(option);
+  })
   return select;
 }
 
