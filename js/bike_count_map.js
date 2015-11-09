@@ -111,7 +111,6 @@ Dataset.prototype.selectElement = function() {
 
   var datasetName = this.name;
   _.each(this.orderedDates, function(startedAt) {
-    var layer = this.layerCalendar[startedAt]
     var option = document.createElement('option');
     option.value = startedAt;
     option.text = startedAt;
