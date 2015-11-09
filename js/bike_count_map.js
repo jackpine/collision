@@ -21,13 +21,17 @@ function BikeCountMap($el) {
 
     setDataset("2013 LACBC Bike Count");
     var currentLayer;
+    var currentTimeSelect;
 
     function setDataset(datasetName) {
       dataset = datasetNavigator.datasets[datasetName];
-      var calendar = dataset.sampleCalendar;
-      var timeSelect = dataset.selectElement();
+      if(currentTimeSelect) {
+        $(currentTimeSelect).remove();
+      }
+      currentTimeSelect = dataset.selectElement();
 
       function setTime(time) {
+        $(currentTimeSelect).val(time);
         if(currentLayer) {
           map.removeLayer(currentLayer);
         }
@@ -36,15 +40,15 @@ function BikeCountMap($el) {
         layer.addTo(map);
       }
 
-      timeSelect.addEventListener(
+      currentTimeSelect.addEventListener(
         'change',
         function() {
           setTime(this.value);
         },
         false
       )
-      $(datasetSelect).after(timeSelect);
-      setTime(Object.keys(calendar)[0]);
+      $(datasetSelect).after(currentTimeSelect);
+      setTime(currentTimeSelect.value);
     }
   });
 };
@@ -85,7 +89,7 @@ var Dataset = function(name, samples) {
 
 Dataset.prototype.orderByDate = function(orderStrings) {
   return _.sortBy(orderStrings, function(a, b) {
-    return new Date(b) - new Date(a);
+    return new Date(a) - new Date(b);
   });
 }
 
