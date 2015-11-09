@@ -23,8 +23,8 @@ new 2015 counts there.
 <div class='article-splash'>
   <div id='map'>
   </div>
-  <input class="slider" />
   <div class='article-caption'>
+    <input class="slider" />
     Total bike counts over time, in 15 minute intervals. This includes
     all data sets from the last few years from the [Bicycle Data
     Clearinghouse](http://www.bikecounts.luskin.ucla.edu).  Download the
