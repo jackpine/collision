@@ -114,7 +114,7 @@ Dataset.prototype.selectElement = function() {
     var layer = this.layerCalendar[startedAt]
     var option = document.createElement('option');
     option.value = startedAt;
-    option.text = startedAt + "  -  (" + datasetName + ")";
+    option.text = startedAt;
     $select.append(option);
   })
   return $select;
