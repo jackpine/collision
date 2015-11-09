@@ -142,6 +142,7 @@ code {
   color: $black;
 }
 
+
 /**
  * Bike Count Map Styles
  */
@@ -152,6 +153,10 @@ code {
   }
   .slider.slider-horizontal {
     width: 100%;
+  }
+  .slider-handle {
+    background: none;
+    background-color: $black;
   }
 }
 
