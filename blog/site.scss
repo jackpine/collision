@@ -138,6 +138,10 @@ code {
   height: 400px;
 }
 
+.leaflet-popup-content p {
+  color: $black;
+}
+
 /**
  * Bike Count Map Styles
  */
