@@ -9,6 +9,7 @@ function BikeCountMap($el) {
     var samples = _.map(data.features, function(feature) { return new Sample(feature); });
     var datasetNavigator = new DatasetNavigator(samples);
     var datasetSelect = datasetNavigator.selectElement();
+
     datasetSelect.addEventListener(
       'change',
       function() {
@@ -21,34 +22,38 @@ function BikeCountMap($el) {
 
     setDataset("2013 LACBC Bike Count");
     var currentLayer;
-    var currentTimeSelect;
+    var $currentTimeSelect;
+
+    function setTime(time) {
+      $currentTimeSelect.val(time);
+      if(currentLayer) {
+        map.removeLayer(currentLayer);
+      }
+      var layer = dataset.layerCalendar[time];
+      currentLayer = layer;
+      layer.addTo(map);
+    }
+
+    $el.on('timeDidChange', function(e, time) {
+      console.log("time did change:", time);
+      setTime(time)
+    });
 
     function setDataset(datasetName) {
       dataset = datasetNavigator.datasets[datasetName];
-      if(currentTimeSelect) {
-        $(currentTimeSelect).remove();
+      if($currentTimeSelect) {
+        $currentTimeSelect.remove();
       }
-      currentTimeSelect = dataset.selectElement();
+      $currentTimeSelect = dataset.selectElement();
+      setTime($currentTimeSelect.val())
+      $currentTimeSelect.on('change', function() {
+        setTime(this.value);
+      });
+      $(datasetSelect).after($currentTimeSelect);
 
-      function setTime(time) {
-        $(currentTimeSelect).val(time);
-        if(currentLayer) {
-          map.removeLayer(currentLayer);
-        }
-        var layer = dataset.layerCalendar[time];
-        currentLayer = layer;
-        layer.addTo(map);
-      }
-
-      currentTimeSelect.addEventListener(
-        'change',
-        function() {
-          setTime(this.value);
-        },
-        false
-      )
-      $(datasetSelect).after(currentTimeSelect);
-      setTime(currentTimeSelect.value);
+      $timeSlider = $('.slider');
+      var timeSlider = dataset.sliderElement($timeSlider);
+      $el.after($timeSlider);
     }
   });
 };
@@ -85,6 +90,7 @@ DatasetNavigator.prototype.selectElement = function () {
 var Dataset = function(name, samples) {
   this.name = name;
   this.layerCalendar = this.buildLayerCalendar(samples);
+  this.orderedDates = this.orderByDate(Object.keys(this.layerCalendar));
 }
 
 Dataset.prototype.orderByDate = function(orderStrings) {
@@ -94,18 +100,25 @@ Dataset.prototype.orderByDate = function(orderStrings) {
 }
 
 Dataset.prototype.selectElement = function() {
-  var select = document.createElement('select');
+  var $select = $("<select>");
 
   var datasetName = this.name;
-  var orderedDates = this.orderByDate(Object.keys(this.layerCalendar));
-  _.each(orderedDates, function(startedAt) {
+  _.each(this.orderedDates, function(startedAt) {
     var layer = this.layerCalendar[startedAt]
     var option = document.createElement('option');
     option.value = startedAt;
     option.text = startedAt + "  -  (" + datasetName + ")";
-    select.add(option);
+    $select.append(option);
   })
-  return select;
+  return $select;
+}
+
+Dataset.prototype.sliderElement = function($slider) {
+  $slider.slider();
+  $slider.on('change', function(event) {
+    this.setTime(event.value);
+  });
+  return $slider;
 }
 
 Dataset.prototype.buildLayerCalendar = function(samples) {
