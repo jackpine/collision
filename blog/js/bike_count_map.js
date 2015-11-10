@@ -132,7 +132,7 @@ Dataset.prototype.buildLayerCalendar = function(samples) {
       if (totalCount == 0) {
         color = 'white';
       }
-      return L.circleMarker(sample.latlon, { color: color, radius: totalCount + 2 } ).bindPopup("<p>bikes counted: " + totalCount + "</p>");
+      return L.circleMarker(sample.latlon, { color: color, radius: totalCount + 4 } ).bindPopup("<p>bikes counted: " + totalCount + "</p>");
     });
     var layer = L.layerGroup(markers);
     layerCalendar[startedAt] = layer
