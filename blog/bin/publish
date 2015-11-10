@@ -1,7 +1,12 @@
 #!/bin/sh
+BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $BIN_DIR/../..
+
 # If this fails with a ref error. it could be that the remote gh-pages was
-# deleted. I dont' know why this breaks things, but a work around is to re-create
-# the remote gh-pages with *any* commit then re run this script. e.g. 
-# git push origin master:gh-pages && blog/bin/publish
-set -x
+# deleted. I don't know how this happens or why this breaks things, but a work
+# around is to re-create the remote gh-pages with *any* commit then re run this
+# script. e.g.:
+#
+#    git push origin master:gh-pages && blog/bin/publish
+#    bin/publish
 git push origin `git subtree split --prefix blog`:gh-pages --force
