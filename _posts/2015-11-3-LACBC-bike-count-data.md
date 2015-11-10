@@ -19,6 +19,7 @@ new 2015 counts there.
 <script src="/js/config.js"></script>
 <script src="/js/bike_count_map.js"></script>
 <script src="/bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
 <link href='/bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css' rel='stylesheet' />
 <div class='article-splash'>
   <div id='map'>
