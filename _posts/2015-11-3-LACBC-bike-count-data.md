@@ -3,16 +3,15 @@ published: true
 category: blog
 layout: blog
 title: "Data Drop: New LACBC Bike Counts"
-summary: LACBC is just finishing up their latest bike counts. We're providing some ready-to-go shapefile data of their results.
+summary: LACBC is just finishing up their latest bike counts. We're providing some ready-to-go shapefile data of their results, plus all the previous bike counts from the UCLA Bicycle Data Clearinghouse.
 content_class: bike-count-article
 ---
 
 The [Los Angeles County Bicycle Coalition](http://la-bike.org) just
 [finished their 2015 bicycle
-count](http://la-bike.org/events/los-angeles-bike-ped-count-2015). As
-usual they have published their data via UCLA's [Bicycle Data
-Clearinghouse](http://www.bikecounts.luskin.ucla.edu). You can find the
-new 2015 counts there.
+count](http://la-bike.org/events/los-angeles-bike-ped-count-2015).
+Here's an overview of the sampling sites and the total cyclists counted
+over time.
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
@@ -26,11 +25,13 @@ new 2015 counts there.
   </div>
   <div class='article-caption'>
     <input class="slider" />
-    Total bike counts over time, in 15 minute intervals. This includes
-    all data sets from the last few years from the [Bicycle Data
-    Clearinghouse](http://www.bikecounts.luskin.ucla.edu).  Download the
-    <a href="#bike-count-shapefiles">full dataset</a> below. White dots
-    represent no bicycles seen in the 15 minute interval.
+    Total bikes counted over 15 minute intervals. White dots represent
+    no bicycles seen in the 15 minute interval.
+    <br />
+    The <a
+    href="#bike-count-shapefiles">full datasets</a> below have many more
+    useful attributes, including the direction of travel, does the rider
+    appear to be female, were they riding on the sidewalk.
   </div>
 </div>
 <script>
@@ -39,9 +40,14 @@ new 2015 counts there.
   });
 </script>
 
-Unfortunately the clearinghouse does not offer shapefiles, only csv's,
-which separate the location data from the count data. A little bit of
-[processing](#processing) to the rescue!
+As usual they have published their data via UCLA's [Bicycle Data
+Clearinghouse](http://www.bikecounts.luskin.ucla.edu). You can find the
+raw 2015 counts there, as well as prior counts done by LACBC and other
+groups.
+
+The clearinghouse does not offer shapefiles, only csv's,
+which separate the location data from the count data. So, after a bit of
+[processing](#processing), we're providing them here.
 
 <a name='bike-count-shapefiles'></a>
 ### Bike Count Shapefiles
@@ -64,24 +70,16 @@ which separate the location data from the count data. A little bit of
      surrounding area
    * [<i class="fa fa-file"></i> intervals_2013-2015.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/intervals_2013-2015.csv)
      * Count numbers and location id in Los Angeles and the
-     surrounding area after and including 2013. This data has more fields,
-     including if the cyclist appeared to be a woman, the road surface
-     type, and whether the cyclist was wearing a helmet.
+     surrounding area after and including 2013, plus additional rider attributes.
    * [<i class="fa fa-file"></i> locations.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/locations.csv)
      * Translates location id to actual latitude/longitude and other location data, to be joined with the
      interval data.
 
-<a name="processing"></a>
-## Processing
-
-Conceptually, we just needed to join the count intervals (which
-represent a chunk of time when people were counting bikes at a
-particluar location) with the latitude/longitude of their count
-location.
-
 See [here for the
 code](https://github.com/jackpine/collision/tree/master/visualizations/bike_count/bin)
+used to join the count numbers with their location.
 
-Got plans for this data? <a href="mailto:michael@jackpine.me">Let me
-know</a> what you're doing with it.
+Got plans for this data? Go wild! But I'd <a
+href="mailto:michael@jackpine.me">love to know</a> what you're doing
+with it.
 
