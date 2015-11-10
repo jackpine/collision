@@ -10,8 +10,8 @@ summary: We're providing Los Angeles collision data through 2014, but where does
 Here are our updated shapefiles for collisions in Los Angeles through
 2014.
 
-* [<i class="fa fa-file"></i> lacity_switrs_2003-2014.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-10-15-2014-collision-data/lacity_switrs_2003-2014.zip) contains all reported collisions in LA, 2003-2014
 * [<i class="fa fa-file"></i> lacity_switrs_bike_ped_2003-2014.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-10-15-2014-collision-data/lacity_switrs_bike_ped_2003-2014.zip) contains all reported collisions in LA involving pedestrians or cyclists, 2003-2014
+* [<i class="fa fa-file"></i> lacity_switrs_2003-2014.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-10-15-2014-collision-data/lacity_switrs_2003-2014.zip) contains all reported collisions in LA, 2003-2014
 
 The source data for these shapefiles came from
 [@RoadSafeGIS](https://twitter.com/RoadSafeGIS) who generously compiled
