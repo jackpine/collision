@@ -138,6 +138,11 @@ code {
   height: 400px;
 }
 
+.leaflet-popup-content p {
+  color: $black;
+}
+
+
 /**
  * Bike Count Map Styles
  */
@@ -145,6 +150,13 @@ code {
 .bike-count-article {
   .article-splash select {
     margin-bottom: 0;
+  }
+  .slider.slider-horizontal {
+    width: 100%;
+  }
+  .slider-handle {
+    background: none;
+    background-color: $black;
   }
 }
 
