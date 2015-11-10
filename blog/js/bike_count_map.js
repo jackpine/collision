@@ -101,7 +101,7 @@ var Dataset = function(name, samples) {
 
 Dataset.prototype.orderByDate = function(orderStrings) {
   return _.sortBy(orderStrings, function(a, b) {
-    return new Date(a) - new Date(b);
+    return moment(a) - moment(b);
   });
 }
 
@@ -110,7 +110,7 @@ Dataset.prototype.selectElement = function() {
 
   var options = '';
   _.each(this.orderedDates, function(startedAt) {
-    options += '<option value="' + startedAt + '">' + startedAt + '</option>';
+    options += '<option value="' + startedAt + '">' + moment(startedAt).format("llll") + '</option>';
   });
   $select.append(options);
   return $select;
