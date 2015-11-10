@@ -1,6 +1,5 @@
 #!/bin/sh
-set -x
+BIN_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $BIN_DIR/../..
 
-#git subtree push --prefix blog michaelkirk gh-pages 
-# Force pushing a subtree is tricky...
 git push preview `git subtree split --prefix blog`:gh-pages --force
