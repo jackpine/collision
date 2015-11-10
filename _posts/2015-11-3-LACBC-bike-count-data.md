@@ -53,25 +53,25 @@ which separate the location data from the count data. So, after a bit of
 <a name='bike-count-shapefiles'></a>
 ### Bike Count Shapefiles
 
- * [<i class="fa fa-file"></i> counts_1994-2012.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/counts_1994-2012.zip)
-   * Pre-2013 bicycle counts in Los Angeles and the
-   surrounding area.
  * [<i class="fa fa-file"></i> counts_2013-2015.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/counts_2013-2015.zip)
    * 2013 and after bicycle counts. This data has more fields than the
    earlier counts, including if the cyclist appeared to be a woman, the
    road surface type, and whether the cyclist was wearing a helmet.
+ * [<i class="fa fa-file"></i> counts_1994-2012.zip](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/counts_1994-2012.zip)
+   * Pre-2013 bicycle counts in Los Angeles and the
+   surrounding area.
 
 ### Source Data
 
  * Downloaded from the [Bicycle Data
   Clearinghouse](http://www.bikecounts.luskin.ucla.edu)
+   * [<i class="fa fa-file"></i> intervals_2013-2015.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/intervals_2013-2015.csv)
+     * Count numbers and location id in Los Angeles and the
+     surrounding area after and including 2013, plus additional rider attributes.
    * [<i class="fa fa-file"></i>
    intervals_1994-2012.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/intervals_1994-2012.csv)
      * Count numbers and location id pre-2013 in Los Angeles and the
      surrounding area
-   * [<i class="fa fa-file"></i> intervals_2013-2015.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/intervals_2013-2015.csv)
-     * Count numbers and location id in Los Angeles and the
-     surrounding area after and including 2013, plus additional rider attributes.
    * [<i class="fa fa-file"></i> locations.csv](https://s3-us-west-1.amazonaws.com/collision-la/data/2015-11-3-LACBC-bike-count-data/locations.csv)
      * Translates location id to actual latitude/longitude and other location data, to be joined with the
      interval data.
