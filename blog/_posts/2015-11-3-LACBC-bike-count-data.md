@@ -3,6 +3,7 @@ published: true
 category: blog
 layout: blog
 title: "Data Drop: New LACBC Bike Counts"
+thumbnail: "/media/2015-11-3-LACBC-bike-count-data/bike_count_header.jpg"
 summary: LACBC is just finishing up their latest bike counts. We're providing some ready-to-go shapefile data of their results, plus all the previous bike counts from the UCLA Bicycle Data Clearinghouse.
 content_class: bike-count-article
 ---
