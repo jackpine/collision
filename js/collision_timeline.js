@@ -11,6 +11,10 @@ CollisionTimeline.prototype.renderWithCurrentBounds = function() {
   $.getJSON(incidentCountsUrl, function(json) {
     var incidentCounts = json.incident_counts;
 
+    // HACK to remove 2013, the data is super incomplete, so it makes it looks
+    // like accidents went to ridiculously low levels in 2013. I wish.
+    incidentCounts = _.filter(incidentCounts, function(e) { return e["year"] != "2013" });
+
     console.log('incident counts:', incidentCounts);
     var labels = _.pluck(incidentCounts, 'year')
     var points = _.pluck(incidentCounts, 'count')
