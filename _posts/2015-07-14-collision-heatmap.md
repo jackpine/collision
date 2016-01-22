@@ -19,7 +19,6 @@ content_class: heat-map-article
 <div class='article-splash'>
   <div id='map'>
     <div id='timeline'>
-      <canvas id='line-chart' width="400" height="200"></canvas>
     </div>
   </div>
 </div>
@@ -31,6 +30,6 @@ database coordinated by the California Highway Patrol by way of the excellent
 
 <script>
   $(function(){
-    var application = new HeatMapApplication();
+    var application = new HeatMapApplication($('#timeline'));
   });
 </script>

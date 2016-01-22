@@ -1,4 +1,5 @@
-function CollisionTimeline(baseUrl, getBoundingBox) {
+function CollisionTimeline($el, baseUrl, getBoundingBox) {
+  this.$el = $el;
   this.incidentCountsBaseUrl = baseUrl + 'incidents/counts.json';
   this.getBoundingBox = getBoundingBox;
 }
@@ -24,7 +25,11 @@ CollisionTimeline.prototype.renderWithCurrentBounds = function() {
 }
 
 CollisionTimeline.prototype.render = function(labels, points) {
-  var context = document.getElementById('line-chart').getContext("2d");
+  this.$el.find('canvas').remove();
+  var $canvas = $("<canvas id='line-chart' width='400' height='200'></canvas>");
+  this.$el.append($canvas);
+
+  var context = $canvas[0].getContext("2d");
 
   var data = {
     labels: labels,
