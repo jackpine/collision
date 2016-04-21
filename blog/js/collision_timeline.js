@@ -1,4 +1,16 @@
 function CollisionTimeline($el, baseUrl, getBoundingBox) {
+  if ($el == null) {
+    throw TypeError("$el can't be null");
+  }
+
+  if (baseUrl == null) {
+    throw TypeError("baseUrl can't be null");
+  }
+
+  if (getBoundingBox == null) {
+    throw TypeError("getBoundingBox can't be null");
+  }
+
   this.$el = $el;
   this.incidentCountsBaseUrl = baseUrl + 'incidents/counts.json';
   this.getBoundingBox = getBoundingBox;
