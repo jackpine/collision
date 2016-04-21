@@ -1,4 +1,16 @@
-function HeatMap(baseUrl, map, getBoundingBox) {
+function HeatMap(map, baseUrl, getBoundingBox) {
+  if (map == null) {
+    throw TypeError("map can't be null");
+  }
+
+  if (baseUrl == null) {
+    throw TypeError("baseUrl can't be null");
+  }
+
+  if (getBoundingBox == null) {
+    throw TypeError("getBoundingBox can't be null");
+  }
+
   this.incidentsBaseUrl = baseUrl + 'incidents.json';
   this.map = map;
   this.getBoundingBox = getBoundingBox;
