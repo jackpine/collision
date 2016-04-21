@@ -1,4 +1,5 @@
-function CollisionTimeline(baseUrl, getBoundingBox) {
+function CollisionTimeline($el, baseUrl, getBoundingBox) {
+  this.$el = $el;
   this.incidentCountsBaseUrl = baseUrl + 'incidents/counts.json';
   this.getBoundingBox = getBoundingBox;
 }
@@ -11,6 +12,10 @@ CollisionTimeline.prototype.renderWithCurrentBounds = function() {
   $.getJSON(incidentCountsUrl, function(json) {
     var incidentCounts = json.incident_counts;
 
+    // HACK to remove 2013, the data is super incomplete, so it makes it looks
+    // like accidents went to ridiculously low levels in 2013. I wish.
+    incidentCounts = _.filter(incidentCounts, function(e) { return e["year"] != "2013" });
+
     console.log('incident counts:', incidentCounts);
     var labels = _.pluck(incidentCounts, 'year')
     var points = _.pluck(incidentCounts, 'count')
@@ -20,7 +25,11 @@ CollisionTimeline.prototype.renderWithCurrentBounds = function() {
 }
 
 CollisionTimeline.prototype.render = function(labels, points) {
-  var context = document.getElementById('line-chart').getContext("2d");
+  this.$el.find('canvas').remove();
+  var $canvas = $("<canvas id='line-chart' width='400' height='200'></canvas>");
+  this.$el.append($canvas);
+
+  var context = $canvas[0].getContext("2d");
 
   var data = {
     labels: labels,
