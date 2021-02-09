@@ -10,9 +10,9 @@ $black: #333;
 $orange: #ff6633;
 $blue: #6fa8cd;
 
-@import 'bower_components/foundation/scss/normalize';
-@import 'bower_components/foundation/scss/foundation';
-@import 'bower_components/font-awesome/scss/font-awesome';
+@import 'node_modules/foundation/scss/normalize';
+@import 'node_modules/foundation/scss/foundation';
+@import 'node_modules/font-awesome/scss/font-awesome';
 
 html, body, .row.comments {
   background: $blue;
