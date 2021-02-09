@@ -29,8 +29,8 @@ CollisionTimeline.prototype.renderWithCurrentBounds = function() {
     incidentCounts = _.filter(incidentCounts, function(e) { return e["year"] != "2013" });
 
     console.log('incident counts:', incidentCounts);
-    var labels = _.pluck(incidentCounts, 'year')
-    var points = _.pluck(incidentCounts, 'count')
+    var labels = _.map(incidentCounts, 'year')
+    var points = _.map(incidentCounts, 'count')
 
     timeline.render(labels, points);
   });
