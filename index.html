@@ -19,7 +19,6 @@ section: blog
 
       <div class='twelve columns'>
         {% assign article = item %}
-        {% include article-social-links.html %}
         <h3 class='article-summary-header'><a class='article-link' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a></h3>
         <p>
           {{item.summary}}

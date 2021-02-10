@@ -2,7 +2,6 @@
   "dependencies": {
     "bootstrap-slider": "*",
     "chart.js": "*",
-    "font-awesome": "*",
     "foundation": "*",
     "jquery": "*",
     "moment": "*"
