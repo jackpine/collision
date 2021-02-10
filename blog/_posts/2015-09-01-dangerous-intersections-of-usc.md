@@ -50,13 +50,9 @@ data by reading our [how-to article](/blog/2015/08/13/dangerous-intersections-ho
 
 The Intersections
 -----------------
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
+<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
 
-<script src="/node_modules/Chart.js/Chart.js"></script>
-<script src="/js/heat_map.js"></script>
-<script src="/js/collision_timeline.js"></script>
 <script src="/js/config.js"></script>
 <script src="/js/usc_intersection_collisions_map.js"></script>
 
