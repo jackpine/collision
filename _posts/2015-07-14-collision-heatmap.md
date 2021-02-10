@@ -11,7 +11,7 @@ content_class: heat-map-article
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
 
-<script src="/node_modules/Chart.js/Chart.js"></script>
+<script src="/node_modules/chart.js/dist/Chart.min.js"></script>
 <script src="/js/heat_map.js"></script>
 <script src="/js/collision_timeline.js"></script>
 <script src="/js/config.js"></script>
