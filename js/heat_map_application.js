@@ -3,7 +3,9 @@ function HeatMapApplication($timeline) {
   L.mapbox.accessToken = this.config.accessToken;
 
   //build the map and center it over DTLA
-  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 15);
+  var map = L.mapbox.map('map')
+      .setView(this.config.defaultMapLatLon, 15)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10'));
 
   // Where our visualizations get their collision data
   var baseUrl = 'http://api.collision.jackpine.me/api/v1/';
@@ -15,7 +17,7 @@ function HeatMapApplication($timeline) {
     return boundingBox;
   }
 
-  // set up visualizatoin components
+  // set up visualization components
   this.heatMap = new HeatMap(map, baseUrl, getBoundingBox);
   this.collisionTimeline = new CollisionTimeline($timeline, baseUrl, getBoundingBox);
 

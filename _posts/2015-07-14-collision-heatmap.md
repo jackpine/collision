@@ -6,8 +6,9 @@ thumbnail: "/media/LA Collision Heatmap.jpg"
 summary: A navigable heatmap of collisions in California that involved cyclists.
 content_class: heat-map-article
 ---
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.3/leaflet-heat.js'></script>
 
 <script src="/node_modules/Chart.js/Chart.js"></script>
