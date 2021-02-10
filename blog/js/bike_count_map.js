@@ -3,7 +3,9 @@ function BikeCountMap($el) {
   L.mapbox.accessToken = this.config.accessToken;
 
   //build the map and center it over DTLA
-  var map = L.mapbox.map('map', 'mapbox.dark').setView(this.config.defaultMapLatLon, 11);
+  var map = L.mapbox.map('map')
+      .setView(this.config.defaultMapLatLon, 11)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v10'));
 
   $.getJSON('/js/data/bike_counts_2013-2015.geojson', function(data) {
     var samples = _.map(data.features, function(feature) { return new Sample(feature); });

@@ -8,12 +8,9 @@ var UscIntersectionCollisionsMap = function(mapId) {
         northEast = L.latLng(34.055677, -118.257460),
         bounds = L.latLngBounds(southWest, northEast);
 
-    var map = L.mapbox.map(mapId, 'mapbox.streets', {
-      maxBounds: bounds,
-      maxZoom: 17,
-      minZoom: 14
-    }).setView([34.023, -118.286130], 15);
-
+    var map = L.mapbox.map(mapId)
+          .setView([34.023, -118.286130], 15)
+          .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
     var NumberMarker = L.Circle.extend({
 

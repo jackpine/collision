@@ -14,13 +14,14 @@ count](http://la-bike.org/events/los-angeles-bike-ped-count-2015).
 Here's an overview of the sampling sites and the total cyclists counted
 over time.
 
-<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+
 <script src="/js/config.js"></script>
 <script src="/js/bike_count_map.js"></script>
-<script src="/bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
-<script src="/bower_components/moment/min/moment.min.js"></script>
-<link href='/bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css' rel='stylesheet' />
+<script src="/node_modules/bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+<script src="/node_modules/moment/min/moment.min.js"></script>
+<link href='/node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css' rel='stylesheet' />
 <div class='article-splash'>
   <div id='map'>
   </div>
