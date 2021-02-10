@@ -12,7 +12,6 @@ $blue: #6fa8cd;
 
 @import 'node_modules/foundation/scss/normalize';
 @import 'node_modules/foundation/scss/foundation';
-@import 'node_modules/font-awesome/scss/font-awesome';
 
 html, body, .row.comments {
   background: $blue;
@@ -87,16 +86,6 @@ code {
 
 .article-summary .article-splash {
   margin-bottom: 0;
-}
-
-.article-social-links {
-
-  margin-top: 1rem;
-  a {
-    color: $white;
-    margin-right: .5rem;
-    font-size: 1.2rem;
-  }
 }
 
 .article-date {
