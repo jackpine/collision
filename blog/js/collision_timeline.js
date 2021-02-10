@@ -47,21 +47,26 @@ CollisionTimeline.prototype.render = function(labels, points) {
     labels: labels,
     datasets: [{
       label: "Collisions",
-      fillColor: "rgba(220,220,220,0.2)",
-      strokeColor: "rgba(220,220,220,1)",
-      pointColor: "rgba(220,220,220,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)",
-      data: points
+      data: points,
+      backgroundColor: "rgba(220,220,220,0.2)",
+      borderColor: "rgba(220,220,220,1)",
+      pointBackgroundColor: "rgba(220,220,220,1)",
+      pointBorderColor: "#fff",
     }]
   };
+  Chart.defaults.global.defaultFontColor='#888';
   var options = {
-    scaleBeginAtZero: true,
-    scaleFontColor: "#888",
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero:true,
+        },
+      }],
+    }
   };
 
+
   // Is it ok to just keep overriding this? Do we need to blow away the existing one first?  //
-  var myLineChart = new Chart(context).Line(data, options);
+  var myLineChart = new Chart(context, { type: 'line', data: data, options: options });
 }
 
