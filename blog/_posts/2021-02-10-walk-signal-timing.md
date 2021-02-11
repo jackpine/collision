@@ -21,9 +21,10 @@ This simulation shows a map of Rainier Beach in Seattle.
 
 <script type="text/javascript" src="/js/simulation.js"></script>
 <script type="text/javascript">
-  let simulation = new Simulation("simulation");
-  $(document).ready(function() {
-      simulation.start();
+  let simulation = new Simulation("simulation", "http://abstreet.s3-website.us-east-2.amazonaws.com/dev/game/game_bg.wasm");
+  $(document).ready(async function() {
+      await simulation.load();
+      await simulation.start();
   });
 </script>
 
