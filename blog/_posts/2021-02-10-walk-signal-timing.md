@@ -19,12 +19,16 @@ This simulation shows a map of Rainier Beach in Seattle.
 }
 </style>
 
-<script type="text/javascript" src="/js/simulation.js"></script>
-<script type="text/javascript">
-  let simulation = new Simulation("simulation", "http://abstreet.s3-website.us-east-2.amazonaws.com/dev/game/game_bg.wasm");
+<!-- <script type="text/javascript" src="/js/simulation.js"></script> -->
+<script type="module">
+  import { Simulation } from "/js/simulation.js";
+
+  // TODO: pass in wasm URL
+  let el = document.getElementById("simulation");
+  let simulation = new Simulation(el);
+
   $(document).ready(async function() {
-      await simulation.load();
-      await simulation.start();
+      await simulation.loadAndStart();
   });
 </script>
 

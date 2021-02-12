@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "lib": [ "dom", "es2015" ],
-    "rootDir": "src/",
+    "module": "es2015",
+    "lib": ["dom", "es2015"],
     "sourceMap": true
   },
   "includes" : [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.js",
   ],
 }
 

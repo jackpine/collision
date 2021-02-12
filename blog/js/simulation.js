@@ -36,52 +36,73 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var SimulationConfig = /** @class */ (function () {
     function SimulationConfig() {
-        this.wasmURL = new URL("http://abstreet.s3-website.us-east-2.amazonaws.com/dev/game/game_bg.wasm");
+        this.wasmURL = new URL('http://abstreet.s3-website.us-east-2.amazonaws.com/dev/game/game_bg.wasm');
     }
     SimulationConfig.prototype.wasmURLString = function () {
         return this.wasmURL.toString();
     };
     return SimulationConfig;
 }());
-var SimulationLoadState;
+export { SimulationConfig };
+export var SimulationLoadState;
 (function (SimulationLoadState) {
     SimulationLoadState[SimulationLoadState["unloaded"] = 0] = "unloaded";
-    SimulationLoadState[SimulationLoadState["loaded"] = 1] = "loaded";
-    SimulationLoadState[SimulationLoadState["error"] = 2] = "error";
+    SimulationLoadState[SimulationLoadState["loading"] = 1] = "loading";
+    SimulationLoadState[SimulationLoadState["loaded"] = 2] = "loaded";
+    SimulationLoadState[SimulationLoadState["error"] = 3] = "error";
 })(SimulationLoadState || (SimulationLoadState = {}));
 var Simulation = /** @class */ (function () {
-    function Simulation(html_id) {
+    function Simulation(el) {
         this.state = SimulationLoadState.unloaded;
-        var el = document.getElementById(html_id);
         this.el = el;
         this.config = new SimulationConfig();
         this.render();
-        console.log("sim constructor", self);
+        console.log("sim constructor", this);
     }
-    Simulation.prototype.load = function () {
+    Simulation.prototype.loadAndStart = function () {
         return __awaiter(this, void 0, void 0, function () {
             var e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
-                        console.debug("starting loading", self);
-                        _a.label = 1;
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.load()];
                     case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, fetch(this.config.wasmURLString())];
+                        _a.sent();
+                        return [4 /*yield*/, this.start()];
                     case 2:
                         _a.sent();
                         return [3 /*break*/, 4];
                     case 3:
                         e_1 = _a.sent();
                         console.error("error loading: " + e_1);
-                        this.state = SimulationLoadState.error;
-                        return [2 /*return*/];
-                    case 4:
-                        this.state = SimulationLoadState.loaded;
-                        this.render();
-                        console.debug("finished loading", self);
+                        this.updateState(SimulationLoadState.error);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Simulation.prototype.updateState = function (newValue) {
+        console.debug("state change: " + SimulationLoadState[this.state] + " -> " + SimulationLoadState[newValue]);
+        this.state = newValue;
+        this.render();
+    };
+    Simulation.prototype.load = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
+                        console.debug("starting loading", this);
+                        return [4 /*yield*/, fetch(this.config.wasmURLString())];
+                    case 1:
+                        response = _a.sent();
+                        this.updateState(SimulationLoadState.loading);
+                        //await init(response);
+                        this.updateState(SimulationLoadState.loaded);
+                        console.debug("finished loading", this);
                         return [2 /*return*/];
                 }
             });
@@ -91,8 +112,7 @@ var Simulation = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 console.assert(this.state == SimulationLoadState.loaded, "not yet loaded");
-                // TODO
-                this.render();
+                // TODO - actually do something
                 console.log("sim starting");
                 return [2 /*return*/];
             });
@@ -105,11 +125,13 @@ var Simulation = /** @class */ (function () {
         this.el.style["border-color"] = (function () {
             switch (_this.state) {
                 case SimulationLoadState.unloaded: return "yellow";
-                case SimulationLoadState.loaded: return "green";
+                case SimulationLoadState.loading: return "green";
+                case SimulationLoadState.loaded: return "white";
                 case SimulationLoadState.error: return "red";
             }
         })();
     };
     return Simulation;
 }());
+export { Simulation };
 //# sourceMappingURL=simulation.js.map
