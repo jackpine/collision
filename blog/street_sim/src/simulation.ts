@@ -36,6 +36,7 @@ export class Simulation {
         } catch (e) {
             console.error("error loading: " + e);
             this.updateState(SimulationLoadState.error);
+            alert(e);
         }
     }
 
@@ -47,13 +48,21 @@ export class Simulation {
 
     async load() {
         console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
-        console.debug("starting loading", this);
         // TODO: copy incremental loading logic from ABStreet for progress indication
         let response: Response = await fetch(this.config.wasmURLString());
         this.updateState(SimulationLoadState.loading);
-        //await init(response);
+
+        // TODO: Prefer streaming instantiation where available (not safari)? Seems like it'd be faster.
+        // const { instance } = await WebAssembly.instantiateStreaming(response, imports);
+        
+        let blob: Blob = await response.blob();
+        let bytes: ArrayBuffer = await blob.arrayBuffer();
+        //let imports = {};
+        //let instance = await WebAssembly.instantiate(bytes, imports);
+        console.log("footch2");
+        await init(bytes);
+
         this.updateState(SimulationLoadState.loaded);
-        console.debug("finished loading", this);
     }
 
     async start() {

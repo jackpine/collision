@@ -34,6 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+import { default as init } from './boot.js';
 var SimulationConfig = /** @class */ (function () {
     function SimulationConfig() {
         this.wasmURL = new URL('http://abstreet.s3-website.us-east-2.amazonaws.com/dev/game/game_bg.wasm');
@@ -77,6 +78,7 @@ var Simulation = /** @class */ (function () {
                         e_1 = _a.sent();
                         console.error("error loading: " + e_1);
                         this.updateState(SimulationLoadState.error);
+                        alert(e_1);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }
@@ -90,19 +92,28 @@ var Simulation = /** @class */ (function () {
     };
     Simulation.prototype.load = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var response;
+            var response, blob, bytes;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
-                        console.debug("starting loading", this);
                         return [4 /*yield*/, fetch(this.config.wasmURLString())];
                     case 1:
                         response = _a.sent();
                         this.updateState(SimulationLoadState.loading);
-                        //await init(response);
+                        return [4 /*yield*/, response.blob()];
+                    case 2:
+                        blob = _a.sent();
+                        return [4 /*yield*/, blob.arrayBuffer()];
+                    case 3:
+                        bytes = _a.sent();
+                        //let imports = {};
+                        //let instance = await WebAssembly.instantiate(bytes, imports);
+                        console.log("footch2");
+                        return [4 /*yield*/, init(bytes)];
+                    case 4:
+                        _a.sent();
                         this.updateState(SimulationLoadState.loaded);
-                        console.debug("finished loading", this);
                         return [2 /*return*/];
                 }
             });
