@@ -4,6 +4,6 @@ media/*.png
 .sass-cache/*
 
 # Build artifacts - only put the source tsc for now
-js/simulation.js
-js/simulation.js.map
+js/simulation.js*
+js/widgetry.js*
 js/pkg

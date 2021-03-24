@@ -4,7 +4,7 @@
 // import { default as init } from './boot.js'
 import { default as init } from './pkg/widgetry_demo.js'
 
-export class SimulationConfig {
+export class WidgetryConfig {
    wasmURL: URL;
 
    public constructor() {
@@ -17,19 +17,19 @@ export class SimulationConfig {
    }
 }
 
-export enum SimulationLoadState {
+export enum AppLoadState {
     unloaded, loading, loaded, error
 }
 
-export class Simulation {
+export class WidgetryApp {
     el: HTMLElement;
-    config: SimulationConfig;
-    state: SimulationLoadState = SimulationLoadState.unloaded;
+    config: WidgetryConfig;
+    state: AppLoadState = AppLoadState.unloaded;
 
     public constructor(el: HTMLElement) {
         this.el = el;
         appendLoading(this.el);
-        this.config = new SimulationConfig();
+        this.config = new WidgetryConfig();
         this.render();
 
         console.log("sim constructor", this);
@@ -45,17 +45,17 @@ export class Simulation {
                 console.debug("ignoring expected error:", e);
             } else {
                 console.error("error while loading: ", e);
-                this.updateState(SimulationLoadState.error);
+                this.updateState(AppLoadState.error);
                 alert(e);
             }
         }
     }
 
     async load() {
-        console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
+        console.assert(this.state == AppLoadState.unloaded, "already loaded");
         // TODO: copy incremental loading logic from ABStreet for progress indication
         let response: Response = await fetch(this.config.wasmURLString());
-        this.updateState(SimulationLoadState.loading);
+        this.updateState(AppLoadState.loading);
 
         // TODO: Prefer streaming instantiation where available (not safari)? Seems like it'd be faster.
         // const { instance } = await WebAssembly.instantiateStreaming(response, imports);
@@ -66,17 +66,17 @@ export class Simulation {
         //let instance = await WebAssembly.instantiate(bytes, imports);
         await init(bytes);
 
-        this.updateState(SimulationLoadState.loaded);
+        this.updateState(AppLoadState.loaded);
     }
 
     async start() {
-        console.assert(this.state == SimulationLoadState.loaded, "not yet loaded");
+        console.assert(this.state == AppLoadState.loaded, "not yet loaded");
         // TODO - actually do something
         console.log("sim starting");
     }
 
-    updateState(newValue: SimulationLoadState) {
-        console.debug(`state change: ${SimulationLoadState[this.state]} -> ${SimulationLoadState[newValue]}`);
+    updateState(newValue: AppLoadState) {
+        console.debug(`state change: ${AppLoadState[this.state]} -> ${AppLoadState[newValue]}`);
         this.state = newValue;
         this.render();
     }
@@ -86,10 +86,10 @@ export class Simulation {
         this.el.style["border-thickness"] = "4px";
         this.el.style["border-color"] = ((): string => {
             switch (this.state) {
-                case SimulationLoadState.unloaded: return "yellow";
-                case SimulationLoadState.loading: return "green";
-                case SimulationLoadState.loaded: return "white";
-                case SimulationLoadState.error: return "red";
+                case AppLoadState.unloaded: return "yellow";
+                case AppLoadState.loading: return "green";
+                case AppLoadState.loaded: return "white";
+                case AppLoadState.error: return "red";
             }
         })();
     }

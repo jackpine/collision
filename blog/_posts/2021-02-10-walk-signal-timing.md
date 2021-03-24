@@ -19,16 +19,15 @@ This simulation shows a map of Rainier Beach in Seattle.
 }
 </style>
 
-<!-- <script type="text/javascript" src="/js/simulation.js"></script> -->
 <script type="module">
-  import { Simulation } from "/js/simulation.js";
+  import { WidgetryApp } from "/js/widgetry.js";
 
   // TODO: pass in wasm URL
   let el = document.getElementById("widgetry-canvas");
-  let simulation = new Simulation(el);
+  let app = new WidgetryApp(el);
 
   $(document).ready(async function() {
-      await simulation.loadAndStart();
+      await app.loadAndStart();
   });
 </script>
 
