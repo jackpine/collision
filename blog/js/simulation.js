@@ -115,9 +115,10 @@ var Simulation = /** @class */ (function () {
                         bytes = _a.sent();
                         //let imports = {};
                         //let instance = await WebAssembly.instantiate(bytes, imports);
-                        console.log("footch2");
                         return [4 /*yield*/, init(bytes)];
                     case 4:
+                        //let imports = {};
+                        //let instance = await WebAssembly.instantiate(bytes, imports);
                         _a.sent();
                         this.updateState(SimulationLoadState.loaded);
                         return [2 /*return*/];

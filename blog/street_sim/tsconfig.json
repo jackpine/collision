@@ -4,9 +4,8 @@
     "lib": ["dom", "es2015"],
     "sourceMap": true
   },
-  "includes" : [
-    "src/**/*.ts",
-    "src/**/*.js",
-  ],
+  "include": [
+    "src/**/*.ts"
+  ]
 }
 

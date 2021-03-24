@@ -65,7 +65,6 @@ export class Simulation {
         let bytes: ArrayBuffer = await blob.arrayBuffer();
         //let imports = {};
         //let instance = await WebAssembly.instantiate(bytes, imports);
-        console.log("footch2");
         await init(bytes);
 
         this.updateState(SimulationLoadState.loaded);
