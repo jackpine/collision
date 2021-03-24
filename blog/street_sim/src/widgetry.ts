@@ -64,7 +64,8 @@ export class WidgetryApp {
         let bytes: ArrayBuffer = await blob.arrayBuffer();
         //let imports = {};
         //let instance = await WebAssembly.instantiate(bytes, imports);
-        await init(bytes);
+        let widgetry = await init(bytes);
+        widgetry.run();
 
         this.updateState(AppLoadState.loaded);
     }
