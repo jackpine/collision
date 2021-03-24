@@ -1,4 +1,4 @@
 permalink: pretty
-exclude: [bin, README.md, LICENCE.md, Gemfile, Gemfile.lock, CNAME, Makefile]
+exclude: [bin, README.md, LICENCE.md, Gemfile, Gemfile.lock, CNAME, Makefile, street_sim]
 sass:
   sass_dir: './'
