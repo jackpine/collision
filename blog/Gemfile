@@ -1,2 +1,6 @@
 source 'https://rubygems.org'
 gem "github-pages", group: :jekyll_plugins
+
+# https://github.com/jekyll/jekyll/issues/8523
+# jekyll serve depends on webrick, which is no longer part of std ruby as of ruby 3.0
+gem "webrick"
