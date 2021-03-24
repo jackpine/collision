@@ -2,3 +2,7 @@ _site/*
 .DS_Store
 media/*.png
 .sass-cache/*
+
+# Build artifacts - only put the source tsc for now
+js/simulation.js
+js/simulation.js.map

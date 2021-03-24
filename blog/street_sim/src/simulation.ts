@@ -40,9 +40,14 @@ export class Simulation {
             await this.load();
             await this.start();
         } catch (e) {
-            console.error("error loading: " + e);
-            this.updateState(SimulationLoadState.error);
-            alert(e);
+            if (e.toString() == "Error: Using exceptions for control flow, don't mind me. This isn't actually an error!") {
+                // This is an expected, albeit unfortunate, control flow mechanism for winit on wasm.
+                console.debug("ignoring expected error:", e);
+            } else {
+                console.error("error while loading: ", e);
+                this.updateState(SimulationLoadState.error);
+                alert(e);
+            }
         }
     }
 
