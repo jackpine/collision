@@ -10,11 +10,11 @@ have to wait before they get a "Walk" signal.
 
 This simulation shows a map of Rainier Beach in Seattle.
 
-<div id="simulation">
+<div id="widgetry-canvas">
 </div>
 
 <style type="text/css"> 
-#simulation {
+#widgetry-canvas {
   height: 400px;
 }
 </style>
@@ -24,7 +24,7 @@ This simulation shows a map of Rainier Beach in Seattle.
   import { Simulation } from "/js/simulation.js";
 
   // TODO: pass in wasm URL
-  let el = document.getElementById("simulation");
+  let el = document.getElementById("widgetry-canvas");
   let simulation = new Simulation(el);
 
   $(document).ready(async function() {

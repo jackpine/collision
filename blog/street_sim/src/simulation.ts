@@ -51,12 +51,6 @@ export class Simulation {
         }
     }
 
-    updateState(newValue: SimulationLoadState) {
-        console.debug(`state change: ${SimulationLoadState[this.state]} -> ${SimulationLoadState[newValue]}`);
-        this.state = newValue;
-        this.render();
-    }
-
     async load() {
         console.assert(this.state == SimulationLoadState.unloaded, "already loaded");
         // TODO: copy incremental loading logic from ABStreet for progress indication
@@ -81,7 +75,13 @@ export class Simulation {
         console.log("sim starting");
     }
 
-    public render() {
+    updateState(newValue: SimulationLoadState) {
+        console.debug(`state change: ${SimulationLoadState[this.state]} -> ${SimulationLoadState[newValue]}`);
+        this.state = newValue;
+        this.render();
+    }
+
+    render() {
         this.el.style["border-style"] = "solid";
         this.el.style["border-thickness"] = "4px";
         this.el.style["border-color"] = ((): string => {
