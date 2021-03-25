@@ -10,23 +10,20 @@ have to wait before they get a "Walk" signal.
 
 This simulation shows a map of Rainier Beach in Seattle.
 
-<div id="simulation-root">
+<div id="widgetry-demo-root">
 </div>
 
 <style type="text/css"> 
-#simulation-root {
+#widgetry-demo-root {
   height: 400px;
 }
 </style>
 
 <script type="module">
-  import { WidgetryApp } from "/js/widgetry.js";
-
-  // TODO: pass in wasm URL
-  let app = new WidgetryApp("simulation-root");
-
+  import { WidgetryDemo } from "/js/widgetry_demo.js";
+  let widgetry_demo_app = new WidgetryDemo("widgetry-demo-root");
   $(document).ready(async function() {
-      await app.loadAndStart();
+      await widgetry_demo_app.loadAndStart();
   });
 </script>
 
