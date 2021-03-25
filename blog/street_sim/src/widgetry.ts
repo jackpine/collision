@@ -7,9 +7,10 @@
 // for both `init` and `InitInput` were copy/pasted from the wasm_bindgen generated ts.d files,
 // and should be stable. `InitOutput` on the other hand will vary from app to app.
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
+
 export interface WidgetryApp<InitOutput> {
     init (module_or_path?: InitInput | Promise<InitInput>): Promise<InitOutput>;
-    run_in_dom_element(root_dom_id: string): void;
+    runWithRootId(rootDomId: string): void;
     wasmURLString(): string;
 }
 
@@ -66,7 +67,7 @@ export class AppLoader<T> {
         //let imports = {};
         //let instance = await WebAssembly.instantiate(bytes, imports);
         await this.app.init(bytes);
-        this.app.run_in_dom_element(this.domId);
+        this.app.runWithRootId(this.domId);
 
         this.updateState(LoadState.loaded);
     }
@@ -97,7 +98,7 @@ export class AppLoader<T> {
     }
 }
 
-function appendLoading(el) {
+function appendLoading(el: HTMLElement) {
     let loadingEl = document.createElement("p");
     let text = document.createTextNode("Loading...");
     loadingEl.append(text);

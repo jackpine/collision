@@ -4,7 +4,5 @@ media/*.png
 .sass-cache/*
 
 # Build artifacts - only put the source tsc for now
-js/simulation.js*
-js/widgetry.js*
-js/widgetry_demo.js*
-js/pkg
+js/street_sim
+street_sim/**/pkg
