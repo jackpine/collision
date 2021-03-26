@@ -24,7 +24,7 @@ export class WidgetryDemo {
     }
 
     wasmURLString(): string {
-        return this.pkgRoot + "//widgetry_demo_bg.wasm";
+        return this.pkgRoot + "widgetry_demo_bg.wasm";
     }
 
     assetsBaseURL(): string {
