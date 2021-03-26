@@ -128,7 +128,7 @@ export function pkgRoot(importMeta: ImportMeta): string {
     // import.meta is a *relatively* new feature (2020ish)
     // can/should we dedupe this?
     let url = new URL(importMeta['url']);
-    url.pathname = dirname(url.pathname) + "pkg/"
+    url.pathname = dirname(url.pathname) + "";
     return url.toString();
 }
 

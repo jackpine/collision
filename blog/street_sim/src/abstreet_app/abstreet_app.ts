@@ -7,7 +7,7 @@ import {
     default as abstreetInit,
     run as abstreetRun,
     InitOutput as ABStreetInitOutput
-} from './pkg/game.js';
+} from './wasm_pkg/game.js';
 
 import { AppLoader, InitInput, pkgRoot } from '../widgetry.js';
 
@@ -24,11 +24,11 @@ export class ABStreet {
     }
 
     wasmURLString(): string {
-        return this.pkgRoot + "game_bg.wasm";
+        return this.pkgRoot + "wasm_pkg/game_bg.wasm";
     }
 
     assetsBaseURL(): string {
-        return this.pkgRoot;
+        return this.pkgRoot + "static_assets";
     }
 
     public constructor(domId: string) {

@@ -7,7 +7,7 @@ import {
     default as widgetryDemoInit,
     run as widgetryDemoRun,
     InitOutput as WidgetryDemoInitOutput
-} from './pkg/widgetry_demo.js';
+} from './wasm_pkg/widgetry_demo.js';
 
 import { AppLoader, InitInput, pkgRoot } from '../widgetry.js';
 
@@ -24,11 +24,11 @@ export class WidgetryDemo {
     }
 
     wasmURLString(): string {
-        return this.pkgRoot + "widgetry_demo_bg.wasm";
+        return this.pkgRoot + "wasm_pkg/widgetry_demo_bg.wasm";
     }
 
     assetsBaseURL(): string {
-        return this.pkgRoot;
+        return this.pkgRoot + "static_assets";
     }
 
     public constructor(domId: string) {

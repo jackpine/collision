@@ -7,7 +7,7 @@ import {
     default as fifteenMinInit,
     run as fifteenMinRun,
     InitOutput as FifteenMinInitOutput
-} from './pkg/fifteen_min.js';
+} from './wasm_pkg/fifteen_min.js';
 
 import { AppLoader, InitInput, pkgRoot } from '../widgetry.js';
 
@@ -24,11 +24,11 @@ export class FifteenMinute {
     }
 
     wasmURLString(): string {
-        return this.pkgRoot + "fifteen_min_bg.wasm";
+        return this.pkgRoot + "wasm_pkg/fifteen_min_bg.wasm";
     }
 
     assetsBaseURL(): string {
-        return this.pkgRoot;
+        return this.pkgRoot + "static_assets";
     }
 
     public constructor(domId: string) {
