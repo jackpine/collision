@@ -10,34 +10,29 @@ have to wait before they get a "Walk" signal.
 
 Eventually we'd lke to show a simulation of Rainier Beach in Seattle.
 
-For starts though, here's the widgetry demo:
-<div id="widgetry-demo-root">
-</div>
-
-And here's the fifteen min app:
-<div id="fifteen-min-root">
+<div id="app-root">
 </div>
 
 <style type="text/css"> 
-#widgetry-demo-root {
+#app-root {
   height: 400px;
-}
-
-#fifteen-min-root {
-  height: 600px;
 }
 </style>
 
 <script type="module">
-  import { WidgetryDemo } from "/js/street_sim/widgetry_demo_app/widgetry_demo_app.js";
-  let widgetryDemoApp = new WidgetryDemo("widgetry-demo-root");
+  // import { WidgetryDemo } from "/js/street_sim/widgetry_demo_app/widgetry_demo_app.js";
+  //let widgetryDemoApp = new WidgetryDemo("app-root");
 
-  import { FifteenMinute } from "/js/street_sim/fifteen_min_app/fifteen_min_app.js";
-  let fifteenMinuteApp = new FifteenMinute("fifteen-min-root");
+  // import { FifteenMinute } from "/js/street_sim/fifteen_min_app/fifteen_min_app.js";
+  // let fifteenMinuteApp = new FifteenMinute("app-root");
+
+  import { ABStreet } from "/js/street_sim/abstreet_app/abstreet_app.js";
+  let abstreetApp = new ABStreet("app-root");
 
   $(document).ready(async function() {
       //await widgetryDemoApp.loadAndStart();
-      await fifteenMinuteApp.loadAndStart();
+      //await fifteenMinuteApp.loadAndStart();
+      await abstreetApp.loadAndStart();
   });
 </script>
 

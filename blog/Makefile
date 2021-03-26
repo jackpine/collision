@@ -11,10 +11,13 @@ tsc:
 clean:
 	rm -r js/street_sim
 
-wasm: widgetry_demo_wasm fifteen_min_wasm
+wasm: widgetry_demo_wasm abstreet_wasm fifteen_min_wasm 
 
 widgetry_demo_wasm:
 	$(call generate_wasm,widgetry_demo_app,~/src/abs/abstreet/widgetry_demo)
+
+abstreet_wasm:
+	$(call generate_wasm_with_system_assets,abstreet_app,~/src/abs/abstreet/game)
 
 fifteen_min_wasm:
 	$(call generate_wasm_with_system_assets,fifteen_min_app,~/src/abs/abstreet/fifteen_min)
