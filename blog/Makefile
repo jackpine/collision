@@ -37,6 +37,9 @@ define generate_wasm_with_system_assets
 	# ... If this is problematic, maybe we could make a "data" package or something to consolidate?
 	cp -r $2/pkg/system $($@_PKG_ROOT_OUT)
 
+	# TODO: compress assets... some problem with escaping in the following line
+	# find $2/pkg/system -type f -name \*.bin -exec gzip {} \;
+
 	# Install compiled packages to site
 	mkdir -p js/street_sim/$1/
 	cp -r $($@_PKG_ROOT_OUT) js/street_sim/$1/

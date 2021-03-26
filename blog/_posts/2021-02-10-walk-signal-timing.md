@@ -29,14 +29,14 @@ And here's the fifteen min app:
 </style>
 
 <script type="module">
-  // import { WidgetryDemo } from "/js/street_sim/widgetry_demo_app/widgetry_demo_app.js";
-  // let widgetryDemoApp = new WidgetryDemo("widgetry-demo-root");
+  import { WidgetryDemo } from "/js/street_sim/widgetry_demo_app/widgetry_demo_app.js";
+  let widgetryDemoApp = new WidgetryDemo("widgetry-demo-root");
 
   import { FifteenMinute } from "/js/street_sim/fifteen_min_app/fifteen_min_app.js";
   let fifteenMinuteApp = new FifteenMinute("fifteen-min-root");
 
   $(document).ready(async function() {
-      // await widgetryDemoApp.loadAndStart();
+      //await widgetryDemoApp.loadAndStart();
       await fifteenMinuteApp.loadAndStart();
   });
 </script>
