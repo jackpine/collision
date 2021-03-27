@@ -22,6 +22,10 @@ enum LoadState {
     unloaded, loading, loaded, starting, started, error
 }
 
+/**
+ * Helper class used by `WidgetryApp` implementations to load their wasm and
+ * render their content.
+ */
 export class AppLoader<T> {
     app: WidgetryApp<T>;
     el: HTMLElement;

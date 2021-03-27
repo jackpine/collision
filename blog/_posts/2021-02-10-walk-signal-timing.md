@@ -20,13 +20,13 @@ Eventually we'd lke to show a simulation of Rainier Beach in Seattle.
 </style>
 
 <script type="module">
-  // import { WidgetryDemo } from "/js/street_sim/widgetry_demo_app/widgetry_demo_app.js";
-  //let widgetryDemoApp = new WidgetryDemo("app-root");
+  import { WidgetryDemo } from "/js/widgetry_apps/widgetry_demo/widgetry_demo.js";
+  let widgetryDemoApp = new WidgetryDemo("app-root");
 
-  // import { FifteenMinute } from "/js/street_sim/fifteen_min_app/fifteen_min_app.js";
-  // let fifteenMinuteApp = new FifteenMinute("app-root");
+  import { FifteenMinute } from "/js/widgetry_apps/fifteen_min/fifteen_min.js";
+  let fifteenMinuteApp = new FifteenMinute("app-root");
 
-  import { ABStreet } from "/js/street_sim/abstreet_app/abstreet_app.js";
+  import { ABStreet } from "/js/widgetry_apps/abstreet/abstreet.js";
   let abstreetApp = new ABStreet("app-root");
 
   $(document).ready(async function() {
