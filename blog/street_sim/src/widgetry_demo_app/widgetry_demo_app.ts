@@ -3,36 +3,32 @@
 //
 // Additionally, it is assumed that the `init` method and `InitOutput` type are
 // available, since they are automatically created by wasm_bindgen:
-import {
-    default as widgetryDemoInit,
-    run as widgetryDemoRun,
-    InitOutput as WidgetryDemoInitOutput
-} from './wasm_pkg/widgetry_demo.js';
+import * as wasm_pkg from './wasm_pkg/widgetry_demo.js';
 
-import { AppLoader, InitInput, pkgRoot } from '../widgetry.js';
+import { AppLoader, InitInput, modRoot } from '../widgetry.js';
 
 export class WidgetryDemo {
-    appLoader: AppLoader<WidgetryDemoInitOutput>;
-    pkgRoot: string;
+    appLoader: AppLoader<wasm_pkg.InitOutput>;
+    modRoot: string;
 
-    init(module_or_path?: InitInput | Promise<InitInput>): Promise<WidgetryDemoInitOutput> {
-        return widgetryDemoInit(module_or_path);
+    init(module_or_path?: InitInput | Promise<InitInput>): Promise<wasm_pkg.InitOutput> {
+        return wasm_pkg.default(module_or_path);
     }
 
     run(rootDomId: string, assetsBaseUrl: string): void {
-        widgetryDemoRun(rootDomId, assetsBaseUrl);
+        wasm_pkg.run(rootDomId, assetsBaseUrl);
     }
 
     wasmURLString(): string {
-        return this.pkgRoot + "wasm_pkg/widgetry_demo_bg.wasm";
+        return this.modRoot + "wasm_pkg/widgetry_demo_bg.wasm";
     }
 
     assetsBaseURL(): string {
-        return this.pkgRoot + "static_assets";
+        return this.modRoot + "static_assets";
     }
 
     public constructor(domId: string) {
-        this.pkgRoot = pkgRoot(import.meta);
+        this.modRoot = modRoot(import.meta);
         this.appLoader = new AppLoader(this, domId);
     }
 

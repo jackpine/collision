@@ -120,7 +120,7 @@ export class AppLoader<T> {
     }
 }
 
-export function pkgRoot(importMeta: ImportMeta): string {
+export function modRoot(importMeta: ImportMeta): string {
     function dirname(path: string) {
         return path.match(/.*\//);
     }
