@@ -29,9 +29,13 @@ enum LoadState {
 export class AppLoader<T> {
     app: WidgetryApp<T>;
     el: HTMLElement;
-    loadingEl: HTMLElement;
+    loadingEl?: HTMLElement;
+    unsupportedEl?: HTMLElement;
     domId: string;
     state: LoadState = LoadState.unloaded;
+    // (receivedLength, totalLength)
+    downloadProgress?: [number, number];
+    errorMessage: string;
 
     public constructor(app: WidgetryApp<T>, domId: string) {
         this.app = app;
@@ -41,37 +45,68 @@ export class AppLoader<T> {
             throw new Error(`element with domId: ${domId} not found`);
         }
         this.el = el;
-        this.loadingEl = appendLoading(el);
-        this.render();
         console.log("sim constructor", this);
     }
 
     public async loadAndStart() {
+        this.render();
         try {
             await this.load();
             await this.start();
         } catch (e) {
-            console.error("error while loading: ", e);
-            this.updateState(LoadState.error);
-            alert(e);
-            //throw e;
+            this.reportErrorState("error while loading: " + e.toString());
+            throw e;
         }
     }
 
     async load() {
         console.assert(this.state == LoadState.unloaded, "already loaded");
         this.updateState(LoadState.loading);
-        // TODO: copy incremental loading logic from ABStreet for progress indication
+        
+        console.log("Started loading WASM");
+        const t0 = performance.now();
         let response: Response = await fetch(this.app.wasmURLString());
+
+        if (response.body == null) {
+            this.reportErrorState("response.body was unexpectedly null");
+            return;
+        }
+        let reader = response.body.getReader();
+
+        let contentLength = response.headers.get('Content-Length');
+        if (contentLength == undefined) {
+            this.reportErrorState("contentLength was unexpectedly undefined");
+            return;
+        }
+
+        this.downloadProgress = [0, parseInt(contentLength)];
+
+        let chunks: Uint8Array[] = [];
+        while (true) {
+            const {done, value} = await reader.read();
+            if (done) {
+                break;
+            }
+            if (value == undefined) {
+                console.error("reader value was unexpectedly undefined");
+                break;
+            }
+            chunks.push(value);
+            this.downloadProgress[0] += value.length;
+            this.render();
+        }
+        let blob = new Blob(chunks);
+        let buffer = await blob.arrayBuffer();
+        const t1 = performance.now();
+        console.log(`It took ${t1 - t0} ms to download WASM, now initializing it`);
 
         // TODO: Prefer streaming instantiation where available (not safari)? Seems like it'd be faster.
         // const { instance } = await WebAssembly.instantiateStreaming(response, imports);
         
-        let blob: Blob = await response.blob();
-        let bytes: ArrayBuffer = await blob.arrayBuffer();
         //let imports = {};
         //let instance = await WebAssembly.instantiate(bytes, imports);
-        await this.app.init(bytes);
+        
+        await this.app.init(buffer);
         this.updateState(LoadState.loaded);
     }
 
@@ -90,37 +125,76 @@ export class AppLoader<T> {
         }
     }
 
+    isWebGL1Supported(): boolean {
+        try {
+            var canvas = document.createElement('canvas');
+            return !!canvas.getContext('webgl');
+        } catch(e) {
+            return false;
+        }
+    }
+
+    isWebGL2Supported(): boolean {
+        try {
+            var canvas = document.createElement('canvas');
+            return !!canvas.getContext('webgl2');
+        } catch(e) {
+            return false;
+        }
+    }
+
     updateState(newValue: LoadState) {
         console.debug(`state change: ${LoadState[this.state]} -> ${LoadState[newValue]}`);
         this.state = newValue;
         this.render();
     }
 
+    reportErrorState(errorMessage: string) {
+        this.errorMessage = errorMessage;
+        this.updateState(LoadState.error)
+    }
+
+    // UI
+    
     render() {
-        this.el.style["border-style"] = "solid";
-        this.el.style["border-thickness"] = "4px";
+        this.el.style["background-color"] = "black";
 
-        this.el.style["border-color"] = ((): string => {
-            switch (this.state) {
-                case LoadState.unloaded: return "white";
-                case LoadState.loading: return "#ffff0088";
-                case LoadState.loaded: return "#ffff00";
-                case LoadState.starting: return "#00ff0088";
-                case LoadState.started: return "#00ff0000";
-                case LoadState.error: return "red";
-            }
-        })();
+        switch (this.state) {
+            case LoadState.loading: {
+                if (this.loadingEl == undefined) {
+                    this.loadingEl = buildLoadingEl();
+                    // insert after rendering initial progress to avoid jitter.
+                    this.el.append(this.loadingEl);
+                }
 
-        this.loadingEl.innerText = ((): string => {
-            switch (this.state) {
-                case LoadState.unloaded: return "unloaded";
-                case LoadState.loading: return "loading";
-                case LoadState.loaded: return "loaded";
-                case LoadState.starting: return "starting";
-                case LoadState.started: return "started";
-                case LoadState.error: return "error";
+                if (this.downloadProgress != undefined) {
+                    let received = this.downloadProgress[0];
+                    let total = this.downloadProgress[1];
+                    let progressText = `${prettyPrintBytes(received)} / ${prettyPrintBytes(total)}`;
+                    let percentText = `${100.0 * received / total}%`;
+                    this.loadingEl.querySelector<HTMLElement>(".progress-text")!.innerText = progressText;
+                    this.loadingEl.querySelector<HTMLElement>(".progress-bar")!.style.width = percentText;
+                } 
+
+                break;
             }
-        })();
+            case LoadState.error: {
+                if (this.loadingEl != undefined) {
+                    this.loadingEl.remove();
+                    this.loadingEl = undefined;
+                }
+
+                if (this.unsupportedEl == undefined && !this.isWebGL1Supported() && !this.isWebGL2Supported()) {
+                    console.error("neither WebGL nor WebGL2 is supported")
+                    let el = buildUnsupportedEl();
+                    this.unsupportedEl = el;
+                    this.el.append(el);
+                }
+
+                this.el.append(this.errorMessage);
+                break;
+            }
+        }
     }
 }
 
@@ -136,12 +210,38 @@ export function modRoot(importMeta: ImportMeta): string {
     return url.toString();
 }
 
-function appendLoading(el: HTMLElement): HTMLElement {
-    let loadingEl = document.createElement("p");
-    let text = document.createTextNode("Loading...");
-    loadingEl.append(text);
+function buildLoadingEl(): HTMLElement {
+    let loadingEl = document.createElement('div');
+    loadingEl.innerHTML = `
+        <p><strong>Loading...</strong></p>
+        <div style="width: 100%; background-color: black; border: 1px solid white; border-radius: 4px;">
+            <div style="width: 1%; background-color: white; height: 12px;" class="progress-bar"></div>
+        </div>
+        <div style="margin-bottom: 16px" class="progress-text">0 / 0</div>
+        <p>If you think something has broken, check your browser's developer console (Ctrl+Shift+I or similar)</p>
+        <p>(Your browser must support WebGL and WebAssembly)</p>
+    `;
+ 
     loadingEl.id = "loading";
+    loadingEl.style.padding = "16px";
 
-    el.append(loadingEl);
     return loadingEl;
 }
+
+function buildUnsupportedEl(): HTMLElement {
+    let el = document.createElement('p');
+    el.innerHTML = `
+      😭 Looks like your browser doesn't support WebGL.
+    `;
+    el.style["textAlign"] = "center";
+    el.style["padding"] = "16px";
+    return el;
+}
+
+function prettyPrintBytes(bytes: number): string {
+    if (bytes < 1024 ** 2) {
+        return Math.round(bytes / 1024) + " KB";
+    }
+    return Math.round(bytes / 1024 ** 2) + " MB";
+}
+
